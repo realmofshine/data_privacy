@@ -1,0 +1,31 @@
+[project]
+name = "dp-privacy"
+version = "1.0.0"
+description = "Data Privacy AG-UI + A2UI application"
+requires-python = ">=3.11"
+dependencies = [
+    "starlette>=0.37",
+    "uvicorn[standard]>=0.29",
+    "sse-starlette>=1.8",
+    "google-adk>=0.5",
+    "google-genai>=1.0",
+    "google-cloud-aiplatform>=1.50",
+    "langchain>=0.3",
+    "langchain-core>=0.3",
+    "langchain-google-genai>=2.0",
+    "langchain-community>=0.3",
+    "langgraph>=0.2",
+    "pydantic>=2.0",
+    "python-dotenv>=1.0",
+    "neo4j>=5.0",
+    "httpx>=0.27",
+    "ag-ui-protocol>=0.1",
+    "tavily-python>=0.3",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agent"]

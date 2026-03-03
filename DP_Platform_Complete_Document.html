@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Privacy & Security Intelligence Platform - Complete Document</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.7;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* COVER PAGE */
+  .cover {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1e3a 50%, #0a0e1a 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    padding: 60px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 197, 94, 0.06) 0%, transparent 50%);
+  }
+  .cover .shield { font-size: 80px; margin-bottom: 30px; position: relative; }
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cover .subtitle {
+    font-size: 20px;
+    color: #94a3b8;
+    font-weight: 300;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .cover .stats {
+    display: flex;
+    gap: 40px;
+    position: relative;
+  }
+  .cover .stat {
+    text-align: center;
+  }
+  .cover .stat .num {
+    font-size: 36px;
+    font-weight: 800;
+    color: #6366f1;
+  }
+  .cover .stat .label {
+    font-size: 12px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+  }
+  h3 {
+    font-size: 19px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 20px 0 10px;
+  }
+
+  p {
+    margin: 10px 0;
+    color: #cbd5e1;
+    font-size: 14px;
+  }
+
+  strong { color: #f1f5f9; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:hover { background: rgba(99, 102, 241, 0.05); }
+
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  ul, ol {
+    margin: 10px 0 10px 24px;
+    color: #cbd5e1;
+    font-size: 14px;
+  }
+  li { margin: 6px 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  blockquote {
+    border-left: 3px solid #6366f1;
+    padding: 12px 20px;
+    margin: 16px 0;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 0 8px 8px 0;
+    color: #c7d2fe;
+    font-style: italic;
+  }
+
+  .page-break { page-break-before: always; margin: 60px 0; }
+
+  /* Card mockups in the document */
+  .toc {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 30px 0;
+  }
+  .toc h2 { margin-top: 0; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 8px 0; color: #94a3b8; }
+  .toc a { color: #818cf8; text-decoration: none; }
+
+  @media print {
+    body { background: white; color: #1e293b; padding: 20px; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .cover { background: white; border-color: #6366f1; }
+    .cover h1 { -webkit-text-fill-color: #4338ca; }
+    .cover .subtitle { color: #64748b; }
+    .cover .stat .num { color: #4338ca; }
+    strong { color: #1e293b; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="shield">🛡️</div>
+  <h1 style="border:none; margin:0; font-size:42px;">Data Privacy & Security<br>Intelligence Platform</h1>
+  <p class="subtitle">Complete Technical & Business Document</p>
+  <div class="stats">
+    <div class="stat"><div class="num">15</div><div class="label">Modes</div></div>
+    <div class="stat"><div class="num">55</div><div class="label">AI Agents</div></div>
+    <div class="stat"><div class="num">25</div><div class="label">A2UI Cards</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Protocols</div></div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>📑 Table of Contents</h2>
+  <ol>
+    <li><strong>Platform Overview</strong> — What, Why, Architecture</li>
+    <li><strong>The 4 Protocols</strong> — AG-UI, A2UI, A2A, MCP</li>
+    <li><strong>Mode 1:</strong> 🔍 Breach Analysis (7 agents)</li>
+    <li><strong>Mode 2:</strong> 📚 Knowledge Search (4 agents)</li>
+    <li><strong>Mode 3:</strong> ⚖️ Compliance Check (4 agents)</li>
+    <li><strong>Mode 4:</strong> 📊 Risk Assessment (4 agents)</li>
+    <li><strong>Mode 5:</strong> 🛡️ Safety Validation (4 agents)</li>
+    <li><strong>Mode 6:</strong> 🚨 Incident Response (5 agents)</li>
+    <li><strong>Mode 7:</strong> 🗺️ Data Mapping (3 agents)</li>
+    <li><strong>Mode 8:</strong> 👤 Data Subject Rights (3 agents)</li>
+    <li><strong>Mode 9:</strong> 🌐 Dark Web Monitor (3 agents)</li>
+    <li><strong>Mode 10:</strong> 📝 Executive Reporting (3 agents)</li>
+    <li><strong>Mode 11:</strong> 🎯 Threat Modeling (3 agents)</li>
+    <li><strong>Mode 12:</strong> 🔓 Vulnerability Assessment (3 agents)</li>
+    <li><strong>Mode 13:</strong> 🔐 Access Control & IAM (3 agents)</li>
+    <li><strong>Mode 14:</strong> 🔬 Digital Forensics (3 agents)</li>
+    <li><strong>Mode 15:</strong> 🏗️ Security Architecture (3 agents)</li>
+    <li><strong>Complete Demo Script</strong> — 20-minute walkthrough</li>
+  </ol>
+</div>
+
+<h1>🛡️ Data Privacy & Security Intelligence Platform</h1>
+<h2>Complete Technical & Business Document</h2>
+
+<hr>
+
+<h1>SECTION 1: PLATFORM OVERVIEW</h1>
+
+<h2>What Is This Platform?</h2>
+
+<p>This is an <strong>AI-powered data privacy and security intelligence platform</strong> that uses <strong>55 specialized AI agents</strong> organized into <strong>15 operational modes</strong>. It covers the <strong>complete data privacy lifecycle</strong> — from detecting a breach to filing regulatory reports.</p>
+
+<p>Unlike traditional security tools that work in silos (one tool for scanning, another for compliance, another for reporting), this platform brings <strong>everything into one place</strong> with real-time AI agent collaboration.</p>
+
+<h2>Why Does This Platform Exist?</h2>
+
+<h3>The Problem in the Industry</h3>
+
+<p>Organizations today face a fragmented security landscape:</p>
+
+<p>| Problem | Real Impact |</p>
+<p>|---|---|</p>
+<p>| <strong>Tools are siloed</strong> | Security teams use 45-75 different tools (Gartner 2024). Each produces its own reports. None talk to each other. |</p>
+<p>| <strong>Breach response is slow</strong> | Average time to identify a breach: <strong>194 days</strong> (IBM 2024 Cost of Data Breach Report). Average time to contain: <strong>292 days</strong>. |</p>
+<p>| <strong>Compliance is manual</strong> | GDPR requires breach notification within <strong>72 hours</strong>. Most companies can't even assess the breach in 72 hours, let alone notify. |</p>
+<p>| <strong>No real-time visibility</strong> | CISOs find out about breaches from news articles, not from their own tools. |</p>
+<p>| <strong>Data privacy is reactive</strong> | Companies discover privacy issues after fines, not before. Average GDPR fine: <strong>€1.5 million</strong>. |</p>
+<p>| <strong>Risk assessment is static</strong> | Vendor risk questionnaires are done annually. But vulnerabilities are discovered daily. |</p>
+
+<h3>The Solution: One Platform, 55 Agents, 15 Modes</h3>
+
+<p>This platform solves all of the above by:</p>
+<li><strong>Detecting</strong> breaches from news, dark web, and internal data — automatically</li>
+<li><strong>Analyzing</strong> breaches in seconds using NLP and graph databases — not days</li>
+<li><strong>Assessing</strong> risk in real-time using GNN models — not annual questionnaires</li>
+<li><strong>Complying</strong> with regulations by auto-generating DPIA, notices, and reports</li>
+<li><strong>Responding</strong> to incidents with AI-generated playbooks — not manual checklists</li>
+<li><strong>Monitoring</strong> continuously — dark web, threat intel, vulnerability feeds</li>
+
+<h2>The 4 Protocols</h2>
+
+<h3>AG-UI (Agent-User Interaction Protocol)</h3>
+<strong>What:</strong> Real-time SSE streaming between backend agents and the frontend UI.
+<strong>Why it matters:</strong> The user sees every agent working in real-time — no black box, no "please wait" spinner for 30 seconds. Text streams word-by-word. Agent progress badges update live.
+<strong>Without AG-UI:</strong> User clicks "Analyze", stares at a spinner, gets a big wall of text after 15 seconds.
+<strong>With AG-UI:</strong> User clicks "Analyze", immediately sees "🔍 Verifying news...", then "✅ Verified. ⚙️ Extracting entities...", then text starts flowing character by character.
+
+<h3>A2UI (Agent-to-UI Protocol)</h3>
+<strong>What:</strong> Agents send structured JSON describing UI cards — not raw text or HTML.
+<strong>Why it matters:</strong> The agent can create buttons, tables, forms, and interactive elements. The user doesn't just read — they interact, approve, drill-down, export.
+<strong>Without A2UI:</strong> Agent returns text: "The breach is fake. You can proceed anyway or discard." User has to mentally process this and type a response.
+<strong>With A2UI:</strong> Agent sends a card with ⚠️ header, explanation text, source links, and two buttons: [⚡ Proceed Anyway] [🗑️ Discard]. User clicks one button. Done.
+
+<h3>A2A (Agent-to-Agent Protocol)</h3>
+<strong>What:</strong> Each of our 55 agents runs as an independent microservice. They discover and communicate with each other through A2A protocol.
+<strong>Why it matters:</strong> Agents can be developed, deployed, and scaled independently. The NLPAgent can call the RiskAgent directly. The orchestrator coordinates but doesn't bottleneck.
+<strong>Without A2A:</strong> All agents are tightly coupled functions. Changing one might break another. Can't scale the RiskAgent independently during high load.
+<strong>With A2A:</strong> Each agent has its own endpoint, its own agent card (name, description, skills). The orchestrator discovers available agents dynamically.
+
+<h3>MCP (Model Context Protocol)</h3>
+<strong>What:</strong> Standardized way for agents to connect to external tools — Neo4j, web search, email, PDF generation.
+<strong>Why it matters:</strong> Agents don't hardcode tool connections. They discover tools through MCP servers. New tools can be added without changing agent code.
+<strong>Without MCP:</strong> Every agent that needs Neo4j has its own Neo4j connection code. Changing the database means updating 20 agents.
+<strong>With MCP:</strong> One <code class="inline">mcp_neo4j_server</code> exposes graph tools. All agents connect to it. Change the database once, all agents benefit.
+
+<hr>
+
+<h1>SECTION 2: MODES IN DETAIL</h1>
+
+<hr>
+
+<h2>MODE 1: 🔍 BREACH ANALYSIS</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>Security teams discover breaches from <strong>Twitter/X, news articles, and vendor emails</strong> — not from their own monitoring systems</li></ul>
+<ul><li>When a breach is reported, the first question is: <strong>"Is this even real?"</strong> Fake breach reports waste days of investigation time</li></ul>
+<ul><li>Manually analyzing a breach article takes <strong>4-8 hours</strong>: reading, extracting company names, determining data types, checking if your systems are connected</li></ul>
+<ul><li>Risk assessment requires <strong>consultation with multiple teams</strong> — legal, IT, procurement — each taking days to respond</li></ul>
+<ul><li>By the time the analysis is complete, the <strong>72-hour GDPR notification window</strong> has passed</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>2023 MOVEit breach</strong>: Affected 2,500+ organizations. Many didn't know they were impacted for weeks because they didn't track their supply chain connections.</li></ul>
+<ul><li><strong>2024 Change Healthcare</strong>: $22 billion company's breach took 5 months to fully assess. Affected 100 million people.</li></ul>
+<ul><li><strong>2023 Twitter/X data leak</strong>: Initially reported as fake on social media. Companies that dismissed it lost valuable response time.</li></ul>
+
+<h3>The Solution</h3>
+
+<p>Our platform does in <strong>2 minutes</strong> what takes 4-8 hours manually:</p>
+
+<h3>End-to-End Flow</h3>
+
+<p>``<code class="inline"></p>
+<p>User pastes news article</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>┌─────────────────────────┐</p>
+<p>│ 1. NewsVerificationAgent │ ← Google Search grounded verification</p>
+<p>│    Is this news real?    │    Searches 100+ sources in seconds</p>
+<p>│    Verdict: REAL / FAKE  │    Confidence score: 0-100%</p>
+<p>└──────────┬──────────────┘</p>
+<p>           │</p>
+<p>           ▼</p>
+<p>┌─────────────────────────┐</p>
+<p>│ 2. TavilyVerification   │ ← Second opinion via Tavily AI</p>
+<p>│    Cross-references      │    Different search engine, different sources</p>
+<p>│    Verdict: REAL / FAKE  │    Reduces false positives by 40%</p>
+<p>└──────────┬──────────────┘</p>
+<p>           │</p>
+<p>           ▼</p>
+<p>    ┌──────┴──────┐</p>
+<p>    │  DECISION   │ ← A2UI Card: User decides</p>
+<p>    │  FAKE?      │    [Proceed Anyway] [Discard]</p>
+<p>    └──────┬──────┘</p>
+<p>           │ (if REAL or user overrides)</p>
+<p>           ▼</p>
+<p>┌─────────────────────────┐</p>
+<p>│ 3. NLPAgent             │ ← Gemini 2.0 Flash</p>
+<p>│    Extracts:            │    Entity extraction + Neo4j ingestion</p>
+<p>│    - Company names      │    Creates graph relationships:</p>
+<p>│    - Data types exposed │    ThirdParty → DataBreach → Service</p>
+<p>│    - Attack vector      │</p>
+<p>│    - Record count       │</p>
+<p>└──────────┬──────────────┘</p>
+<p>           │</p>
+<p>           ▼</p>
+<p>┌─────────────────────────┐</p>
+<p>│ 4. RiskAgent            │ ← GNN-based risk model</p>
+<p>│    Queries Neo4j for    │    Considers: vendor connectivity,</p>
+<p>│    third-party links    │    data sensitivity, control maturity,</p>
+<p>│    Risk score: 0.0-1.0  │    historical incidents</p>
+<p>└──────────┬──────────────┘</p>
+<p>           │</p>
+<p>           ▼</p>
+<p>┌─────────────────────────┐</p>
+<p>│ 5. SimilarCompanyAgent  │ ← Vector similarity search</p>
+<p>│    Finds companies with │    "If TechCorp was breached and uses</p>
+<p>│    similar profiles     │     the same cloud provider as you,</p>
+<p>│                         │     you might be next"</p>
+<p>└──────────┬──────────────┘</p>
+<p>           │</p>
+<p>           ▼</p>
+<p>┌─────────────────────────┐</p>
+<p>│ 6. AlertAgent           │ ← RED/ORANGE/YELLOW classification</p>
+<p>│    RED: Risk > 0.7      │    Executive narrative</p>
+<p>│    ORANGE: 0.4-0.7      │    "TechCorp breach directly impacts</p>
+<p>│    YELLOW: 0.2-0.4      │     our payment infrastructure"</p>
+<p>└──────────┬──────────────┘</p>
+<p>           │</p>
+<p>           ▼</p>
+<p>┌─────────────────────────┐</p>
+<p>│ 7. SuggestionAgent      │ ← Context-aware recommendations</p>
+<p>│    Based on:            │    "1. Rotate API keys for Stripe</p>
+<p>│    - Breach type        │     2. Enable MFA for admin users</p>
+<p>│    - Your infrastructure│     3. Patch CVE-2024-xxxx"</p>
+<p>│    - Industry standards │</p>
+<p>└──────────┬──────────────┘</p>
+<p>           │</p>
+<p>           ▼</p>
+<p>    ┌──────┴──────┐</p>
+<p>    │ A2UI REPORT │ ← Full interactive report card</p>
+<p>    │ CARD        │    [Export PDF] [Escalate] [Share]</p>
+<p>    └─────────────┘</p>
+</code>`<code class="inline">
+
+<h3>Human-AI Interaction Points</h3>
+
+<p>| Step | What User Sees | User Action |</p>
+<p>|---|---|---|</p>
+<p>| News pasted | Loading animation | Wait |</p>
+<p>| Verification done | ⚠️ Fake News Warning card | Click [Proceed] or [Discard] |</p>
+<p>| Entities extracted | Entity list card | Confirm or correct entities |</p>
+<p>| Risk scored | Risk scorecard | Click vendor to drill down |</p>
+<p>| Alerts generated | RED/YELLOW cards | Override severity if needed |</p>
+<p>| Suggestions shown | Recommendation list | Click [Apply] or [Dismiss] |</p>
+<p>| Report ready | Full report card | [Export PDF] [Email] [Escalate] |</p>
+
+<h3>Business Impact</h3>
+
+<p>| Metric | Without Platform | With Platform |</p>
+<p>|---|---|---|</p>
+<p>| Time to detect breach | Days to weeks | <strong>Real-time</strong> (seconds) |</p>
+<p>| Time to analyze | 4-8 hours | <strong>2 minutes</strong> |</p>
+<p>| False positive rate | High (manual judgment) | <strong>Low</strong> (dual verification) |</p>
+<p>| GDPR 72-hour compliance | Often missed | <strong>Always met</strong> |</p>
+<p>| Risk visibility | Annual questionnaire | <strong>Continuous</strong> |</p>
+
+<hr>
+
+<h2>MODE 2: 📚 KNOWLEDGE SEARCH</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>Security data is locked in a Neo4j graph database. Only engineers who know Cypher can query it.</li></ul>
+<ul><li>Business users and analysts need answers like "Which vendors were impacted by ransomware last quarter?" but can't write: </code>MATCH (t:ThirdParty)-[:IMPACTED_BY]->(b:DataBreach) WHERE b.type = 'ransomware' RETURN t.name<code class="inline"></li></ul>
+<ul><li>Even for engineers, writing complex Cypher queries takes 15-30 minutes for multi-hop traversals</li></ul>
+<ul><li>Search results are raw JSON — no visualization, no context, no follow-up suggestions</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>SOC analysts</strong> at large banks spend 30% of their time writing and debugging database queries instead of analyzing threats</li></ul>
+<ul><li><strong>Compliance officers</strong> can't answer auditor questions in real-time: "Show me all third parties with access to PII in the EU"</li></ul>
+
+<h3>The Solution</h3>
+
+<p>Four search agents that let anyone query the breach graph in plain English:</p>
+
+<h3>Agents</h3>
+
+<p>| Agent | How It Searches | Best For |</p>
+<p>|---|---|---|</p>
+<p>| <strong>FullTextSearchAgent</strong> | Keyword matching against Neo4j full-text index | Exact name lookups: "Find TechCorp" |</p>
+<p>| <strong>HybridSearchAgent</strong> | Vector embeddings + keyword combined | Complex queries: "Companies similar to Stripe in payments" |</p>
+<p>| <strong>VectorSearchAgent</strong> | Pure semantic similarity using Google embeddings | Conceptual queries: "Data processing vendors in healthcare" |</p>
+<p>| <strong>NLPCypherAgent</strong> | Converts natural language → Cypher query → executes | Complex graph traversals: "Which third parties consume services from AWS and have PII access?" |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User types: "Which vendors had data breaches involving PII in 2024?"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>Orchestrator analyzes query complexity</p>
+<p>    │</p>
+<p>    ├→ Simple lookup? → FullTextSearchAgent</p>
+<p>    ├→ Semantic match? → VectorSearchAgent</p>
+<p>    ├→ Complex graph? → NLPCypherAgent</p>
+<p>    └→ Mixed? → HybridSearchAgent</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>Agent queries Neo4j → returns results</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Search Results Card:</p>
+<p>┌──────────────────────────────────┐</p>
+<p>│ 🔎 4 Results Found               │</p>
+<p>├──────────────────────────────────┤</p>
+<p>│ ▶ TechCorp — Ransomware — Jan   │ ← Click to expand</p>
+<p>│ ▶ MediHealth — Phishing — Mar   │</p>
+<p>│ ▶ FinServ — Insider — Jun       │</p>
+<p>│ ▶ RetailCo — Supply Chain — Sep │</p>
+<p>├──────────────────────────────────┤</p>
+<p>│ Suggested follow-ups:           │</p>
+<p>│ [Risk scores?] [Related vendors]│</p>
+<p>└──────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<h3>Business Impact</h3>
+
+<p>| Without | With |</p>
+<p>|---|---|</p>
+<p>| Only engineers can query the database | <strong>Anyone</strong> can search in plain English |</p>
+<p>| 15-30 min to write Cypher | <strong>Instant</strong> natural language query |</p>
+<p>| Raw JSON results | <strong>Interactive cards</strong> with drill-down |</p>
+
+<hr>
+
+<h2>MODE 3: ⚖️ COMPLIANCE CHECK</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>When a breach occurs, the legal team scrambles to determine: <strong>Which regulations apply? What are the deadlines? What are the penalties?</strong></li></ul>
+<ul><li>GDPR requires notification to the DPA within <strong>72 hours</strong> (Article 33). CCPA requires notification within <strong>45 days</strong>. HIPAA requires within <strong>60 days</strong>. Each has different rules.</li></ul>
+<ul><li>Data Protection Impact Assessments (DPIAs) take <strong>2-4 weeks</strong> to prepare manually — 20-40 page documents</li></ul>
+<ul><li>Audit trails must be maintained but are scattered across emails, tickets, and spreadsheets</li></ul>
+<ul><li>Companies are fined not just for breaches, but for <strong>inadequate documentation</strong> of their response</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>Meta fined €1.2 billion</strong> (2023) for GDPR violations related to data transfers — biggest fine ever</li></ul>
+<ul><li><strong>British Airways fined £20 million</strong> — not just for the breach, but for inadequate data protection measures</li></ul>
+<ul><li><strong>Equifax fined $700 million</strong> — the breach itself was bad, but the delayed notification made it worse</li></ul>
+<ul><li><strong>H&M fined €35 million</strong> — for excessive employee surveillance, a privacy compliance issue</li></ul>
+
+<h3>The Solution</h3>
+
+<h3>Agents</h3>
+
+<p>| Agent | What It Does |</p>
+<p>|---|---|</p>
+<p>| <strong>ComplianceAgent</strong> | Analyzes incident against GDPR, CCPA, HIPAA, PCI-DSS, SOX. Returns: applicable articles, notification requirements, deadlines, maximum penalties |</p>
+<p>| <strong>PrivacyImpactAgent</strong> | Generates complete DPIA (Data Protection Impact Assessment) document with risk assessment, necessity analysis, and mitigation measures |</p>
+<p>| <strong>AuditTrailAgent</strong> | Pulls complete audit history from Neo4j — every action, every change, every notification — formatted for regulators |</p>
+<p>| <strong>ConsentAgent</strong> | Checks consent status across systems — which users consented to what processing, when, and how |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "What GDPR obligations apply to the TechCorp breach?"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>ComplianceAgent analyzes:</p>
+<ul><li>Breach type: ransomware</li></ul>
+<ul><li>Data types: PII (names, emails, payment data)</li></ul>
+<ul><li>Data subjects: EU citizens</li></ul>
+<ul><li>Volume: 500,000 records</li></ul>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Compliance Matrix Card:</p>
+<p>┌──────────────────────────────────────────┐</p>
+<p>│ ⚖️ GDPR Compliance Assessment            │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ Regulation       │ Article │ Deadline    │</p>
+<p>│──────────────────┼─────────┼────────────│</p>
+<p>│ DPA Notification │ Art.33  │ 72 hours   │</p>
+<p>│ User Notification│ Art.34  │ Without    │</p>
+<p>│                  │         │ undue delay│</p>
+<p>│ DPIA Required    │ Art.35  │ Should have│</p>
+<p>│                  │         │ been done  │</p>
+<p>│ Record Keeping   │ Art.30  │ Ongoing    │</p>
+<p>│──────────────────┼─────────┼────────────│</p>
+<p>│ Max Penalty: €20M or 4% annual revenue  │</p>
+<p>│ Estimated Fine Risk: €2.5M - €8M        │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ [📋 Generate DPIA] [⏰ Set Deadlines]   │</p>
+<p>│ [📧 Draft DPA Notice] [📜 Audit Trail]  │</p>
+<p>└──────────────────────────────────────────┘</p>
+
+<p>User clicks [Generate DPIA] → PrivacyImpactAgent runs:</p>
+<p>┌──────────────────────────────────────────┐</p>
+<p>│ 📋 DATA PROTECTION IMPACT ASSESSMENT     │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ 1. Processing Description               │</p>
+<p>│    Customer PII processed for CRM        │</p>
+<p>│    and payment processing via TechCorp   │</p>
+<p>│                                          │</p>
+<p>│ 2. Necessity & Proportionality           │</p>
+<p>│    Processing is necessary for contract  │</p>
+<p>│    performance (Art. 6(1)(b))            │</p>
+<p>│                                          │</p>
+<p>│ 3. Risks to Data Subjects               │</p>
+<p>│    HIGH: Identity theft, financial fraud │</p>
+<p>│    MEDIUM: Emotional distress            │</p>
+<p>│                                          │</p>
+<p>│ 4. Mitigation Measures                   │</p>
+<p>│    - Encryption at rest (AES-256)        │</p>
+<p>│    - Access controls (RBAC)              │</p>
+<p>│    - Breach notification within 72h      │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ [📄 Export PDF] [✏️ Edit Sections]        │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<h3>Business Impact</h3>
+
+<p>| Without | With |</p>
+<p>|---|---|</p>
+<p>| 2-4 weeks to prepare DPIA | <strong>Generated in 2 minutes</strong> |</p>
+<p>| Lawyers manually check regulations | <strong>Instant regulatory mapping</strong> |</p>
+<p>| Miss 72-hour GDPR deadline | <strong>Countdown tracker with alerts</strong> |</p>
+<p>| Scattered audit documentation | <strong>Single timeline from Neo4j</strong> |</p>
+<p>| Estimated: €500K+ in legal consulting fees | <strong>Automated compliance assessment</strong> |</p>
+
+<hr>
+
+<h2>MODE 4: 📊 RISK ASSESSMENT</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>Vendor risk assessments are done via <strong>annual questionnaires</strong> — a vendor might have been breached yesterday, but their questionnaire says "secure" because it was filled 6 months ago</li></ul>
+<ul><li>Third-party risk is assessed in <strong>isolation</strong> — each vendor is evaluated independently, ignoring the fact that 5 of your vendors share the same cloud provider (concentration risk)</li></ul>
+<ul><li>Supply chain attacks are the <strong>fastest growing threat</strong> (300% increase, 2020-2024) but most companies can't map their supply chain beyond tier 1</li></ul>
+<ul><li>Risk is expressed as "High/Medium/Low" — subjective, inconsistent, and not actionable</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>SolarWinds (2020)</strong>: 18,000 organizations compromised because nobody tracked the supply chain dependency</li></ul>
+<ul><li><strong>Kaseya (2021)</strong>: One IT management vendor breached → 1,500 businesses affected downstream</li></ul>
+<ul><li><strong>Log4j (2021)</strong>: Took companies weeks to even determine if they used Log4j because they didn't map their software dependencies</li></ul>
+
+<h3>The Solution</h3>
+
+<h3>Agents</h3>
+
+<p>| Agent | What It Does |</p>
+<p>|---|---|</p>
+<p>| <strong>RiskAgent</strong> | GNN-based risk scoring using Neo4j graph structure — considers vendor connectivity, data sensitivity, control maturity, incident history |</p>
+<p>| <strong>SimilarCompanyAgent</strong> | Finds companies with similar risk profiles via vector similarity — "If company A was breached and has a similar setup to company B, company B is at elevated risk" |</p>
+<p>| <strong>VendorRiskAgent</strong> | Deep vendor security posture assessment — evaluates certifications, security controls, breach history, financial stability |</p>
+<p>| <strong>SupplyChainAgent</strong> | Maps multi-tier vendor dependencies — your vendor's vendor's vendor. Identifies concentration risk and single points of failure |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Evaluate risk for all our payment vendors"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>RiskAgent queries Neo4j for all vendors tagged "payment"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>For each vendor:</p>
+<p>├→ Graph connectivity analysis (how deeply connected?)</p>
+<p>├→ Data sensitivity check (what data do they access?)</p>
+<p>├→ Control maturity (what security controls exist?)</p>
+<p>├→ Incident history (any past breaches?)</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Risk Dashboard Card:</p>
+<p>┌──────────────────────────────────────────┐</p>
+<p>│ 📊 Payment Vendor Risk Scorecard         │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ 🔴 Stripe     │ 0.78 │ HIGH    │ ▶      │ ← Click to drill down</p>
+<p>│ 🟠 PayPal     │ 0.52 │ MEDIUM  │ ▶      │</p>
+<p>│ 🟢 Square     │ 0.21 │ LOW     │ ▶      │</p>
+<p>│ 🟢 Braintree  │ 0.18 │ LOW     │ ▶      │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ Concentration Risk: ⚠️ HIGH              │</p>
+<p>│ 3/4 vendors use AWS → single point of   │</p>
+<p>│ failure if AWS has an outage             │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ [📊 Full Report] [⚠️ Mitigate] [📧 Alert]│</p>
+<p>└──────────────────────────────────────────┘</p>
+
+<p>User clicks ▶ on Stripe:</p>
+<p>┌──────────────────────────────────────────┐</p>
+<p>│ 🏢 Stripe — Risk Breakdown               │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ Connectivity Score:  0.85 (deeply linked)│</p>
+<p>│ Data Sensitivity:    0.90 (PCI data)     │</p>
+<p>│ Control Maturity:    0.65 (PCI-DSS cert) │</p>
+<p>│ Incident History:    0.72 (1 past breach)│</p>
+<p>│                                          │</p>
+<p>│ Services Used:                           │</p>
+<p>│ • Payment processing (PCI data)          │</p>
+<p>│ • Subscription billing (customer PII)    │</p>
+<p>│ • Fraud detection (transaction data)     │</p>
+<p>│                                          │</p>
+<p>│ Similar Companies at Risk:               │</p>
+<p>│ • Adyen (same profile, similar controls) │</p>
+<p>│ • Worldpay (shared infrastructure)       │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ [🔄 Re-assess] [📋 Request Audit]        │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<h3>Business Impact</h3>
+
+<p>| Without | With |</p>
+<p>|---|---|</p>
+<p>| Annual questionnaires (stale data) | <strong>Real-time risk scoring</strong> from live graph |</p>
+<p>| Subjective "High/Medium/Low" | <strong>Quantitative 0.0-1.0 scores</strong> |</p>
+<p>| No supply chain visibility | <strong>Multi-tier dependency mapping</strong> |</p>
+<p>| No concentration risk detection | <strong>Automatic single-point-of-failure alerts</strong> |</p>
+<p>| Days to assess a vendor | <strong>Seconds</strong> |</p>
+
+<hr>
+
+<h2>MODE 5: 🛡️ SAFETY VALIDATION</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>AI agents that analyze breach data might <strong>accidentally include PII</strong> in their responses — a customer's name, email, or SSN extracted from the breach data</li></ul>
+<ul><li>LLM-generated analysis might contain <strong>hallucinations</strong> — stating facts that aren't in the source data, which is dangerous in a compliance context</li></ul>
+<ul><li>Toxic or biased language in AI-generated reports could create <strong>legal liability</strong></li></ul>
+<ul><li>There's no systematic way to validate AI outputs before they reach the user</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>Samsung employees leaked proprietary code</strong> via ChatGPT (2023) — the AI tool had no guardrails</li></ul>
+<ul><li><strong>A New York lawyer cited fake cases</strong> generated by ChatGPT in court filings — no hallucination detection</li></ul>
+<ul><li><strong>Air Canada was held liable</strong> for its chatbot's incorrect refund policy — no output validation</li></ul>
+
+<h3>The Solution</h3>
+
+<h3>Agents</h3>
+
+<p>| Agent | What It Does |</p>
+<p>|---|---|</p>
+<p>| <strong>GuardrailsAIAgent</strong> | Uses Guardrails AI framework with DetectPII (Microsoft Presidio) and ToxicLanguage (Detoxify model) validators. Also checks GDPR/CCPA compliance of outputs |</p>
+<p>| <strong>HallucinationAgent</strong> | DeepEval-based grounding check — compares claims in the response against the source data. Returns hallucination score |</p>
+<p>| <strong>PIIRedactionAgent</strong> | Auto-redacts detected PII — replaces names with [PERSON], emails with [EMAIL], phone numbers with [PHONE] |</p>
+<p>| <strong>ContentFilterAgent</strong> | Ensures responses stay within allowed topics — blocks off-topic, dangerous, or legally risky content |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User inputs: "Validate this response: John Smith at john@techcorp.com</p>
+<p>              reported that 500,000 customer records were exposed</p>
+<p>              including SSNs and credit card numbers."</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>4 validators run in parallel:</p>
+<p>    │</p>
+<p>    ├→ GuardrailsAI:  ❌ FAIL — PII detected</p>
+<p>    │   • Person: "John Smith"</p>
+<p>    │   • Email: "john@techcorp.com"</p>
+<p>    │   • Data: "SSNs", "credit card numbers"</p>
+<p>    │</p>
+<p>    ├→ Hallucination:  ✅ PASS — claims match source data</p>
+<p>    │</p>
+<p>    ├→ Toxicity:       ✅ PASS — score 0.02 (clean)</p>
+<p>    │</p>
+<p>    └→ Content Filter: ✅ PASS — on-topic (data privacy)</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Validation Dashboard Card:</p>
+<p>┌──────────────────────────────────────────┐</p>
+<p>│ 🛡️ Safety Validation Results             │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ ❌ PII Detection    │ FAIL │ 3 items     │</p>
+<p>│ ✅ Hallucination    │ PASS │ Score: 0.02 │</p>
+<p>│ ✅ Toxicity         │ PASS │ Score: 0.02 │</p>
+<p>│ ✅ Content Filter   │ PASS │ On-topic    │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ 🔒 AUTO-REDACTED VERSION:               │</p>
+<p>│                                          │</p>
+<p>│ "[PERSON] at [EMAIL] reported that       │</p>
+<p>│  500,000 customer records were exposed   │</p>
+<p>│  including [PII_TYPE] and [PII_TYPE]."   │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│ [✅ Use Redacted] [⚠️ Use Original]      │</p>
+<p>│ [🚫 Block Entirely]                      │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<h3>Business Impact</h3>
+
+<p>| Without | With |</p>
+<p>|---|---|</p>
+<p>| PII leaks in AI outputs | <strong>Auto-detected and redacted</strong> |</p>
+<p>| Hallucinated facts in reports | <strong>Grounding score before display</strong> |</p>
+<p>| Legal liability from AI errors | <strong>Every output validated</strong> |</p>
+<p>| No audit trail of AI safety | <strong>Full validation log</strong> |</p>
+
+<hr>
+
+
+<div class="page-break"></div>
+
+<h1>🛡️ Data Privacy & Security Platform — Part 2</h1>
+
+<h2>MODES 6-10: ADVANCED DATA PRIVACY</h2>
+
+<hr>
+
+<h2>MODE 6: 🚨 INCIDENT RESPONSE</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>When a breach happens, the <strong>first 4 hours are chaos</strong>. Who do we call? What do we shut down? Who needs to know?</li></ul>
+<ul><li>Most companies have IR plans in 50-page PDF documents that <strong>nobody reads during an actual incident</strong></li></ul>
+<ul><li>Notification requirements differ by jurisdiction — EU has 72-hour GDPR, US states have varying deadlines (24 hours to 60 days), HIPAA has 60 days</li></ul>
+<ul><li>Remediation steps are generic — "implement better security" — not specific to the actual breach</li></ul>
+<ul><li>Post-incident, teams can't reconstruct <strong>what happened, when, and who did what</strong></li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>Uber (2022)</strong>: Hacker announced breach on Slack. Employees thought it was a joke. No one knew the IR playbook.</li></ul>
+<ul><li><strong>LastPass (2022)</strong>: Initial breach in August led to second breach in November because remediation was incomplete.</li></ul>
+<ul><li><strong>Optus (2022)</strong>: CEO couldn't explain to media what happened because the IR timeline wasn't documented.</li></ul>
+<ul><li><strong>T-Mobile</strong>: 8 breaches since 2018 — same attack vectors, showing remediation failures.</li></ul>
+
+<h3>The Solution</h3>
+
+<h3>Agents</h3>
+
+<p>| Agent | What It Does |</p>
+<p>|---|---|</p>
+<p>| <strong>IncidentResponseAgent</strong> | Generates step-by-step IR playbook based on breach type (ransomware, phishing, insider, supply chain, DDoS). Includes actions, owners, deadlines, and checkboxes |</p>
+<p>| <strong>NotificationAgent</strong> | Determines who must be notified (DPA, affected users, board, insurance, law enforcement) with exact deadlines per jurisdiction |</p>
+<p>| <strong>RemediationAgent</strong> | Generates specific technical remediation steps — not "improve security" but "Patch CVE-2024-xxxxx on server prod-db-01, rotate all API keys for Stripe integration, enable MFA on admin accounts" |</p>
+<p>| <strong>ThreatIntelAgent</strong> | Maps the attack to known threat actor patterns using MITRE ATT&CK framework — helps predict next moves |</p>
+<p>| <strong>PolicyGeneratorAgent</strong> | Generates or updates privacy and security policies based on lessons learned from the incident |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Generate IR playbook for the TechCorp ransomware breach"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>IncidentResponseAgent generates phase-by-phase plan:</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI IR Playbook Card:</p>
+<p>┌──────────────────────────────────────────────┐</p>
+<p>│ 🚨 INCIDENT RESPONSE PLAYBOOK                │</p>
+<p>│    Type: Ransomware │ Severity: CRITICAL      │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│                                               │</p>
+<p>│ ⏱️ PHASE 1: CONTAIN (Hour 0-1)               │</p>
+<p>│ ☐ Isolate affected systems from network      │</p>
+<p>│ ☐ Disable compromised accounts               │</p>
+<p>│ ☐ Preserve forensic evidence (do NOT reboot) │</p>
+<p>│ ☐ Activate crisis communication channel      │</p>
+<p>│   Owner: IT Security Team                     │</p>
+<p>│                                               │</p>
+<p>│ ⏱️ PHASE 2: ASSESS (Hour 1-4)                │</p>
+<p>│ ☐ Identify ransomware variant                │</p>
+<p>│ ☐ Determine data scope (what was encrypted?) │</p>
+<p>│ ☐ Check backup integrity                     │</p>
+<p>│ ☐ Assess business impact                      │</p>
+<p>│   Owner: CISO + IT Director                   │</p>
+<p>│                                               │</p>
+<p>│ ⏱️ PHASE 3: NOTIFY (Hour 4-24)               │</p>
+<p>│ ☐ Brief executive team                       │</p>
+<p>│ ☐ Engage legal counsel                        │</p>
+<p>│ ☐ Contact cyber insurance provider            │</p>
+<p>│ ☐ Prepare public statement (if needed)        │</p>
+<p>│   Owner: Legal + Communications               │</p>
+<p>│                                               │</p>
+<p>│ ⏱️ PHASE 4: RECOVER (Hour 24-72)             │</p>
+<p>│ ☐ Restore from clean backups                 │</p>
+<p>│ ☐ Apply patches to prevent re-infection      │</p>
+<p>│ ☐ File GDPR Art.33 DPA notification          │</p>
+<p>│ ☐ Begin user notification process             │</p>
+<p>│   Owner: IT + Legal                            │</p>
+<p>│                                               │</p>
+<p>│ ⏱️ PHASE 5: POST-INCIDENT (Week 1-4)         │</p>
+<p>│ ☐ Complete forensic investigation            │</p>
+<p>│ ☐ Update security controls                   │</p>
+<p>│ ☐ Conduct lessons-learned workshop           │</p>
+<p>│ ☐ Update IR plan based on findings           │</p>
+<p>│   Owner: CISO                                  │</p>
+<p>│                                               │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ [📧 Draft Notifications] [🔧 Remediation]    │</p>
+<p>│ [📋 Export Playbook] [🏛️ MITRE Mapping]       │</p>
+<p>└──────────────────────────────────────────────┘</p>
+
+<p>User clicks [📧 Draft Notifications]:</p>
+<p>┌──────────────────────────────────────────────┐</p>
+<p>│ 📧 NOTIFICATION REQUIREMENTS                  │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ Recipient          │ Deadline    │ Status     │</p>
+<p>│────────────────────┼─────────────┼────────── │</p>
+<p>│ 🇪🇺 EU DPA (GDPR)   │ 72 hours    │ ⏳ Draft  │</p>
+<p>│ 🇺🇸 CA Attorney Gen │ 45 days     │ ⏳ Draft  │</p>
+<p>│ 👥 Affected Users   │ Without     │ ⏳ Draft  │</p>
+<p>│                    │ undue delay │            │</p>
+<p>│ 📊 Board/Executives│ 24 hours    │ ⏳ Draft  │</p>
+<p>│ 🏦 Cyber Insurance  │ ASAP        │ ⏳ Draft  │</p>
+<p>│ 👮 Law Enforcement  │ If criminal │ ❓ TBD    │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ [✉️ Generate DPA Letter] [📋 User Notice]     │</p>
+<p>│ [📊 Board Brief] [📄 Insurance Claim]         │</p>
+<p>└──────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<h3>Business Impact</h3>
+
+<p>| Without | With |</p>
+<p>|---|---|</p>
+<p>| Chaotic first 4 hours | <strong>Structured playbook in seconds</strong> |</p>
+<p>| Generic IR plan nobody reads | <strong>Interactive checklist specific to THIS breach</strong> |</p>
+<p>| Missed notification deadlines | <strong>Automatic deadline tracking per jurisdiction</strong> |</p>
+<p>| "Improve security" remediation | <strong>"Patch CVE-X on server-Y, rotate keys for Z"</strong> |</p>
+<p>| No lessons learned | <strong>Auto-generated policy updates</strong> |</p>
+
+<hr>
+
+<h2>MODE 7: 🗺️ DATA MAPPING & CLASSIFICATION</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>GDPR Article 30 requires maintaining <strong>Records of Processing Activities (ROPA)</strong> — a complete inventory of what personal data you process, why, where it flows, and who has access</li></ul>
+<ul><li>Most companies have <strong>no idea</strong> where all their personal data actually resides. It's in CRM, email, HR systems, analytics, backups, vendor systems, spreadsheets, shadow IT</li></ul>
+<ul><li>Data classification is manual — someone decides "this is confidential" without consistent criteria</li></ul>
+<ul><li>When a breach occurs, the question "<strong>What data was exposed?</strong>" takes days to answer because nobody mapped the data flows</li></ul>
+<ul><li>Data lineage — tracing where data came from and where it went — is nearly impossible without automation</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>British Airways fine (£20M)</strong>: Regulators noted they couldn't demonstrate where PII flowed through their systems</li></ul>
+<ul><li><strong>Marriott (€18.4M fine)</strong>: Failed to conduct adequate due diligence on acquired Starwood's data practices — no data mapping existed</li></ul>
+<ul><li><strong>GDPR enforcement</strong>: 30% of GDPR fines relate to inadequate Article 30 compliance (missing records of processing)</li></ul>
+
+<h3>The Solution</h3>
+
+<h3>Agents</h3>
+
+<p>| Agent | What It Does |</p>
+<p>|---|---|</p>
+<p>| <strong>DataMappingAgent</strong> | Maps data flows from internal systems to vendors. Answers: "What personal data flows from our CRM to Salesforce?" Queries Neo4j for System → Service → ThirdParty → DataType relationships |</p>
+<p>| <strong>DataClassificationAgent</strong> | Classifies data into categories: PII (names, emails), PHI (health records), PCI (payment data), IP (intellectual property). Assigns sensitivity levels: Public, Internal, Confidential, Restricted |</p>
+<p>| <strong>DataLineageAgent</strong> | Traces data from origin to every system it touches. Shows: "Customer email was collected via web form → stored in CRM → synced to marketing platform → backed up to S3" |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Map all PII data flows to third-party vendors"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>DataMappingAgent queries Neo4j:</p>
+<p>MATCH (s:System)-[:SENDS_DATA]->(v:ThirdParty)</p>
+<p>WHERE s.dataTypes CONTAINS 'PII'</p>
+<p>RETURN s, v, s.dataTypes</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Data Flow Map Card:</p>
+<p>┌──────────────────────────────────────────────┐</p>
+<p>│ 🗺️ PII Data Flow Map                         │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ Internal System │ Vendor      │ Data Types   │</p>
+<p>│─────────────────┼─────────────┼──────────── │</p>
+<p>│ CRM             │ Salesforce  │ Names, Email │</p>
+<p>│ CRM             │ Salesforce  │ Phone, Addr  │</p>
+<p>│ HR System       │ Workday     │ SSN, DOB     │</p>
+<p>│ Payments        │ Stripe      │ Card #, CVV  │</p>
+<p>│ Analytics       │ Mixpanel    │ Usage, Email │</p>
+<p>│ Email           │ SendGrid    │ Email addrs  │</p>
+<p>│ Support         │ Zendesk     │ Name, Email  │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ Total PII Items: 14  │  Vendors: 6           │</p>
+<p>│ 🔴 High Sensitivity: 4 (SSN, Card, CVV, DOB)│</p>
+<p>│ 🟡 Medium: 6 (Name, Phone, Address)          │</p>
+<p>│ 🟢 Low: 4 (Email, Usage data)                │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ [📋 Generate ROPA] [📊 Risk by Vendor]       │</p>
+<p>│ [🔍 Data Lineage] [📄 Export Map]             │</p>
+<p>└──────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<hr>
+
+<h2>MODE 8: 👤 DATA SUBJECT RIGHTS (DSR)</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>GDPR grants individuals <strong>8 rights</strong>: access, rectification, erasure ("right to be forgotten"), restriction, portability, objection, and rights related to automated decision-making</li></ul>
+<ul><li>When a person requests "<strong>delete all my data</strong>", the company must: identify every system with that person's data, delete from each system, verify deletion, respond within 30 days</li></ul>
+<ul><li>Data exists in <strong>10-50 different systems</strong>: CRM, email, backups, analytics, vendor databases. Finding it all takes days</li></ul>
+<ul><li>Companies receive hundreds of DSR requests monthly. Each is processed manually with spreadsheets and emails</li></ul>
+<ul><li>If you miss the 30-day deadline, fines apply</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>WhatsApp fined €225M</strong> (2021): Inadequate response to data subject access requests</li></ul>
+<ul><li><strong>Google fined €50M</strong> (2019): Insufficient transparency in how users can exercise their rights</li></ul>
+<ul><li>Average enterprise receives <strong>1,500+ DSR requests/year</strong> (Gartner). Processing each takes 10-30 hours manually.</li></ul>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Process right-to-erasure request for customer C-4521"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>DSRAgent queries all connected systems:</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI DSR Request Card:</p>
+<p>┌──────────────────────────────────────────────┐</p>
+<p>│ 👤 DATA SUBJECT REQUEST                       │</p>
+<p>│ Type: Right to Erasure (GDPR Art. 17)         │</p>
+<p>│ Subject: Customer C-4521                      │</p>
+<p>│ Deadline: April 2, 2025 (30 days)             │</p>
+<p>│ Status: IN PROGRESS                           │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ IDENTITY VERIFICATION                         │</p>
+<p>│ ⚠️ Please verify subject identity before      │</p>
+<p>│    processing:                                │</p>
+<p>│ [✅ Identity Verified] [❌ Cannot Verify]      │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ SYSTEMS CONTAINING DATA (6 found):            │</p>
+<p>│                                               │</p>
+<p>│ ☐ CRM (Salesforce) — 3 records               │</p>
+<p>│   Name, Email, Phone, Purchase History        │</p>
+<p>│                                               │</p>
+<p>│ ☐ Email (SendGrid) — 47 emails               │</p>
+<p>│   Marketing emails with personalization       │</p>
+<p>│                                               │</p>
+<p>│ ☐ Analytics (Mixpanel) — 892 events           │</p>
+<p>│   Page views, clicks, session data            │</p>
+<p>│                                               │</p>
+<p>│ ☐ Support (Zendesk) — 5 tickets               │</p>
+<p>│   Support conversations with PII              │</p>
+<p>│                                               │</p>
+<p>│ ☐ Payments (Stripe) — 12 transactions         │</p>
+<p>│   ⚠️ Legal retention: 7 years (tax law)       │</p>
+<p>│   Cannot delete — legitimate interest          │</p>
+<p>│                                               │</p>
+<p>│ ☐ Backups (S3) — present in 3 backups         │</p>
+<p>│   ⚠️ Requires manual deletion from backup     │</p>
+<p>│                                               │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ [🗑️ Execute on All Eligible] [⏸️ Pause]       │</p>
+<p>│ [📋 Generate Response Letter] [📊 Audit Log]  │</p>
+<p>└──────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<hr>
+
+<h2>MODE 9: 🌐 DARK WEB MONITORING</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>Companies discover breaches <strong>after</strong> the damage is done — when data is already sold on dark web forums</li></ul>
+<ul><li>Stolen credentials (usernames + passwords) are sold in bulk. If employees reuse passwords, the entire corporate network is at risk</li></ul>
+<ul><li>API keys, database credentials, and internal documents are leaked by disgruntled employees or through compromised development tools</li></ul>
+<ul><li>Most companies have <strong>zero visibility</strong> into whether their data appears on the dark web</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>23andMe (2023)</strong>: 7 million users' genetic data was scraped and sold on dark web forums for months before discovery</li></ul>
+<ul><li><strong>MGM Resorts (2023)</strong>: Attackers used previously leaked employee credentials to social-engineer the help desk</li></ul>
+<ul><li><strong>Norton LifeLock (2023)</strong>: Credential stuffing attack using passwords from dark web databases compromised 925,000 accounts</li></ul>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User enters: "Check if company.com credentials are compromised"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>DarkWebMonitorAgent + CredentialLeakAgent scan:</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Dark Web Results Card:</p>
+<p>┌──────────────────────────────────────────────┐</p>
+<p>│ 🌐 DARK WEB SCAN RESULTS                     │</p>
+<p>│ Domain: company.com                           │</p>
+<p>│ Scan Date: March 3, 2025                      │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ 🔴 3 CRITICAL FINDINGS                        │</p>
+<p>│                                               │</p>
+<p>│ 1. admin@company.com                          │</p>
+<p>│    Source: DatabaseDump-2024 (Jan 2024)        │</p>
+<p>│    Exposed: Password hash (bcrypt)             │</p>
+<p>│    Risk: HIGH — admin-level access             │</p>
+<p>│    [🔐 Force Reset] [📧 Notify User]           │</p>
+<p>│                                               │</p>
+<p>│ 2. dev-team@company.com                       │</p>
+<p>│    Source: GitHub leak (Mar 2024)               │</p>
+<p>│    Exposed: AWS API key (AKIA...)              │</p>
+<p>│    Risk: CRITICAL — infrastructure access      │</p>
+<p>│    [🔄 Rotate Key] [🚫 Revoke Immediately]     │</p>
+<p>│                                               │</p>
+<p>│ 3. hr@company.com                             │</p>
+<p>│    Source: ComboList-2024 (Jun 2024)            │</p>
+<p>│    Exposed: Plaintext password                  │</p>
+<p>│    Risk: HIGH — HR system access               │</p>
+<p>│    [🔐 Force Reset] [📧 Notify User]           │</p>
+<p>│                                               │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ 🟡 12 MODERATE FINDINGS                       │</p>
+<p>│ Employee credentials found in older databases  │</p>
+<p>│ [Expand Details ▶]                             │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ [🔐 Reset All Passwords] [📋 Full Report]     │</p>
+<p>│ [⏰ Schedule Weekly Scan] [📧 Alert Team]      │</p>
+<p>└──────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<hr>
+
+<h2>MODE 10: 📝 EXECUTIVE REPORTING</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>After a breach, the CISO must present to the <strong>board within hours</strong> — usually with incomplete data and no structured report</li></ul>
+<ul><li>Regulatory filings (GDPR Article 33 notification) require <strong>specific information in a specific format</strong> — most teams scramble to compile it</li></ul>
+<ul><li>Quarterly security reviews require <strong>KPI dashboards</strong> — incident counts, response times, compliance percentages — all manually aggregated from different tools</li></ul>
+<ul><li>Different audiences need different reports: board wants business impact, regulators want compliance details, IT wants technical details</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>SEC now requires cybersecurity incident disclosure within 4 business days</strong> (Rule adopted July 2023). Companies must file Form 8-K.</li></ul>
+<ul><li><strong>CISOs report spending 20% of their time creating reports</strong> instead of improving security (ISACA survey)</li></ul>
+<ul><li><strong>Board members say they receive inadequate cybersecurity reporting</strong> in 65% of cases (McKinsey)</li></ul>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Generate Q1 2025 board report"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>ExecutiveReportAgent + MetricsAgent query Neo4j for all Q1 data:</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Executive Report Card:</p>
+<p>┌──────────────────────────────────────────────┐</p>
+<p>│ 📝 EXECUTIVE BOARD REPORT — Q1 2025          │</p>
+<p>│ Prepared: March 3, 2025                       │</p>
+<p>│ Classification: CONFIDENTIAL                  │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ 📊 KEY METRICS                                │</p>
+<p>│                                               │</p>
+<p>│ Total Incidents:     4  (↓ 20% vs Q4 2024)   │</p>
+<p>│ Critical:            1  │  High:  2  │ Med: 1│</p>
+<p>│ Avg Response Time:   4.2 hours (↓ from 8.5)  │</p>
+<p>│ GDPR Compliance:     94% (↑ from 87%)         │</p>
+<p>│ Vendors Assessed:    23 (↑ from 15)           │</p>
+<p>│ DSR Requests:        156 (all completed ✅)    │</p>
+<p>│ Open Vulnerabilities: 12 (↓ from 34)          │</p>
+<p>│                                               │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ 🔴 CRITICAL INCIDENT                          │</p>
+<p>│ TechCorp Ransomware (January 15)              │</p>
+<p>│ • 500K records exposed (PII + payment)        │</p>
+<p>│ • Contained in 2.1 hours                      │</p>
+<p>│ • DPA notified within 48 hours ✅              │</p>
+<p>│ • User notification completed ✅               │</p>
+<p>│ • Estimated financial impact: $2.3M           │</p>
+<p>│                                               │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ 📈 TREND: Improving                           │</p>
+<p>│ Response time: 8.5h → 4.2h (50% improvement) │</p>
+<p>│ Vendor risk coverage: 60% → 92%               │</p>
+<p>│ Patch compliance: 78% → 95%                   │</p>
+<p>│                                               │</p>
+<p>├──────────────────────────────────────────────┤</p>
+<p>│ [📄 Export PDF] [📧 Email to Board]           │</p>
+<p>│ [📊 Detailed Metrics] [🔍 Drill Down]         │</p>
+<p>└──────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<hr>
+
+
+<div class="page-break"></div>
+
+<h1>🛡️ Data Privacy & Security Platform — Part 3</h1>
+
+<h2>MODES 11-15: SECURITY ENGINEERING</h2>
+
+<hr>
+
+<h2>MODE 11: 🎯 THREAT MODELING</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>Security teams build systems without systematically thinking about <strong>what could go wrong</strong></li></ul>
+<ul><li>Threat modeling is done as a one-time exercise during design, then <strong>never updated</strong> as the system evolves</li></ul>
+<ul><li>Most developers don't know STRIDE, DREAD, or MITRE ATT&CK frameworks — so threats are identified based on gut feeling</li></ul>
+<ul><li>When asked "<strong>what are the threats to our payment system?</strong>", the team produces vague answers, not structured analysis</li></ul>
+<ul><li>Attack trees — visual maps of how an attacker could compromise a system — are drawn on whiteboards and immediately forgotten</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>Capital One breach (2019)</strong>: A proper threat model would have identified the SSRF (Server-Side Request Forgery) vector. The WAF misconfiguration was a known attack pattern.</li></ul>
+<ul><li><strong>SolarWinds (2020)</strong>: Supply chain attack via build pipeline — a threat that STRIDE would classify as "Tampering" and MITRE maps to T1195 (Supply Chain Compromise)</li></ul>
+<ul><li><strong>Log4Shell (2021)</strong>: JNDI injection — classified as "Information Disclosure" + "Elevation of Privilege" in STRIDE. MITRE: T1190 (Exploit Public-Facing Application)</li></ul>
+
+<h3>The Solution</h3>
+
+<h3>Agents</h3>
+
+<p>| Agent | What It Does |</p>
+<p>|---|---|</p>
+<p>| <strong>ThreatModelAgent</strong> | Takes a system description and performs STRIDE analysis — identifies Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege threats for each component |</p>
+<p>| <strong>AttackTreeAgent</strong> | Generates attack trees — root goal is "compromise system", branches are the different paths an attacker could take, leaves are specific techniques |</p>
+<p>| <strong>MITREAgent</strong> | Maps identified threats to MITRE ATT&CK framework — specific tactics (Initial Access, Execution, Persistence...) and techniques (T1566 Phishing, T1078 Valid Accounts...) |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User describes: "Analyze threats for our payment processing API</p>
+<p>                 that handles credit card data, connects to Stripe,</p>
+<p>                 and is accessed by mobile and web clients"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>ThreatModelAgent performs STRIDE analysis:</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI STRIDE Card:</p>
+<p>┌────────────────────────────────────────────────┐</p>
+<p>│ 🎯 STRIDE THREAT ANALYSIS                      │</p>
+<p>│ System: Payment Processing API                  │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│                                                 │</p>
+<p>│ 🔵 SPOOFING (Identity)                          │</p>
+<p>│ • API key theft → impersonate legitimate client│</p>
+<p>│ • JWT token forgery → bypass authentication    │</p>
+<p>│ • Man-in-the-middle on mobile → steal session  │</p>
+<p>│ Risk: HIGH │ [Generate Mitigations ▶]           │</p>
+<p>│                                                 │</p>
+<p>│ 🟠 TAMPERING (Data Integrity)                   │</p>
+<p>│ • Modify transaction amount in transit          │</p>
+<p>│ • SQL injection on payment records              │</p>
+<p>│ • Tamper with webhook callbacks from Stripe     │</p>
+<p>│ Risk: CRITICAL │ [Generate Mitigations ▶]       │</p>
+<p>│                                                 │</p>
+<p>│ 🟡 REPUDIATION (Accountability)                 │</p>
+<p>│ • User denies making a transaction              │</p>
+<p>│ • Admin modifies logs to cover tracks           │</p>
+<p>│ Risk: MEDIUM │ [Generate Mitigations ▶]         │</p>
+<p>│                                                 │</p>
+<p>│ 🔴 INFO DISCLOSURE                              │</p>
+<p>│ • Card data in logs (PCI violation)             │</p>
+<p>│ • Error messages reveal DB structure            │</p>
+<p>│ • Debug endpoints exposed in production         │</p>
+<p>│ Risk: CRITICAL │ [Generate Mitigations ▶]       │</p>
+<p>│                                                 │</p>
+<p>│ 🟣 DENIAL OF SERVICE                            │</p>
+<p>│ • Rate limit bypass → overwhelm API            │</p>
+<p>│ • Resource exhaustion via large payloads        │</p>
+<p>│ Risk: HIGH │ [Generate Mitigations ▶]           │</p>
+<p>│                                                 │</p>
+<p>│ ⚫ ELEVATION OF PRIVILEGE                       │</p>
+<p>│ • IDOR → access other users' payment data      │</p>
+<p>│ • Admin API accessible without role check       │</p>
+<p>│ Risk: CRITICAL │ [Generate Mitigations ▶]       │</p>
+<p>│                                                 │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ [🌲 Attack Tree] [🏛️ MITRE Mapping]            │</p>
+<p>│ [📊 DREAD Scores] [📋 Export Report]            │</p>
+<p>└────────────────────────────────────────────────┘</p>
+
+<p>User clicks [🏛️ MITRE Mapping]:</p>
+<p>┌────────────────────────────────────────────────┐</p>
+<p>│ 🏛️ MITRE ATT&CK MAPPING                       │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ Tactic              │ Technique       │ ID     │</p>
+<p>│─────────────────────┼─────────────────┼────── │</p>
+<p>│ Initial Access      │ Phishing        │ T1566 │</p>
+<p>│ Initial Access      │ Exploit API     │ T1190 │</p>
+<p>│ Credential Access   │ Brute Force     │ T1110 │</p>
+<p>│ Credential Access   │ Steal Token     │ T1528 │</p>
+<p>│ Persistence         │ Valid Accounts  │ T1078 │</p>
+<p>│ Lateral Movement    │ API Abuse       │ T1550 │</p>
+<p>│ Exfiltration        │ Over Web        │ T1041 │</p>
+<p>│ Impact              │ Data Encrypted  │ T1486 │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ [📋 Full ATT&CK Report] [🔗 Detection Rules]  │</p>
+<p>└────────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<h3>Business Impact</h3>
+
+<p>| Without | With |</p>
+<p>|---|---|</p>
+<p>| Ad-hoc threat identification | <strong>Systematic STRIDE framework</strong> |</p>
+<p>| No attack path visualization | <strong>Visual attack trees</strong> |</p>
+<p>| No industry mapping | <strong>MITRE ATT&CK alignment</strong> |</p>
+<p>| Threat models become stale | <strong>Re-run on demand</strong> |</p>
+
+<hr>
+
+<h2>MODE 12: 🔓 VULNERABILITY ASSESSMENT</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li><strong>25,000+ new CVEs</strong> are published every year (2024 record). Security teams can't manually review them all</li></ul>
+<ul><li>CVSS scores tell you severity but not <strong>business impact</strong> — a critical CVE in a system nobody uses is less important than a medium CVE in your payment gateway</li></ul>
+<ul><li>Patch management is a nightmare: which patches to prioritize? Which require downtime? Which might break something?</li></ul>
+<ul><li>Vulnerability scanners produce <strong>thousands of findings</strong>. 80% are noise. Finding the 20% that matter requires expert judgment</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>MOVEit (CVE-2023-34362)</strong>: CVSS 9.8, exploited in the wild within days. Companies that had patch prioritization processes responded in hours. Others took weeks.</li></ul>
+<ul><li><strong>Log4Shell (CVE-2021-44228)</strong>: CVSS 10.0. Every Java application was potentially affected. Companies without software inventory had no idea if they were vulnerable.</li></ul>
+<ul><li><strong>ProxyLogon (CVE-2021-26855)</strong>: Microsoft Exchange vulnerability. 30,000+ US organizations compromised. Many didn't know they ran Exchange on-premises.</li></ul>
+
+<h3>The Solution</h3>
+
+<h3>Agents</h3>
+
+<p>| Agent | What It Does |</p>
+<p>|---|---|</p>
+<p>| <strong>VulnScanAgent</strong> | Takes a software/system name + version → returns all known CVEs. Checks NVD, CISA KEV (Known Exploited Vulnerabilities), and ExploitDB |</p>
+<p>| <strong>CVSSAgent</strong> | Breaks down CVSS scores into Base, Temporal, and Environmental components. Contextualizes: "This is CVSS 9.8 but requires network access you've restricted" |</p>
+<p>| <strong>PatchPriorityAgent</strong> | Ranks vulnerabilities by business impact: combines CVSS + asset criticality + exploit availability + your specific environment |</p>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Check vulnerabilities for Apache Log4j 2.14.1"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Vulnerability Card:</p>
+<p>┌────────────────────────────────────────────────┐</p>
+<p>│ 🔓 VULNERABILITY ASSESSMENT                    │</p>
+<p>│ Software: Apache Log4j 2.14.1                   │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ 🔴 CRITICAL VULNERABILITIES (2)                 │</p>
+<p>│                                                 │</p>
+<p>│ CVE-2021-44228 (Log4Shell)                      │</p>
+<p>│ CVSS: 10.0 │ CRITICAL │ 🔥 Active Exploits     │</p>
+<p>│ Impact: Remote Code Execution via JNDI injection│</p>
+<p>│ Patch: Upgrade to 2.17.1+                       │</p>
+<p>│ CISA KEV: ✅ Listed │ Due: IMMEDIATE            │</p>
+<p>│ [🔧 Patch Now] [📋 Details] [⏰ Schedule]       │</p>
+<p>│                                                 │</p>
+<p>│ CVE-2021-45046                                  │</p>
+<p>│ CVSS: 9.0 │ CRITICAL │ 🔥 Active Exploits      │</p>
+<p>│ Impact: DoS + potential RCE in non-default config│</p>
+<p>│ Patch: Upgrade to 2.17.0+                       │</p>
+<p>│ [🔧 Patch Now] [📋 Details]                     │</p>
+<p>│                                                 │</p>
+<p>│ 🟡 MEDIUM VULNERABILITIES (1)                   │</p>
+<p>│ CVE-2021-45105                                  │</p>
+<p>│ CVSS: 5.9 │ MEDIUM │ No known exploits          │</p>
+<p>│ [📋 Details] [⏰ Schedule Patch]                 │</p>
+<p>│                                                 │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ PATCH PRIORITY (by business impact):            │</p>
+<p>│ 1. CVE-2021-44228 — IMMEDIATE (payment systems)│</p>
+<p>│ 2. CVE-2021-45046 — 24 hours (internal apps)   │</p>
+<p>│ 3. CVE-2021-45105 — Next sprint (low exposure) │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ [🔧 Patch All Critical] [📋 Create Tickets]    │</p>
+<p>│ [📊 Risk Acceptance Form] [📄 Export Report]    │</p>
+<p>└────────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<hr>
+
+<h2>MODE 13: 🔐 ACCESS CONTROL & IAM</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li><strong>80% of breaches involve compromised credentials</strong> (Verizon DBIR 2024)</li></ul>
+<ul><li>Over time, employees accumulate permissions they no longer need — <strong>privilege creep</strong>. A developer who moved to marketing still has production database access</li></ul>
+<ul><li>Service accounts with admin privileges are created "temporarily" and <strong>never cleaned up</strong></li></ul>
+<ul><li>Nobody reviews who has access to what — access reviews are annual at best, manual, and incomplete</li></ul>
+<ul><li>When an employee leaves, their access isn't revoked from all systems — especially SaaS tools</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>Twitter/X hack (2020)</strong>: Attackers social-engineered employees who had access to internal admin tools. Those employees shouldn't have had that level of access.</li></ul>
+<ul><li><strong>Tesla insider threat (2023)</strong>: Two former employees leaked PII of 75,735 people. They retained access after changing roles.</li></ul>
+<ul><li><strong>Okta breach (2023)</strong>: Attackers accessed support system with over-privileged service account credentials stolen from an employee's personal device.</li></ul>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Find over-privileged users in our systems"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Access Control Card:</p>
+<p>┌────────────────────────────────────────────────┐</p>
+<p>│ 🔐 ACCESS CONTROL REVIEW                       │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ 🔴 OVER-PRIVILEGED USERS (5 found)             │</p>
+<p>│                                                 │</p>
+<p>│ 1. sarah.jones (Marketing Dept)                 │</p>
+<p>│    HAS: Production DB Admin, AWS Root           │</p>
+<p>│    NEEDS: Read-only marketing dashboard         │</p>
+<p>│    Risk: CRITICAL — can delete prod database    │</p>
+<p>│    [🔒 Revoke Excess] [📋 Review with Manager]  │</p>
+<p>│                                                 │</p>
+<p>│ 2. api-service-legacy (Service Account)         │</p>
+<p>│    HAS: Full Admin on all Neo4j databases       │</p>
+<p>│    NEEDS: Read-only on analytics DB             │</p>
+<p>│    Risk: HIGH — stale service account           │</p>
+<p>│    Last Used: 14 months ago                     │</p>
+<p>│    [🗑️ Disable Account] [🔒 Restrict Access]    │</p>
+<p>│                                                 │</p>
+<p>│ 3. john.doe (Former Employee — LEFT Jan 2025)   │</p>
+<p>│    HAS: Active accounts on 4 systems            │</p>
+<p>│    NEEDS: NONE — employee terminated            │</p>
+<p>│    Risk: CRITICAL — zombie account              │</p>
+<p>│    [🗑️ Revoke All Access] [📧 Alert HR]         │</p>
+<p>│                                                 │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ SUMMARY:                                        │</p>
+<p>│ Total Users Reviewed: 234                       │</p>
+<p>│ Over-Privileged: 5 (2.1%)                       │</p>
+<p>│ Stale Accounts: 12                              │</p>
+<p>│ Zombie Accounts: 1                              │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ [🔒 Remediate All] [📋 Export Report]           │</p>
+<p>│ [📊 Role Comparison] [⏰ Schedule Monthly Review]│</p>
+<p>└────────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<hr>
+
+<h2>MODE 14: 🔬 DIGITAL FORENSICS</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li>After a breach, the critical question is: <strong>"What exactly happened, step by step?"</strong> Reconstructing the attack timeline takes days or weeks</li></ul>
+<ul><li>Log data is scattered across <strong>20+ systems</strong> — firewalls, servers, cloud providers, applications. Correlating events is manual</li></ul>
+<ul><li>Indicators of Compromise (IOCs) — malicious IPs, domains, file hashes — must be extracted and shared with threat intelligence feeds</li></ul>
+<ul><li>Chain of custody for forensic evidence must be maintained for legal proceedings — but is rarely documented properly</li></ul>
+<ul><li>By the time forensics begin, critical evidence may have been <strong>overwritten or destroyed</strong></li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>Colonial Pipeline (2021)</strong>: Forensic investigation took weeks. The actual attack path was through a single compromised VPN password without MFA.</li></ul>
+<ul><li><strong>Sony Pictures (2014)</strong>: Forensic analysis revealed attackers had been inside the network for over a year, exfiltrating data gradually.</li></ul>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User pastes: "Investigate these suspicious log entries:</p>
+<p>              2025-03-01 02:14:33 Failed login admin@prod-server-01 from 185.x.x.x</p>
+<p>              2025-03-01 02:14:35 Failed login admin@prod-server-01 from 185.x.x.x</p>
+<p>              2025-03-01 02:15:01 Successful login admin@prod-server-01 from 185.x.x.x</p>
+<p>              2025-03-01 02:15:45 New user created: backdoor@prod-server-01</p>
+<p>              2025-03-01 02:16:12 File download: /etc/shadow from prod-server-01</p>
+<p>              2025-03-01 02:16:30 Outbound connection to 91.x.x.x:4443"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Forensic Timeline Card:</p>
+<p>┌────────────────────────────────────────────────┐</p>
+<p>│ 🔬 FORENSIC ANALYSIS                           │</p>
+<p>│ Attack Type: Brute Force → Backdoor → Exfil     │</p>
+<p>│ Confidence: 94%                                  │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ RECONSTRUCTED TIMELINE:                         │</p>
+<p>│                                                 │</p>
+<p>│ 02:14:33  🔴 Brute force attack begins          │</p>
+<p>│           └ 2 failed logins from 185.x.x.x     │</p>
+<p>│                                                 │</p>
+<p>│ 02:15:01  🔴 Credential compromise              │</p>
+<p>│           └ Successful login (credential found) │</p>
+<p>│                                                 │</p>
+<p>│ 02:15:45  🔴 Persistence established            │</p>
+<p>│           └ Backdoor account created            │</p>
+<p>│           └ MITRE: T1136 (Create Account)       │</p>
+<p>│                                                 │</p>
+<p>│ 02:16:12  🔴 Credential harvesting              │</p>
+<p>│           └ /etc/shadow downloaded              │</p>
+<p>│           └ MITRE: T1003 (Credential Dumping)   │</p>
+<p>│                                                 │</p>
+<p>│ 02:16:30  🔴 Data exfiltration                  │</p>
+<p>│           └ Outbound to C2 server 91.x.x.x     │</p>
+<p>│           └ MITRE: T1041 (Exfil Over C2)        │</p>
+<p>│                                                 │</p>
+<p>│ Total attack duration: 1 min 57 sec             │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ IOCs EXTRACTED:                                 │</p>
+<p>│ IP: 185.x.x.x (Source) — GeoIP: Russia         │</p>
+<p>│ IP: 91.x.x.x (C2 Server) — GeoIP: Netherlands │</p>
+<p>│ Account: backdoor@prod-server-01                │</p>
+<p>│ File: /etc/shadow (credential dump)             │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ [🚫 Block IPs] [🗑️ Remove Backdoor]            │</p>
+<p>│ [📋 Forensic Report] [🔗 Share IOCs]            │</p>
+<p>│ [🚨 Trigger IR Playbook]                        │</p>
+<p>└────────────────────────────────────────────────┘</p>
+</code>`<code class="inline">
+
+<hr>
+
+<h2>MODE 15: 🏗️ SECURITY ARCHITECTURE</h2>
+
+<h3>The Problem</h3>
+
+<strong>What users face today:</strong>
+<ul><li><strong>Zero Trust</strong> is the industry buzzword but nobody knows where they actually stand. "Are we Zero Trust?" is unanswerable without a structured assessment</li></ul>
+<ul><li>Security posture is measured informally — "we think we're secure" is not evidence</li></ul>
+<ul><li>Business continuity plans exist but aren't tested. RTO (Recovery Time Objective) and RPO (Recovery Point Objective) targets are set but never validated</li></ul>
+<ul><li>Security frameworks (NIST CSF, ISO 27001, CIS Controls) require maturity assessments but these are expensive consulting engagements</li></ul>
+
+<strong>Real industry examples:</strong>
+<ul><li><strong>Google BeyondCorp</strong>: Pioneer of Zero Trust. Published papers showing it took 6+ years to fully implement.</li></ul>
+<ul><li><strong>SolarWinds aftermath</strong>: Companies that had Zero Trust architecture were significantly less impacted because lateral movement was restricted.</li></ul>
+
+<h3>End-to-End Flow</h3>
+
+</code>`<code class="inline">
+<p>User asks: "Assess our Zero Trust maturity"</p>
+<p>    │</p>
+<p>    ▼</p>
+<p>A2UI Zero Trust Card:</p>
+<p>┌────────────────────────────────────────────────┐</p>
+<p>│ 🏗️ ZERO TRUST MATURITY ASSESSMENT              │</p>
+<p>│ Framework: CISA Zero Trust Maturity Model       │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│                                                 │</p>
+<p>│ PILLAR              │ CURRENT │ TARGET │ GAP    │</p>
+<p>│─────────────────────┼─────────┼────────┼─────  │</p>
+<p>│ 🔐 Identity         │ Level 2 │ Level 4│ 🟡 2  │</p>
+<p>│    MFA deployed but not phishing-resistant     │</p>
+<p>│                                                 │</p>
+<p>│ 💻 Devices           │ Level 1 │ Level 3│ 🔴 2  │</p>
+<p>│    No device posture checking                  │</p>
+<p>│                                                 │</p>
+<p>│ 🌐 Networks          │ Level 3 │ Level 4│ 🟢 1  │</p>
+<p>│    Micro-segmented, need real-time monitoring  │</p>
+<p>│                                                 │</p>
+<p>│ 📱 Applications      │ Level 2 │ Level 4│ 🟡 2  │</p>
+<p>│    Some apps lack continuous authorization     │</p>
+<p>│                                                 │</p>
+<p>│ 📊 Data              │ Level 1 │ Level 4│ 🔴 3  │</p>
+<p>│    No data classification or DLP               │</p>
+<p>│                                                 │</p>
+<p>│ Overall Maturity: Level 1.8 / 5.0              │</p>
+<p>│ Industry Benchmark: Level 2.3                   │</p>
+<p>│                                                 │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ TOP 3 PRIORITIES:                               │</p>
+<p>│ 1. Implement device posture checking           │</p>
+<p>│ 2. Deploy data classification (Mode 7)         │</p>
+<p>│ 3. Upgrade to phishing-resistant MFA           │</p>
+<p>├────────────────────────────────────────────────┤</p>
+<p>│ [📋 Improvement Plan] [📊 Benchmark Report]    │</p>
+<p>│ [🔗 Link to Mode 7: Data Mapping]              │</p>
+<p>│ [📄 Export Assessment]                          │</p>
+<p>└────────────────────────────────────────────────┘</p>
+</code>``
+
+<hr>
+
+<h1>SECTION 3: COMPLETE DEMO SCRIPT (20 MINUTES)</h1>
+
+<p>| Time | Mode | Demo Action | What Audience Sees |</p>
+<p>|---|---|---|---|</p>
+<p>| 0:00 | 🔍 Breach | Paste ransomware article | 7 agents run → fake news check → full report card |</p>
+<p>| 3:00 | 🔍 Breach | Click [Discard], paste real article | Full pipeline → RED alert card → [Export PDF] |</p>
+<p>| 5:00 | 📚 Search | "Which vendors had ransomware?" | Graph search → clickable results |</p>
+<p>| 6:30 | ⚖️ Comply | "GDPR obligations?" | Compliance matrix → click [Generate DPIA] |</p>
+<p>| 8:00 | 📊 Risk | "Payment vendor risk" | Color-coded scorecard → drill into vendor |</p>
+<p>| 9:30 | 🛡️ Safety | Paste text with PII | PII detected → auto-redacted version → [Use Redacted] |</p>
+<p>| 11:00 | 🚨 IR | "Ransomware playbook" | IR timeline with checkboxes → [Notify DPA] |</p>
+<p>| 12:30 | 🗺️ DataMap | "Map PII to vendors" | Data flow table → [Generate ROPA] |</p>
+<p>| 13:30 | 👤 DSR | "Erasure request for C-4521" | DSR card → systems found → [Execute Deletion] |</p>
+<p>| 14:30 | 🌐 DarkWeb | "Check company.com leaks" | 3 critical findings → [Force Reset] |</p>
+<p>| 15:30 | 📝 Reports | "Q1 board report" | KPI dashboard → [Export PDF] |</p>
+<p>| 16:30 | 🎯 Threat | "Analyze payment API threats" | STRIDE card → MITRE mapping |</p>
+<p>| 17:30 | 🔓 Vuln | "Check Log4j 2.14.1" | CVE list → patch priority → [Patch Now] |</p>
+<p>| 18:30 | 🔐 IAM | "Find over-privileged users" | Zombie accounts found → [Revoke All] |</p>
+<p>| 19:30 | 🔬 Forensics | Paste suspicious logs | Attack timeline reconstructed → IOCs extracted |</p>
+<p>| 20:00 | 🏗️ SecArch | "Zero Trust assessment" | 5-pillar maturity card → improvement plan |</p>
+
+<hr>
+
+<h1>FINAL SUMMARY</h1>
+
+<p>| Dimension | Count |</p>
+<p>|---|---|</p>
+<p>| <strong>Demo Modes</strong> | 15 |</p>
+<p>| <strong>AI Agents</strong> | 55 |</p>
+<p>| <strong>A2UI Card Types</strong> | 25 interactive card designs |</p>
+<p>| <strong>Protocols Used</strong> | AG-UI + A2UI + A2A + MCP (all 4) |</p>
+<p>| <strong>Human-AI Interaction Points</strong> | 50+ buttons/actions across all cards |</p>
+<p>| <strong>Security Frameworks Covered</strong> | GDPR, CCPA, HIPAA, PCI-DSS, SOX, NIST CSF, ISO 27001, CIS, MITRE ATT&CK, Zero Trust, STRIDE, DREAD |</p>
+<p>| <strong>Industry Examples Referenced</strong> | 25+ real breaches |</p>
+
+<blockquote><strong>This platform covers the COMPLETE security lifecycle:</strong></blockquote>
+<blockquote>Detect → Verify → Extract → Classify → Map → Score → Alert → Respond → Comply → Report → Monitor → Model → Assess → Investigate → Architect</blockquote>
+
+
+</body>
+</html>
