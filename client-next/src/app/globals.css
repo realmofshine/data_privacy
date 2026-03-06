@@ -61,6 +61,7 @@ body {
 .app-layout {
   display: flex;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -140,6 +141,7 @@ body {
 /* ─── MAIN AREA ─── */
 .main-area {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -435,6 +437,8 @@ body {
   padding: 16px 24px;
   border-top: 1px solid var(--border);
   background: var(--bg-secondary);
+  flex-shrink: 0;
+  overflow: visible;
 }
 
 .input-form {
@@ -492,6 +496,7 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
+  padding-bottom: 4px;
 }
 
 .sample-chip {
@@ -503,6 +508,8 @@ body {
   color: var(--text-muted);
   cursor: pointer;
   transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .sample-chip:hover {
@@ -923,14 +930,30 @@ body {
     font-size: 12px;
   }
 
-  /* Sample chips */
+  /* Sample chips — horizontal scroll on mobile so nothing gets cut */
   .sample-queries {
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 6px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sample-queries::-webkit-scrollbar {
+    display: none;
   }
 
   .sample-chip {
     font-size: 10px;
     padding: 5px 10px;
+    flex-shrink: 0;
+  }
+
+  /* Safe area for phones with notches/gesture bars */
+  .input-area {
+    padding: 10px 12px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
   }
 
   /* A2UI cards — full width */
