@@ -4,6 +4,7 @@ All functions return a valid A2UI JSON dict that the frontend can render.
 Covers all 15 modes with mode-specific card layouts.
 """
 from __future__ import annotations
+import json
 import re
 
 
@@ -223,6 +224,38 @@ def render_fake_news_warning(reason: str, sources: list[str] | None = None) -> d
         _button("btn-discard", "Discard Article", "cancel_workflow"),
         _text("btn-discard-label", "Discard Article"),
     ]
+
+    return _wrap(components)
+
+
+def render_knowledge_graph(title: str, graph_data: dict, show_buttons: bool = True) -> dict:
+    """Render an interactive knowledge graph as A2UI component."""
+    children = ["kg-title", "kg-graph"]
+    if show_buttons:
+        children.append("kg-actions")
+
+    components = [
+        _column("root", children),
+        _text("kg-title", title, "h2"),
+        {
+            "id": "kg-graph",
+            "component": {
+                "KnowledgeGraph": {
+                    "layout": "cose",
+                    "graphData": json.dumps(graph_data),
+                },
+            },
+        },
+    ]
+
+    if show_buttons:
+        components += [
+            _row("kg-actions", ["btn-proceed", "btn-discard"]),
+            _button("btn-proceed", "Proceed Anyway", "force_proceed"),
+            _text("btn-proceed-label", "Proceed Anyway"),
+            _button("btn-discard", "Discard Article", "cancel_workflow"),
+            _text("btn-discard-label", "Discard Article"),
+        ]
 
     return _wrap(components)
 
@@ -533,13 +566,17 @@ def render_for_mode(mode: str, agent_response: str, user_message: str = "") -> d
     if not agent_response:
         return render_success("Processing complete.")
 
-    # Breach analysis has special logic
+    # Breach analysis has special logic (fake news detection)
     if mode == "breach_analysis":
         return _determine_breach_a2ui(agent_response, user_message)
 
-    renderer = MODE_CARD_RENDERERS.get(mode)
-    if renderer:
-        return renderer(agent_response)
+    # ── All other modes: generate knowledge graph ──
+    from agent.knowledge_graph_builder import build_graph_for_mode
+
+    result = build_graph_for_mode(mode, user_message or agent_response[:200])
+    if result:
+        title, graph_data = result
+        return render_knowledge_graph(title, graph_data, show_buttons=False)
 
     # Fallback: try to parse sections generically
     sections = _parse_sections(agent_response)
@@ -551,6 +588,11 @@ def render_for_mode(mode: str, agent_response: str, user_message: str = "") -> d
 
 def _determine_breach_a2ui(agent_message: str, user_message: str) -> dict:
     """Special breach analysis logic: fake news warning vs. full report."""
+    from agent.knowledge_graph_builder import (
+        build_fake_news_graph,
+        build_risk_report_graph,
+    )
+
     lm = agent_message.lower()
 
     if "fake_news_detected" in lm or ("fake" in lm and "detected" in lm):
@@ -558,8 +600,34 @@ def _determine_breach_a2ui(agent_message: str, user_message: str) -> dict:
         if "sources:" in lm:
             sources_part = agent_message[agent_message.lower().find("sources:") + 8:]
             sources = re.findall(r'https?://[^\s,\]>]+', sources_part)[:5]
-        reason = agent_message[:400]
-        return render_fake_news_warning(reason, sources)
+
+        # Build knowledge graph from mock verification results
+        mock_news = {
+            "verdict": "FAKE", "confidence": 0.95,
+            "reason": agent_message[:300],
+            "sources": sources[:4] or [
+                "https://www.thousandeyes.com/blog/aws-outage-analysis-october-20-2025",
+                "https://www.alphaspread.com/news/amazon-shares-drop",
+                "https://www.geekwire.com/2026/amazon-ceo-andy-jassy",
+            ],
+        }
+        mock_tavily = {
+            "verdict": "FAKE", "confidence": 0.92,
+            "reason": "No credible sources confirm this claim.",
+            "sources": [
+                "https://www.drizgroup.com/driz_group_blog/amazon-data-breach",
+                "https://nhimg.org/amazon-breach-hacked-aws-accounts",
+                "https://finance.yahoo.com/news/2025-security-breach",
+            ],
+        }
+        graph_data = build_fake_news_graph(
+            user_message or "Claim",
+            mock_news, mock_tavily, is_fake=True,
+        )
+        return render_knowledge_graph(
+            "⚠️  Fake News Analysis — Knowledge Graph",
+            graph_data, show_buttons=True,
+        )
 
     if "cancel" in lm or "discard" in lm:
         return render_cancel("Workflow cancelled.")
@@ -568,6 +636,11 @@ def _determine_breach_a2ui(agent_message: str, user_message: str) -> dict:
         "EXECUTIVE SUMMARY", "INCIDENT PROFILE", "RED ALERTS",
         "YELLOW ALERTS", "SUGGESTIONS",
     ]):
-        return render_full_report(agent_message)
+        # Build risk report knowledge graph
+        graph_data = build_risk_report_graph(agent_message)
+        return render_knowledge_graph(
+            "📊  Risk Report — Knowledge Graph",
+            graph_data, show_buttons=False,
+        )
 
     return render_success(agent_message[:200])

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 6</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part II — The Wild West (1990s)</div>
+  <div class="chapter-num">06</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>The Rise of Script Kiddies & Virus Culture</h1>
+
+<blockquote>"A love letter from Manila brought the world's email to its knees. The attacker was a college student. He was never convicted — because no cybercrime law existed in the Philippines."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: May 4, 2000 — Manila, Philippines</h2>
+
+<p>A college student named <strong>Onel de Guzman</strong> is frustrated. He's 24, studying at AMA Computer College, and he's just had his thesis proposal rejected. His idea: a program that steals internet passwords so people in the Philippines — where internet access is expensive — can go online for free.</p>
+
+<p>His professors said no. It's illegal, they said.</p>
+
+<p>So de Guzman does something else. He takes his password-stealing code, wraps it in a Visual Basic Script, attaches it to an email with the subject line:</p>
+
+<strong>"ILOVEYOU"</strong>
+
+<p>The body of the email says: <em>"Kindly check the attached LOVELETTER coming from me."</em></p>
+
+<p>The attachment is called: <strong>LOVE-LETTER-FOR-YOU.txt.vbs</strong></p>
+
+<p>Windows hides the <code class="inline">.vbs</code> extension by default. Users see: <code class="inline">LOVE-LETTER-FOR-YOU.txt</code> — looks like a harmless text file.</p>
+
+<p>Within <strong>24 hours</strong>, the ILOVEYOU worm has infected an estimated <strong>45 million computers</strong> across the planet. It causes approximately <strong>$10 billion in damage</strong>. The Pentagon, CIA, British Parliament, and nearly every major corporation in the world is affected.</p>
+
+<p>It's the most destructive computer virus in history. And it was written by a college student who just wanted free internet.</p>
+
+<hr>
+
+<h2>The Virus Explosion: 1999–2003</h2>
+
+<p>The late 1990s and early 2000s were the golden age of viruses. A strange subculture emerged: teenagers and young adults writing malicious code not for money, but for <strong>fame</strong>, <strong>fun</strong>, and <strong>bragging rights</strong>.</p>
+
+<p>They were called <strong>script kiddies</strong> — a derogatory term for people who used pre-made hacking tools and code without really understanding how they worked. But some of them created code that took down global infrastructure.</p>
+
+<h3>The Big Three: Melissa, ILOVEYOU, Code Red</h3>
+
+<h4>Melissa (March 26, 1999)</h4>
+
+<ul><li><strong>Creator</strong>: David L. Smith, a 30-year-old from New Jersey</li></ul>
+<ul><li><strong>Type</strong>: Macro virus embedded in a Word document</li></ul>
+<ul><li><strong>Spread Method</strong>: Emailed itself to the first 50 people in the victim's Outlook address book</li></ul>
+<ul><li><strong>Subject Line</strong>: "Important Message From [your friend's name]"</li></ul>
+<ul><li><strong>Damage</strong>: Crashed email servers at Microsoft, Intel, and the US Marine Corps</li></ul>
+<ul><li><strong>Estimated Cost</strong>: $80 million</li></ul>
+<ul><li><strong>Named After</strong>: A stripper Smith had met in Florida</li></ul>
+
+<strong>How Melissa worked:</strong>
+
+<ol><li>User receives email from someone they know → opens the Word document</li></ol>
+<ol><li>Word macro executes automatically (macros were enabled by default!)</li></ol>
+<ol><li>Macro accesses Microsoft Outlook</li></ol>
+<ol><li>Sends copies of itself to the first 50 contacts</li></ol>
+<ol><li>Each recipient trusts the email (it came from someone they know)</li></ol>
+<ol><li>Exponential growth — 50 × 50 × 50 = 125,000 emails in three hops</li></ol>
+
+<p>Smith was caught because he was identified through the <strong>GUID</strong> (Globally Unique Identifier) embedded in the Word document. Every Microsoft Office document contained a hardware fingerprint of the computer that created it. Smith didn't know this.</p>
+
+<strong>Sentence</strong>: 20 months in federal prison and a $5,000 fine.
+
+<h4>ILOVEYOU (May 4, 2000)</h4>
+
+<ul><li><strong>Creator</strong>: Onel de Guzman, 24-year-old student in the Philippines</li></ul>
+<ul><li><strong>Type</strong>: VBS worm that spreads via email and overwrites files</li></ul>
+<ul><li><strong>Spread Method</strong>: Emailed itself to everyone in the victim's address book</li></ul>
+<ul><li><strong>Damage</strong>: Overwrote image files (.jpg, .jpeg), music files (.mp3), and system files</li></ul>
+<ul><li><strong>Estimated Cost</strong>: $10 billion</li></ul>
+<ul><li><strong>Infections</strong>: 45 million computers in one day</li></ul>
+
+<strong>Why it was so destructive:</strong>
+
+<p>Unlike Melissa (which just sent emails), ILOVEYOU was actively destructive:</p>
+
+<p>| File Extension | What ILOVEYOU Did |</p>
+<p>|---|---|</p>
+<p>| <code class="inline">.jpg</code>, <code class="inline">.jpeg</code> | Replaced with a copy of the worm |</p>
+<p>| <code class="inline">.mp3</code> | Hidden and replaced with worm copy |</p>
+<p>| <code class="inline">.vbs</code>, <code class="inline">.js</code> | Overwrote with worm code |</p>
+<p>| <code class="inline">.css</code>, <code class="inline">.hta</code> | Overwrote with worm code |</p>
+<p>| IRC channel scripts | Modified to spread the worm |</p>
+<p>| IE start page | Changed to download a password-stealing trojan |</p>
+
+<p>The worm also installed a <strong>password-stealing trojan</strong> that sent captured passwords to an email address in the Philippines.</p>
+
+<strong>Legal outcome</strong>: Onel de Guzman was identified and questioned by Filipino authorities. But the Philippines had <strong>no cybercrime law</strong> in 2000. He couldn't be charged with any crime. He was released.
+
+<p>The incident prompted the Philippines to pass the <strong>E-Commerce Act of 2000</strong> — but it couldn't be applied retroactively. De Guzman was never prosecuted.</p>
+
+<div class="callout warning"><p>⚠️ In 2020, a journalist tracked down de Guzman. He was working in a small phone repair booth in metro Manila. He expressed regret and said he never expected the worm to spread so widely.</p></div>
+
+<h4>Code Red (July 19, 2001)</h4>
+
+<ul><li><strong>Creator</strong>: Unknown</li></ul>
+<ul><li><strong>Type</strong>: Worm targeting Microsoft IIS web servers</li></ul>
+<ul><li><strong>Spread Method</strong>: Exploited a buffer overflow vulnerability (not via email)</li></ul>
+<ul><li><strong>Notable Feature</strong>: Defaced websites with "Hacked By Chinese!"</li></ul>
+<ul><li><strong>Infections</strong>: 359,000 servers in 14 hours</li></ul>
+<ul><li><strong>Estimated Cost</strong>: $2.6 billion</li></ul>
+
+<p>Code Red was different from Melissa and ILOVEYOU because it didn't require human interaction. It was fully automated — the worm scanned the internet for vulnerable IIS servers, exploited the buffer overflow, installed itself, and began scanning for more targets. No email, no attachments, no clicking required.</p>
+
+<p>Code Red II (August 2001) was even worse — it installed a <strong>backdoor</strong> that gave attackers complete remote control of the infected server.</p>
+
+<hr>
+
+<h2>The Complete Malware Family Tree</h2>
+
+<p>By the early 2000s, malware had diversified into a complete ecosystem. Here's every type, explained simply:</p>
+
+<h3>Malware That Needs Human Help</h3>
+
+<p>| Type | How It Spreads | What It Does | Example |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Virus</strong> | Attaches to legitimate files; user must run the file | Copies itself into other files, may destroy data | CIH/Chernobyl |</p>
+<p>| <strong>Trojan</strong> | Disguised as useful software; user installs it | Provides backdoor access, steals data | Back Orifice, SubSeven |</p>
+<p>| <strong>Macro Virus</strong> | Embedded in documents (Word, Excel); auto-runs when opened | Spreads via email, modifies documents | Melissa |</p>
+<p>| <strong>Dropper</strong> | User downloads/runs it | Installs other malware silently | Various |</p>
+
+<h3>Malware That Spreads Itself</h3>
+
+<p>| Type | How It Spreads | What It Does | Example |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Worm</strong> | Exploits network vulnerabilities; no human needed | Self-replicates across networks | Morris Worm, Code Red |</p>
+<p>| <strong>Email Worm</strong> | Emails itself using victim's address book | Spreads exponentially via social trust | ILOVEYOU, Melissa |</p>
+<p>| <strong>Boot Sector Virus</strong> | Infects the boot sector of disks/USB drives | Runs before the OS, very hard to remove | Stoned, Brain |</p>
+
+<h3>Malware That Hides</h3>
+
+<p>| Type | How It Works | Why It's Dangerous | Example |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Rootkit</strong> | Modifies the OS to hide its presence | Invisible to antivirus, survives reboots | Sony BMG rootkit |</p>
+<p>| <strong>Bootkit</strong> | Infects the master boot record | Loads before the OS and antivirus | Nemesis |</p>
+<p>| <strong>Fileless Malware</strong> | Lives only in memory (RAM) | Nothing on disk for antivirus to scan | PowerShell-based attacks |</p>
+<p>| <strong>Polymorphic Virus</strong> | Changes its code each time it copies itself | Defeats signature-based antivirus | Storm Worm |</p>
+<p>| <strong>Metamorphic Virus</strong> | Completely rewrites its code with each generation | Even behavioral analysis struggles | Zmist |</p>
+
+<h3>Malware That Steals</h3>
+
+<p>| Type | What It Steals | How | Example |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Keylogger</strong> | Every keystroke you type | Records keyboard input | Ardamax |</p>
+<p>| <strong>Spyware</strong> | Browsing habits, personal data | Monitors all activity silently | CoolWebSearch |</p>
+<p>| <strong>Adware</strong> | Your attention (shows ads) | Injects ads into browsers | Gator, Bonzi Buddy |</p>
+<p>| <strong>Password Stealer</strong> | Login credentials | Intercepts password entry or reads stored passwords | Various |</p>
+<p>| <strong>Banking Trojan</strong> | Bank login credentials | Overlays fake login pages | Zeus, SpyEye |</p>
+<p>| <strong>Screen Scraper</strong> | Whatever's on your screen | Takes periodic screenshots | Various |</p>
+<p>| <strong>Clipboard Stealer</strong> | Copied data (crypto addresses, passwords) | Monitors clipboard and replaces content | CryptoShuffler |</p>
+
+<h3>Malware That Holds Hostage (Preview — Full Chapter Later)</h3>
+
+<p>| Type | What It Does | First Major Incident |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Ransomware</strong> | Encrypts files, demands payment | AIDS Trojan (1989), CryptoLocker (2013) |</p>
+<p>| <strong>Screenlocker</strong> | Locks the screen, demands payment | WinLock (2010) |</p>
+<p>| <strong>Doxware</strong> | Threatens to publish stolen data | Chimera (2015) |</p>
+
+<hr>
+
+<h2>Famous Viruses of the Era: A Hall of Infamy</h2>
+
+<p>| Year | Virus/Worm | Damage | Interesting Fact |</p>
+<p>|---|---|---|---|</p>
+<p>| 1986 | <strong>Brain</strong> | First PC virus | Created by two brothers in Pakistan as anti-piracy measure |</p>
+<p>| 1992 | <strong>Michelangelo</strong> | Overhyped, minimal damage | Media predicted 5 million infections; actual: a few thousand |</p>
+<p>| 1998 | <strong>CIH/Chernobyl</strong> | Overwrote hard drive data AND BIOS | Named after Chernobyl because it activated on April 26 |</p>
+<p>| 1999 | <strong>Melissa</strong> | $80M in damage | Named after a stripper |</p>
+<p>| 1999 | <strong>Happy99</strong> | First worm to spread via email | Showed fireworks animation while installing itself |</p>
+<p>| 2000 | <strong>ILOVEYOU</strong> | $10B in damage | Creator was never charged |</p>
+<p>| 2001 | <strong>Anna Kournikova</strong> | Promised photos of tennis star | Created by a Dutch teenager using a virus-creation kit |</p>
+<p>| 2001 | <strong>Code Red</strong> | $2.6B, 359K servers | Spelled out "Hacked By Chinese!" on defaced websites |</p>
+<p>| 2001 | <strong>Nimda</strong> | Spread via 5 different methods | Name is "admin" spelled backwards |</p>
+<p>| 2003 | <strong>SQL Slammer</strong> | Infected 75,000 servers in 10 minutes | Only 376 bytes — one of the smallest worms ever |</p>
+<p>| 2003 | <strong>Blaster</strong> | Tried to DDoS Microsoft's update site | Contained message: "Billy Gates, stop making money" |</p>
+<p>| 2004 | <strong>Sasser</strong> | Crashed machines running unpatched Windows | Created by an 18-year-old German student on his birthday |</p>
+<p>| 2004 | <strong>MyDoom</strong> | Fastest-spreading email worm ever | Generated 25% of all emails sent worldwide at its peak |</p>
+
+<hr>
+
+<h2>SQL Slammer: When 376 Bytes Took Down the Internet</h2>
+
+<strong>SQL Slammer</strong> deserves special attention because it demonstrates how a tiny piece of code can cause massive damage.
+
+<p>On January 25, 2003, at 5:30 AM UTC, a worm <strong>just 376 bytes long</strong> was released. It exploited a buffer overflow in Microsoft SQL Server 2000's Resolution Service.</p>
+
+<h3>How It Spread</h3>
+
+<ol><li>Send a 376-byte UDP packet to a random IP address on port 1434</li></ol>
+<ol><li>If the target was running an unpatched SQL Server, the buffer overflow triggered</li></ol>
+<ol><li>The worm's code executed in memory (fileless — nothing written to disk)</li></ol>
+<ol><li>The infected server immediately began spraying 376-byte packets at random IP addresses</li></ol>
+<ol><li>Each infected server could send thousands of packets per second</li></ol>
+
+<h3>The Speed</h3>
+
+<ul><li><strong>0 minutes</strong>: 1 infected server</li></ul>
+<ul><li><strong>1 minute</strong>: ~1,000 infected servers</li></ul>
+<ul><li><strong>3 minutes</strong>: Scanning the entire internet every 5.5 seconds</li></ul>
+<ul><li><strong>10 minutes</strong>: 75,000 servers infected</li></ul>
+<ul><li><strong>30 minutes</strong>: Internet backbone routers failing under flood of traffic</li></ul>
+
+<p>The internet effectively <strong>went dark</strong> for several hours. ATMs stopped working. Airline reservation systems crashed. Emergency 911 systems failed. A 376-byte packet — smaller than this paragraph — took down critical global infrastructure.</p>
+
+<p>The patch for the vulnerability had been available for <strong>6 months</strong> before Slammer struck. 75,000 servers were still unpatched. This is perhaps the most important lesson:</p>
+
+<blockquote><strong>Security patches only work if you apply them. Knowing about a vulnerability and fixing it are two entirely different things.</strong></blockquote>
+
+<hr>
+
+<h2>The Script Kiddie Phenomenon</h2>
+
+<p>The term "script kiddie" emerged in the late 1990s to describe a new breed of hacker: people who used pre-made tools without understanding how they worked.</p>
+
+<h3>The Tools of the Trade</h3>
+
+<p>| Tool | What It Did | Skill Required |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Back Orifice</strong> (1998) | Remote administration trojan for Windows | Click and install |</p>
+<p>| <strong>SubSeven</strong> (1999) | More advanced remote trojan with GUI | Very low |</p>
+<p>| <strong>Netbus</strong> (1998) | Remote control of Windows machines | Point and click |</p>
+<p>| <strong>L0phtCrack</strong> (1997) | Windows password cracker | Download and run |</p>
+<p>| <strong>nmap</strong> (1997) | Network scanner (legitimate tool used for recon) | Some knowledge needed |</p>
+<p>| <strong>Low Orbit Ion Cannon (LOIC)</strong> | DDoS attack tool | Click one button |</p>
+
+<p>These tools democratized hacking. You no longer needed to understand buffer overflows, assembly language, or networking protocols. You could download a tool, point it at a target, and cause real damage.</p>
+
+<p>The script kiddie era proved an important principle:</p>
+
+<blockquote><strong>The skill barrier for attacking is always lower than the skill barrier for defending.</strong></blockquote>
+
+<p>An attacker can use a point-and-click tool. A defender needs to understand networking, operating systems, application security, incident response, and forensics. This asymmetry is one of the fundamental challenges of cybersecurity.</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>Email + human trust = perfect attack vector</strong> — Melissa and ILOVEYOU exploited trust in senders, not technical vulnerabilities</li></ol>
+<ol><li><strong>No cybercrime law = no consequences</strong> — ILOVEYOU showed that global attacks require global legal frameworks</li></ol>
+<ol><li><strong>Malware has diversified into a complete ecosystem</strong> — viruses, worms, trojans, rootkits, spyware all serve different purposes</li></ol>
+<ol><li><strong>Patches only work if applied</strong> — SQL Slammer exploited a 6-month-old vulnerability on 75,000 unpatched servers</li></ol>
+<ol><li><strong>Attack tools are democratized</strong> — script kiddie tools mean anyone can attack; defense requires expertise</li></ol>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>How Firewalls & Antivirus Were Born</em> → The defense industry responds. The first firewalls, antivirus products, and intrusion detection systems emerge. But every defense creates a new attack — and the arms race accelerates.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 6</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

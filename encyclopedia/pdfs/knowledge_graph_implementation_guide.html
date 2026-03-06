@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Agentic Knowledge Graph — Complete Implementation Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0e1a;
+  color: #e2e8f0;
+  line-height: 1.8;
+  padding: 50px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.cover {
+  text-align: center;
+  padding: 60px 0 40px;
+  border-bottom: 3px solid #1e3a5f;
+  margin-bottom: 40px;
+}
+.cover-title {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  border: none;
+}
+.cover .subtitle {
+  font-size: 18px;
+  color: #94a3b8;
+  font-weight: 300;
+}
+.cover .badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #1e40af, #7c3aed);
+  color: white;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+h1 {
+  color: #60a5fa;
+  font-size: 26px;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #1e3a5f;
+}
+h2 {
+  color: #38bdf8;
+  font-size: 20px;
+  margin-top: 35px;
+  margin-bottom: 12px;
+}
+h3 {
+  color: #22d3ee;
+  font-size: 17px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+p { margin-bottom: 12px; }
+strong { color: #f1f5f9; }
+
+pre {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 18px;
+  overflow-x: auto;
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin: 16px 0;
+}
+code {
+  font-family: 'JetBrains Mono', monospace;
+  color: #a5f3fc;
+}
+code.inline {
+  background: #1e293b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+th {
+  background: #1e3a5f;
+  color: #60a5fa;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #1e293b;
+  font-size: 13px;
+}
+tr:nth-child(odd) td { background: #0f172a; }
+tr:nth-child(even) td { background: #1e293b; }
+
+hr {
+  border: none;
+  border-top: 2px solid #1e293b;
+  margin: 35px 0;
+}
+li {
+  margin: 6px 0;
+  padding-left: 5px;
+  list-style-position: inside;
+}
+a { color: #60a5fa; }
+
+@media print {
+  body {
+    background: white;
+    color: #1e293b;
+    padding: 30px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .cover-title {
+    background: none;
+    -webkit-text-fill-color: #1e40af;
+    color: #1e40af;
+  }
+  .cover .subtitle { color: #475569; }
+  .cover .badge { background: #1e40af; }
+  h1 { color: #1e40af; border-bottom-color: #cbd5e1; font-size: 22px; }
+  h2 { color: #0369a1; font-size: 17px; }
+  h3 { color: #0e7490; font-size: 14px; }
+  pre {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    font-size: 10px;
+    page-break-inside: avoid;
+  }
+  code { color: #0e7490; }
+  code.inline { background: #f1f5f9; color: #0e7490; }
+  th { background: #e2e8f0; color: #1e40af; }
+  td { border-bottom-color: #e2e8f0; }
+  tr:nth-child(odd) td { background: #f8fafc; }
+  tr:nth-child(even) td { background: #ffffff; }
+  hr { border-top-color: #e2e8f0; }
+  strong { color: #1e293b; }
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-title">Agentic Knowledge Graph</div>
+  <div class="subtitle">Complete Implementation Guide</div>
+  <div class="subtitle" style="margin-top:8px;">Zenia Data Privacy Platform — Fake News Detection</div>
+  <div class="badge">A2UI + Cytoscape.js + Python Backend</div>
+</div>
+
+<p><h1>Agentic Knowledge Graph — Complete Implementation Guide</h1>
+<h2>For Zenia Data Privacy Platform (Fake News Detection Use Case)</h2>
+
+<hr>
+
+<h1>1. What Are We Building?</h1>
+
+<strong>Current behavior:</strong> When a user submits a news claim, the app returns TEXT responses from agents (NewsVerify, Tavily, NLP, Risk, etc.) and renders them as A2UI cards.
+
+<strong>New behavior:</strong> Along with the text, the app also renders an <strong>interactive knowledge graph</strong> — a visual diagram where nodes represent facts, claims, sources, and risks, and edges show how they connect. Users can click any node to explore deeper.
+
+<hr>
+
+<h1>2. Architecture Overview</h1>
+
+<pre><code class="">┌─────────────────────────────────────────────────────────┐
+│                     FRONTEND (Next.js)                   │
+│                                                         │
+│  ┌───────────────────┐    ┌──────────────────────────┐  │
+│  │  Chat Component   │    │  KnowledgeGraph Component│  │
+│  │  (existing)       │    │  (NEW — Cytoscape.js)    │  │
+│  └────────┬──────────┘    └──────────┬───────────────┘  │
+│           │                          │                   │
+│           └──────────┬───────────────┘                   │
+│                      │ A2UI StateSnapshot                │
+└──────────────────────┼───────────────────────────────────┘
+                       │
+                       │ HTTP (AG-UI Protocol)
+                       │
+┌──────────────────────┼───────────────────────────────────┐
+│                  BACKEND (Python)                         │
+│                                                          │
+│  ┌──────────────────────────────────────────────────┐    │
+│  │           DPOrchestrator (dp_orchestrator.py)     │    │
+│  │                                                   │    │
+│  │  Step 1: NewsVerifyAgent ──→ verdict + sources    │    │
+│  │  Step 2: TavilyVerifyAgent ──→ verdict + sources  │    │
+│  │  Step 3: Build knowledge_graph_data (NEW)         │    │
+│  │  Step 4: Return A2UI with KnowledgeGraph component│    │
+│  └──────────────────────────────────────────────────┘    │
+│                                                          │
+│  ┌──────────────────────────────────────────────────┐    │
+│  │           views.py (A2UI builders)                │    │
+│  │                                                   │    │
+│  │  render_fake_news_warning()  ← existing           │    │
+│  │  render_knowledge_graph()    ← NEW function       │    │
+│  └──────────────────────────────────────────────────┘    │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+
+<hr>
+
+<h1>3. Backend Changes</h1>
+
+<h2>3.1 New File: <code class="inline">agent/knowledge_graph_builder.py</code></h2>
+
+This module takes agent results and builds knowledge graph data (nodes + edges).
+
+<pre><code class="python">"""
+knowledge_graph_builder.py — Builds knowledge graph data from agent results.
+"""
+import json
+from typing import Optional
+
+
+def build_fake_news_graph(
+    query: str,
+    news_result: dict,
+    tavily_result: dict,
+    is_fake: bool,
+) -&gt; dict:
+    """
+    Build a knowledge graph for the fake news detection flow.
+    
+    Returns:
+        dict with "nodes" and "edges" lists
+    """
+    nodes = []
+    edges = []
+    
+    # ── Node 1: The user's claim (always present)
+    nodes.append({
+        "id": "claim",
+        "label": _truncate(query, 60),
+        "type": "fake" if is_fake else "real",
+        "details": query,
+    })
+    
+    # ── Node 2: NewsVerificationAgent result
+    nodes.append({
+        "id": "newsverify",
+        "label": f"NewsVerify: {news_result.get('verdict', 'UNKNOWN')}",
+        "type": "agent",
+        "details": news_result.get("reason", ""),
+        "confidence": news_result.get("confidence", 0),
+    })
+    edges.append({
+        "source": "claim",
+        "target": "newsverify",
+        "label": "verified by",
+    })
+    
+    # ── Node 3: TavilyVerificationAgent result
+    nodes.append({
+        "id": "tavilyverify",
+        "label": f"TavilyVerify: {tavily_result.get('verdict', 'UNKNOWN')}",
+        "type": "agent",
+        "details": tavily_result.get("reason", ""),
+        "confidence": tavily_result.get("confidence", 0),
+    })
+    edges.append({
+        "source": "claim",
+        "target": "tavilyverify",
+        "label": "verified by",
+    })
+    
+    # ── Source nodes from NewsVerify
+    for i, url in enumerate(news_result.get("sources", [])[:5]):
+        source_id = f"news_src_{i}"
+        nodes.append({
+            "id": source_id,
+            "label": _domain_from_url(url),
+            "type": "source",
+            "details": url,
+        })
+        edges.append({
+            "source": "newsverify",
+            "target": source_id,
+            "label": "checked",
+        })
+    
+    # ── Source nodes from Tavily
+    for i, url in enumerate(tavily_result.get("sources", [])[:5]):
+        source_id = f"tavily_src_{i}"
+        nodes.append({
+            "id": source_id,
+            "label": _domain_from_url(url),
+            "type": "source",
+            "details": url,
+        })
+        edges.append({
+            "source": "tavilyverify",
+            "target": source_id,
+            "label": "checked",
+        })
+    
+    # ── Verdict node
+    verdict = "FAKE" if is_fake else "REAL"
+    nodes.append({
+        "id": "verdict",
+        "label": f"Verdict: {verdict}",
+        "type": "fake" if is_fake else "real",
+        "details": f"Both agents concluded: {verdict}",
+    })
+    edges.append({"source": "newsverify", "target": "verdict", "label": "concluded"})
+    edges.append({"source": "tavilyverify", "target": "verdict", "label": "concluded"})
+    
+    return {"nodes": nodes, "edges": edges}
+
+
+def build_risk_report_graph(
+    query: str,
+    risk_data: dict,
+    alerts: dict,
+    suggestions: list,
+    similar_companies: list,
+) -&gt; dict:
+    """
+    Build a knowledge graph for the risk report flow (after Proceed Anyway).
+    """
+    nodes = []
+    edges = []
+    
+    # ── Central: Incident node
+    nodes.append({
+        "id": "incident",
+        "label": _truncate(query, 50),
+        "type": "incident",
+    })
+    
+    # ── Risk score node
+    risk_score = risk_data.get("overall_risk", "N/A")
+    nodes.append({
+        "id": "risk_score",
+        "label": f"Risk Score: {risk_score}/10",
+        "type": "risk",
+    })
+    edges.append({"source": "incident", "target": "risk_score", "label": "assessed at"})
+    
+    # ── Alert nodes (RED)
+    red_alerts = alerts.get("red", [])
+    for i, alert in enumerate(red_alerts[:5]):
+        alert_id = f"red_alert_{i}"
+        company = alert.get("company", f"Company {i+1}")
+        nodes.append({
+            "id": alert_id,
+            "label": f"🔴 {company}",
+            "type": "red_alert",
+            "details": alert.get("reason", ""),
+        })
+        edges.append({
+            "source": "risk_score",
+            "target": alert_id,
+            "label": "high risk",
+        })
+    
+    # ── Alert nodes (YELLOW)
+    yellow_alerts = alerts.get("yellow", [])
+    for i, alert in enumerate(yellow_alerts[:3]):
+        alert_id = f"yellow_alert_{i}"
+        company = alert.get("company", f"Company {i+1}")
+        nodes.append({
+            "id": alert_id,
+            "label": f"🟡 {company}",
+            "type": "yellow_alert",
+            "details": alert.get("reason", ""),
+        })
+        edges.append({
+            "source": "risk_score",
+            "target": alert_id,
+            "label": "moderate risk",
+        })
+    
+    # ── Suggestion nodes
+    for i, suggestion in enumerate(suggestions[:5]):
+        sug_id = f"suggestion_{i}"
+        nodes.append({
+            "id": sug_id,
+            "label": f"💡 {_truncate(suggestion, 40)}",
+            "type": "suggestion",
+            "details": suggestion,
+        })
+        edges.append({
+            "source": "incident",
+            "target": sug_id,
+            "label": "recommended",
+        })
+    
+    # ── Similar company nodes
+    for i, company in enumerate(similar_companies[:3]):
+        comp_id = f"similar_{i}"
+        nodes.append({
+            "id": comp_id,
+            "label": f"📊 {company.get('name', f'Company {i+1}')}",
+            "type": "similar",
+            "details": company.get("reason", ""),
+        })
+        edges.append({
+            "source": "incident",
+            "target": comp_id,
+            "label": "similar case",
+        })
+    
+    return {"nodes": nodes, "edges": edges}
+
+
+def _truncate(text: str, max_len: int) -&gt; str:
+    return text[:max_len] + "..." if len(text) &gt; max_len else text
+
+
+def _domain_from_url(url: str) -&gt; str:
+    try:
+        from urllib.parse import urlparse
+        return urlparse(url).netloc.replace("www.", "")
+    except Exception:
+        return url[:30]
+</code></pre>
+
+<hr>
+
+<h2>3.2 Update: <code class="inline">agent/views.py</code> — Add Knowledge Graph Renderer</h2>
+
+Add this new function to <code class="inline">views.py</code>:
+
+<pre><code class="python">def render_knowledge_graph(
+    title: str,
+    graph_data: dict,
+    layout: str = "cose",
+    buttons: list[tuple[str, str, str]] | None = None,
+) -&gt; dict:
+    """
+    Render an interactive knowledge graph as A2UI component.
+    
+    Args:
+        title: Title text shown above the graph
+        graph_data: dict with "nodes" and "edges" lists
+        layout: Cytoscape.js layout (cose, circle, breadthfirst, grid)
+        buttons: Optional list of (id, label, action_name) tuples
+    """
+    import json
+    
+    # Build node + edge items for the data model
+    items = []
+    for node in graph_data.get("nodes", []):
+        items.append(node)
+    for edge in graph_data.get("edges", []):
+        items.append(edge)
+    
+    children = ["kg_title", "kg_graph"]
+    if buttons:
+        children.append("kg_buttons")
+    
+    components = [
+        _column("root", ["kg_card"]),
+        _card("kg_card", "kg_col"),
+        _column("kg_col", children),
+        _text("kg_title", title, "h2"),
+        
+        # The KnowledgeGraph custom component
+        {
+            "id": "kg_graph",
+            "component": {
+                "KnowledgeGraph": {
+                    "title": title,
+                    "layout": layout,
+                    "graphData": json.dumps(items),
+                }
+            }
+        },
+    ]
+    
+    if buttons:
+        btn_ids = []
+        for btn_id, btn_label, btn_action in buttons:
+            components.append(_button(btn_id, btn_label, btn_action))
+            btn_ids.append(btn_id)
+        components.append(_row("kg_buttons", btn_ids))
+    
+    return _wrap(components)
+</code></pre>
+
+<hr>
+
+<h2>3.3 Update: <code class="inline">agent/agui_endpoint.py</code> — Wire Knowledge Graph Into the Pipeline</h2>
+
+In the main endpoint, after the verification agents return their results, build the knowledge graph:
+
+<pre><code class="python"># ── Inside the breach_analysis flow ──
+
+from agent.knowledge_graph_builder import (
+    build_fake_news_graph,
+    build_risk_report_graph,
+)
+from agent.views import render_knowledge_graph, render_fake_news_warning
+
+<h1>After NewsVerify + Tavily return results:</h1>
+news_result = json.loads(news_agent_response)
+tavily_result = json.loads(tavily_agent_response)
+
+is_fake = (
+    news_result.get("verdict") == "FAKE"
+    or tavily_result.get("verdict") == "FAKE"
+)
+
+<h1>Build the knowledge graph data</h1>
+graph_data = build_fake_news_graph(
+    query=user_query,
+    news_result=news_result,
+    tavily_result=tavily_result,
+    is_fake=is_fake,
+)
+
+<h1>Build the A2UI response with BOTH text card AND knowledge graph</h1>
+if is_fake:
+    a2ui_response = render_knowledge_graph(
+        title="⚠️ Fake News Analysis — Knowledge Graph",
+        graph_data=graph_data,
+        layout="cose",
+        buttons=[
+            ("btn-proceed", "Proceed Anyway", "force_proceed"),
+            ("btn-discard", "Discard Article", "cancel_workflow"),
+        ],
+    )
+</code></pre>
+
+<hr>
+
+<h2>3.4 Request & Response Payloads</h2>
+
+<h3>Request 1: User submits a news claim</h3>
+
+<pre><code class="json">{
+    "threadId": "ae715e25-3e46-4f6d-af23-d9dab8e0f557",
+    "messages": [
+        {
+            "role": "user",
+            "content": "In October 2025, Amazon disclosed that hackers breached its internal financial systems and exfiltrated detailed accounting and revenue records for 2024–2025, posting them publicly. The leak claimed to show previously unreported losses of over $200 billion."
+        }
+    ]
+}
+</code></pre>
+
+<h3>Response 1: Fake news detected + Knowledge Graph</h3>
+
+<pre><code class="json">{
+    "type": "STATE_SNAPSHOT",
+    "snapshot": {
+        "a2ui": {
+            "beginRendering": {
+                "surfaceId": "main",
+                "root": "root"
+            },
+            "surfaceUpdate": {
+                "surfaceId": "main",
+                "components": [
+                    {
+                        "id": "root",
+                        "component": {
+                            "Column": {
+                                "children": {
+                                    "explicitList": [
+                                        "fake_news_title",
+                                        "text_explanation",
+                                        "knowledge_graph",
+                                        "buttons_row"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "fake_news_title",
+                        "component": {
+                            "Text": {
+                                "text": {
+                                    "literalString": "⚠️ Fake News Analysis"
+                                },
+                                "usageHint": "h1"
+                            }
+                        }
+                    },
+                    {
+                        "id": "text_explanation",
+                        "component": {
+                            "Text": {
+                                "text": {
+                                    "literalString": "The claim conflates several unrelated events. See the visual analysis below."
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "knowledge_graph",
+                        "component": {
+                            "KnowledgeGraph": {
+                                "title": "Claim Analysis",
+                                "layout": "cose",
+                                "data": {
+                                    "path": "/graphData"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "buttons_row",
+                        "component": {
+                            "Row": {
+                                "children": {
+                                    "explicitList": [
+                                        "proceed_button",
+                                        "discard_button"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "proceed_button",
+                        "component": {
+                            "Button": {
+                                "child": "proceed_text",
+                                "action": { "name": "force_proceed" }
+                            }
+                        }
+                    },
+                    {
+                        "id": "proceed_text",
+                        "component": {
+                            "Text": {
+                                "text": { "literalString": "Proceed Anyway" }
+                            }
+                        }
+                    },
+                    {
+                        "id": "discard_button",
+                        "component": {
+                            "Button": {
+                                "child": "discard_text",
+                                "action": { "name": "cancel_workflow" }
+                            }
+                        }
+                    },
+                    {
+                        "id": "discard_text",
+                        "component": {
+                            "Text": {
+                                "text": { "literalString": "Discard Article" }
+                            }
+                        }
+                    }
+                ]
+            },
+            "dataModelUpdate": {
+                "surfaceId": "main",
+                "contents": [
+                    {
+                        "key": "graphData",
+                        "valueArray": [
+                            {
+                                "key": "0",
+                                "valueMap": [
+                                    { "key": "id", "valueString": "claim" },
+                                    { "key": "label", "valueString": "Amazon $200B Breach (CLAIM)" },
+                                    { "key": "type", "valueString": "fake" }
+                                ]
+                            },
+                            {
+                                "key": "1",
+                                "valueMap": [
+                                    { "key": "id", "valueString": "newsverify" },
+                                    { "key": "label", "valueString": "NewsVerify: FAKE (95%)" },
+                                    { "key": "type", "valueString": "agent" }
+                                ]
+                            },
+                            {
+                                "key": "2",
+                                "valueMap": [
+                                    { "key": "id", "valueString": "tavilyverify" },
+                                    { "key": "label", "valueString": "TavilyVerify: FAKE (92%)" },
+                                    { "key": "type", "valueString": "agent" }
+                                ]
+                            },
+                            {
+                                "key": "3",
+                                "valueMap": [
+                                    { "key": "id", "valueString": "src_0" },
+                                    { "key": "label", "valueString": "thousandeyes.com" },
+                                    { "key": "type", "valueString": "source" }
+                                ]
+                            },
+                            {
+                                "key": "4",
+                                "valueMap": [
+                                    { "key": "id", "valueString": "verdict" },
+                                    { "key": "label", "valueString": "❌ VERDICT: FAKE NEWS" },
+                                    { "key": "type", "valueString": "fake" }
+                                ]
+                            },
+                            {
+                                "key": "5",
+                                "valueMap": [
+                                    { "key": "source", "valueString": "claim" },
+                                    { "key": "target", "valueString": "newsverify" },
+                                    { "key": "label", "valueString": "verified by" }
+                                ]
+                            },
+                            {
+                                "key": "6",
+                                "valueMap": [
+                                    { "key": "source", "valueString": "claim" },
+                                    { "key": "target", "valueString": "tavilyverify" },
+                                    { "key": "label", "valueString": "verified by" }
+                                ]
+                            },
+                            {
+                                "key": "7",
+                                "valueMap": [
+                                    { "key": "source", "valueString": "newsverify" },
+                                    { "key": "target", "valueString": "src_0" },
+                                    { "key": "label", "valueString": "checked" }
+                                ]
+                            },
+                            {
+                                "key": "8",
+                                "valueMap": [
+                                    { "key": "source", "valueString": "newsverify" },
+                                    { "key": "target", "valueString": "verdict" },
+                                    { "key": "label", "valueString": "concluded" }
+                                ]
+                            },
+                            {
+                                "key": "9",
+                                "valueMap": [
+                                    { "key": "source", "valueString": "tavilyverify" },
+                                    { "key": "target", "valueString": "verdict" },
+                                    { "key": "label", "valueString": "concluded" }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+</code></pre>
+
+<h3>Request 2: User clicks "Proceed Anyway"</h3>
+
+<pre><code class="json">{
+    "threadId": "ae715e25-3e46-4f6d-af23-d9dab8e0f557",
+    "action": {
+        "name": "force_proceed"
+    },
+    "previous_query": "In October 2025, Amazon disclosed that hackers..."
+}
+</code></pre>
+
+<h3>Response 2: Risk Report + Expanded Knowledge Graph</h3>
+
+The graph now includes additional nodes from Risk, Alert, Similar, and Suggestion agents:
+
+<pre><code class="json">{
+    "dataModelUpdate": {
+        "surfaceId": "main",
+        "contents": [
+            {
+                "key": "graphData",
+                "valueArray": [
+                    {
+                        "key": "0",
+                        "valueMap": [
+                            { "key": "id", "valueString": "incident" },
+                            { "key": "label", "valueString": "Amazon Breach Analysis" },
+                            { "key": "type", "valueString": "incident" }
+                        ]
+                    },
+                    {
+                        "key": "1",
+                        "valueMap": [
+                            { "key": "id", "valueString": "risk_score" },
+                            { "key": "label", "valueString": "Risk Score: 9.2/10" },
+                            { "key": "type", "valueString": "risk" }
+                        ]
+                    },
+                    {
+                        "key": "2",
+                        "valueMap": [
+                            { "key": "id", "valueString": "red_alert_0" },
+                            { "key": "label", "valueString": "🔴 Amazon.com, Inc." },
+                            { "key": "type", "valueString": "red_alert" }
+                        ]
+                    },
+                    {
+                        "key": "3",
+                        "valueMap": [
+                            { "key": "id", "valueString": "red_alert_1" },
+                            { "key": "label", "valueString": "🔴 Uber Technologies" },
+                            { "key": "type", "valueString": "red_alert" }
+                        ]
+                    },
+                    {
+                        "key": "4",
+                        "valueMap": [
+                            { "key": "id", "valueString": "suggestion_0" },
+                            { "key": "label", "valueString": "💡 Enhance IAM Controls" },
+                            { "key": "type", "valueString": "suggestion" }
+                        ]
+                    },
+                    {
+                        "key": "5",
+                        "valueMap": [
+                            { "key": "id", "valueString": "suggestion_1" },
+                            { "key": "label", "valueString": "💡 Encrypt Financial Data" },
+                            { "key": "type", "valueString": "suggestion" }
+                        ]
+                    },
+                    {
+                        "key": "6",
+                        "valueMap": [
+                            { "key": "source", "valueString": "incident" },
+                            { "key": "target", "valueString": "risk_score" },
+                            { "key": "label", "valueString": "assessed at" }
+                        ]
+                    },
+                    {
+                        "key": "7",
+                        "valueMap": [
+                            { "key": "source", "valueString": "risk_score" },
+                            { "key": "target", "valueString": "red_alert_0" },
+                            { "key": "label", "valueString": "high risk" }
+                        ]
+                    },
+                    {
+                        "key": "8",
+                        "valueMap": [
+                            { "key": "source", "valueString": "risk_score" },
+                            { "key": "target", "valueString": "red_alert_1" },
+                            { "key": "label", "valueString": "high risk" }
+                        ]
+                    },
+                    {
+                        "key": "9",
+                        "valueMap": [
+                            { "key": "source", "valueString": "incident" },
+                            { "key": "target", "valueString": "suggestion_0" },
+                            { "key": "label", "valueString": "recommended" }
+                        ]
+                    },
+                    {
+                        "key": "10",
+                        "valueMap": [
+                            { "key": "source", "valueString": "incident" },
+                            { "key": "target", "valueString": "suggestion_1" },
+                            { "key": "label", "valueString": "recommended" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+
+<h3>Request 3: User clicks "Discard Article"</h3>
+
+<pre><code class="json">{
+    "threadId": "ae715e25-3e46-4f6d-af23-d9dab8e0f557",
+    "action": {
+        "name": "cancel_workflow"
+    }
+}
+</code></pre>
+
+<h3>Response 3: Workflow cancelled (same as current behavior)</h3>
+
+<pre><code class="json">{
+    "surfaceUpdate": {
+        "components": [
+            {
+                "id": "root",
+                "component": {
+                    "Column": {
+                        "children": {
+                            "explicitList": ["cancelled_card"]
+                        }
+                    }
+                }
+            },
+            {
+                "id": "cancelled_card",
+                "component": {
+                    "Card": { "child": "cancelled_content" }
+                }
+            },
+            {
+                "id": "cancelled_content",
+                "component": {
+                    "Column": {
+                        "children": {
+                            "explicitList": ["cancelled_title", "cancelled_msg"]
+                        }
+                    }
+                }
+            },
+            {
+                "id": "cancelled_title",
+                "component": {
+                    "Text": {
+                        "text": { "literalString": "❌ Workflow Cancelled" },
+                        "usageHint": "h2"
+                    }
+                }
+            },
+            {
+                "id": "cancelled_msg",
+                "component": {
+                    "Text": {
+                        "text": { "literalString": "The article was discarded by the user." }
+                    }
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr>
+
+<h1>4. Frontend Changes</h1>
+
+<h2>4.1 Install Cytoscape.js</h2>
+
+<pre><code class="bash">cd client-next
+npm install cytoscape
+</code></pre>
+
+<h2>4.2 New Component: <code class="inline">KnowledgeGraph.tsx</code></h2>
+
+<pre><code class="tsx">// components/KnowledgeGraph.tsx
+import React, { useEffect, useRef } from 'react';
+import cytoscape from 'cytoscape';
+
+interface GraphItem {
+  id?: string;
+  label?: string;
+  type?: string;
+  details?: string;
+  source?: string;
+  target?: string;
+}
+
+interface KnowledgeGraphProps {
+  items: GraphItem[];
+  layout?: string;
+  onNodeClick?: (nodeData: any) =&gt; void;
+}
+
+// Color mapping for node types
+const NODE_COLORS: Record&lt;string, string&gt; = {
+  fake:         '#ef4444',  // Red
+  real:         '#22c55e',  // Green
+  agent:        '#3b82f6',  // Blue
+  source:       '#8b5cf6',  // Purple
+  incident:     '#f97316',  // Orange
+  risk:         '#ef4444',  // Red
+  red_alert:    '#ef4444',  // Red
+  yellow_alert: '#eab308',  // Yellow
+  suggestion:   '#22c55e',  // Green
+  similar:      '#06b6d4',  // Cyan
+  default:      '#6b7280',  // Gray
+};
+
+export default function KnowledgeGraph({
+  items,
+  layout = 'cose',
+  onNodeClick,
+}: KnowledgeGraphProps) {
+  const containerRef = useRef&lt;HTMLDivElement&gt;(null);
+  const cyRef = useRef&lt;cytoscape.Core | null&gt;(null);
+
+  useEffect(() =&gt; {
+    if (!containerRef.current || !items.length) return;
+
+    // Separate nodes and edges
+    const nodes = items
+      .filter((item) =&gt; item.id && !item.source)
+      .map((item) =&gt; ({
+        data: {
+          id: item.id,
+          label: item.label || item.id,
+          type: item.type || 'default',
+          details: item.details || '',
+        },
+      }));
+
+    const edges = items
+      .filter((item) =&gt; item.source && item.target)
+      .map((item, i) =&gt; ({
+        data: {
+          id: <code class="inline">edge_${i}</code>,
+          source: item.source,
+          target: item.target,
+          label: item.label || '',
+        },
+      }));
+
+    // Initialize Cytoscape
+    const cy = cytoscape({
+      container: containerRef.current,
+      elements: [...nodes, ...edges],
+      style: [
+        {
+          selector: 'node',
+          style: {
+            'label': 'data(label)',
+            'text-wrap': 'wrap',
+            'text-max-width': '120px',
+            'font-size': '11px',
+            'color': '#ffffff',
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'background-color': (ele: any) =&gt;
+              NODE_COLORS[ele.data('type')] || NODE_COLORS.default,
+            'width': 60,
+            'height': 60,
+            'border-width': 2,
+            'border-color': '#ffffff22',
+          },
+        },
+        {
+          selector: 'edge',
+          style: {
+            'label': 'data(label)',
+            'font-size': '9px',
+            'color': '#94a3b8',
+            'text-rotation': 'autorotate',
+            'curve-style': 'bezier',
+            'target-arrow-shape': 'triangle',
+            'line-color': '#475569',
+            'target-arrow-color': '#475569',
+            'width': 2,
+          },
+        },
+        {
+          selector: 'node:selected',
+          style: {
+            'border-width': 4,
+            'border-color': '#60a5fa',
+            'background-color': '#2563eb',
+          },
+        },
+      ],
+      layout: { name: layout },
+      minZoom: 0.3,
+      maxZoom: 3,
+    });
+
+    // Click handler
+    cy.on('tap', 'node', (evt: any) =&gt; {
+      const data = evt.target.data();
+      if (onNodeClick) onNodeClick(data);
+    });
+
+    cyRef.current = cy;
+
+    return () =&gt; {
+      cy.destroy();
+    };
+  }, [items, layout]);
+
+  return (
+    &lt;div
+      ref={containerRef}
+      style={{
+        width: '100%',
+        height: '400px',
+        background: '#0f172a',
+        borderRadius: '12px',
+        border: '1px solid #1e293b',
+      }}
+    /&gt;
+  );
+}
+</code></pre>
+
+<h2>4.3 Using the Component in the Chat</h2>
+
+<pre><code class="tsx">// Inside your AG-UI response renderer:
+
+import KnowledgeGraph from './KnowledgeGraph';
+
+// When you detect a KnowledgeGraph component in the A2UI response:
+if (component.KnowledgeGraph) {
+  const graphData = dataModel[component.KnowledgeGraph.data.path];
+  
+  // Convert A2UI valueArray format to simple array
+  const items = Object.values(graphData).map((item: any) =&gt; {
+    const obj: any = {};
+    if (item.valueMap) {
+      item.valueMap.forEach((kv: any) =&gt; {
+        obj[kv.key] = kv.valueString || kv.valueNumber;
+      });
+    }
+    return obj;
+  });
+  
+  return (
+    &lt;KnowledgeGraph
+      items={items}
+      layout={component.KnowledgeGraph.layout}
+      onNodeClick={(data) =&gt; {
+        // Show detail panel or send userAction
+        setSelectedNode(data);
+      }}
+    /&gt;
+  );
+}
+</code></pre>
+
+<hr>
+
+<h1>5. Node Click → Detail Panel</h1>
+
+When a user clicks a node, show a slide-in detail panel:
+
+<pre><code class="tsx">// DetailPanel.tsx
+interface DetailPanelProps {
+  node: { id: string; label: string; type: string; details: string } | null;
+  onClose: () =&gt; void;
+}
+
+export default function DetailPanel({ node, onClose }: DetailPanelProps) {
+  if (!node) return null;
+
+  return (
+    &lt;div style={{
+      position: 'absolute',
+      right: 0, top: 0,
+      width: '300px', height: '100%',
+      background: 'rgba(15, 23, 42, 0.95)',
+      borderLeft: '1px solid #1e293b',
+      padding: '20px',
+      backdropFilter: 'blur(10px)',
+    }}&gt;
+      &lt;button onClick={onClose} style={{ float: 'right' }}&gt;✕&lt;/button&gt;
+      &lt;h3&gt;{node.label}&lt;/h3&gt;
+      &lt;p style={{ color: '#94a3b8' }}&gt;Type: {node.type}&lt;/p&gt;
+      &lt;p&gt;{node.details}&lt;/p&gt;
+      
+      {/<em> If the node is a source, show clickable link </em>/}
+      {node.type === 'source' && (
+        &lt;a href={node.details} target="_blank" rel="noreferrer"
+           style={{ color: '#60a5fa' }}&gt;
+          Open Source →
+        &lt;/a&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+
+<hr>
+
+<h1>6. Files to Change — Summary</h1>
+
+<table>
+<tr><th>#</th><th>File</th><th>Action</th><th>What Changes</th></tr>
+<tr><td>1</td><td><code class="inline">agent/knowledge_graph_builder.py</code></td><td><strong>NEW</strong></td><td>Builds graph data (nodes + edges) from agent results</td></tr>
+<tr><td>2</td><td><code class="inline">agent/views.py</code></td><td><strong>MODIFY</strong></td><td>Add <code class="inline">render_knowledge_graph()</code> function</td></tr>
+<tr><td>3</td><td><code class="inline">agent/agui_endpoint.py</code></td><td><strong>MODIFY</strong></td><td>Call graph builder after agents return, include graph in A2UI</td></tr>
+<tr><td>4</td><td><code class="inline">client-next/components/KnowledgeGraph.tsx</code></td><td><strong>NEW</strong></td><td>Cytoscape.js React component</td></tr>
+<tr><td>5</td><td><code class="inline">client-next/components/DetailPanel.tsx</code></td><td><strong>NEW</strong></td><td>Slide-in panel for node details</td></tr>
+<tr><td>6</td><td><code class="inline">client-next/</code> (AG-UI renderer)</td><td><strong>MODIFY</strong></td><td>Handle <code class="inline">KnowledgeGraph</code> component type in A2UI response</td></tr>
+<tr><td>7</td><td><code class="inline">package.json</code></td><td><strong>MODIFY</strong></td><td>Add <code class="inline">cytoscape</code> dependency</td></tr>
+</table>
+
+<hr>
+
+<h1>7. Estimated Timeline</h1>
+
+<table>
+<tr><th>Task</th><th>Time</th></tr>
+<tr><td>Backend: <code class="inline">knowledge_graph_builder.py</code></td><td>1 day</td></tr>
+<tr><td>Backend: Update <code class="inline">views.py</code> + <code class="inline">agui_endpoint.py</code></td><td>1 day</td></tr>
+<tr><td>Frontend: <code class="inline">KnowledgeGraph.tsx</code> with Cytoscape.js</td><td>2 days</td></tr>
+<tr><td>Frontend: <code class="inline">DetailPanel.tsx</code> + integration</td><td>1 day</td></tr>
+<tr><td>Testing + polish</td><td>1–2 days</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>5–7 days</strong></td></tr>
+</table>
+
+<hr>
+
+<h1>8. Data Flow Summary</h1>
+
+<pre><code class="">USER types query
+    │
+    ▼
+Backend: DPOrchestrator receives query
+    │
+    ├── NewsVerificationAgent → { verdict, confidence, reason, sources }
+    ├── TavilyVerificationAgent → { verdict, confidence, reason, sources }
+    │
+    ▼
+Backend: knowledge_graph_builder.build_fake_news_graph()
+    │
+    ├── Creates nodes: [claim, newsverify, tavilyverify, sources..., verdict]
+    ├── Creates edges: [claim→newsverify, claim→tavily, agents→sources, agents→verdict]
+    │
+    ▼
+Backend: views.render_knowledge_graph()
+    │
+    ├── Builds A2UI surfaceUpdate with KnowledgeGraph component
+    ├── Builds A2UI dataModelUpdate with graph nodes + edges
+    │
+    ▼
+Frontend: AG-UI protocol delivers StateSnapshot
+    │
+    ├── Chat renders text message (existing behavior)
+    ├── KnowledgeGraph.tsx renders Cytoscape.js graph (NEW)
+    ├── Buttons render below graph (existing behavior)
+    │
+    ▼
+USER clicks a node
+    │
+    ├── DetailPanel.tsx shows node info (client-side, instant)
+    │   OR
+    ├── userAction sent to backend → agent expands graph → new dataModelUpdate
+    │
+    ▼
+USER clicks "Proceed Anyway"
+    │
+    ▼
+Backend: Runs remaining agents (NLP, Risk, Similar, Alert, Suggest)
+    │
+    ▼
+Backend: knowledge_graph_builder.build_risk_report_graph()
+    │
+    ├── Creates nodes: [incident, risk_score, red_alerts, suggestions, similar]
+    │
+    ▼
+Frontend: Graph EXPANDS with new nodes (animated by Cytoscape.js)
+</code></pre>
+</p>
+
+<div style="text-align:center; margin-top:60px; padding:30px; border-top:2px solid #1e293b; color:#64748b;">
+  <p>Agentic Knowledge Graph — Implementation Guide v1.0</p>
+  <p>Zenia Data Privacy Platform &bull; March 2026</p>
+</div>
+
+</body>
+</html>

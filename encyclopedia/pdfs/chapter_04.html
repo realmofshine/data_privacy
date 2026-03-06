@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 4</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part II — The Wild West (1990s)</div>
+  <div class="chapter-num">04</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>The World Goes Online — The 1990s Internet Explosion</h1>
+
+<blockquote>"We built e-commerce, instant messaging, and online banking in five years. We spent the next twenty-five years trying to secure them."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: November 1993 — Silicon Valley</h2>
+
+<p>Marc Andreessen is 22 years old. He's just graduated from the University of Illinois, where he co-created something that will change the world: <strong>Mosaic</strong> — the first web browser with a graphical interface.</p>
+
+<p>Before Mosaic, using the internet meant typing commands into a black terminal. You needed to know Unix, FTP, and a dozen arcane protocols. The internet was a tool for nerds.</p>
+
+<p>Mosaic changed everything. Suddenly, anyone could point, click, and see a web page with images, text, and links. Andreessen's company — renamed <strong>Netscape</strong> — launched Netscape Navigator in 1994, and the world went online.</p>
+
+<p>In 1993, there were <strong>130 websites</strong> on the internet.</p>
+
+<p>By 1996, there were <strong>100,000</strong>.</p>
+
+<p>By 2000, there were <strong>17 million</strong>.</p>
+
+<p>The growth was so explosive that security wasn't just an afterthought — it was a non-thought. Companies raced to get online, to sell products, to connect with customers. The attitude was simple:</p>
+
+<blockquote><strong>"Ship it. Fix it later. If we're not first, we're dead."</strong></blockquote>
+
+<p>This was the era when every vulnerability that haunts us today was born — not because engineers were stupid, but because they were in a race, and security was the finish line nobody could see.</p>
+
+<hr>
+
+<h2>The World Wide Web: Tim Berners-Lee's Gift (and Curse)</h2>
+
+<p>In 1989, a British scientist named <strong>Tim Berners-Lee</strong> at CERN (the European physics laboratory) invented the <strong>World Wide Web</strong> — three technologies that, together, made the internet accessible to everyone:</p>
+
+<h3>The Three Pillars</h3>
+
+<p>| Technology | What It Does | Security Impact |</p>
+<p>|---|---|---|</p>
+<p>| <strong>HTML</strong> | Defines the structure of web pages | Became the vector for XSS, clickjacking, HTML injection |</p>
+<p>| <strong>HTTP</strong> | Protocol for requesting and sending web pages | Plaintext — anyone can intercept traffic |</p>
+<p>| <strong>URL</strong> | Addresses for web pages | Became the vector for phishing, typosquatting, open redirects |</p>
+
+<p>Berners-Lee made a conscious decision that would shape the next 30 years: <strong>he gave the web away for free</strong>. No patents, no licenses, no royalties. Anyone could build on it.</p>
+
+<p>This openness was beautiful — it's why the web grew so fast. But it also meant:</p>
+
+<ul><li>No central authority controlled security standards</li></ul>
+<ul><li>Anyone could build a website, regardless of security knowledge</li></ul>
+<ul><li>The protocol (HTTP) was completely unencrypted by default</li></ul>
+<ul><li>There was no built-in way to verify who you were talking to</li></ul>
+
+<p>HTTP sends everything — your passwords, your credit card numbers, your private messages — as <strong>plaintext</strong>. Imagine sending all your mail on postcards instead of in envelopes. That was HTTP.</p>
+
+<p>HTTPS (the encrypted version) existed theoretically since 1994, but it wasn't widely adopted until Google forced it in <strong>2014</strong> — twenty years of plaintext internet.</p>
+
+<hr>
+
+<h2>E-Commerce Is Born: "Just Type Your Credit Card Number"</h2>
+
+<p>The race to sell things online began almost immediately:</p>
+
+<p>| Year | Company | Significance |</p>
+<p>|---|---|---|</p>
+<p>| 1994 | Amazon (books) | Jeff Bezos starts selling from his garage |</p>
+<p>| 1995 | eBay (auctions) | Person-to-person commerce online |</p>
+<p>| 1995 | Amazon goes public | The dot-com boom begins |</p>
+<p>| 1998 | PayPal founded | Online payments without sharing card numbers |</p>
+<p>| 1999 | Alibaba founded | E-commerce goes global |</p>
+
+<p>The problem was obvious: <strong>how do you securely send a credit card number over the internet?</strong></p>
+
+<p>In the early days, the answer was... you didn't, very well.</p>
+
+<h3>The SSL Story</h3>
+
+<p>In 1995, Netscape developed <strong>SSL (Secure Sockets Layer)</strong> — a protocol to encrypt the connection between your browser and a website. When you saw the little <strong>padlock icon</strong> in your browser, it meant SSL was protecting your data.</p>
+
+<p>SSL was a breakthrough, but it had problems:</p>
+
+<ol><li><strong>SSL 1.0</strong> was never released — too many security flaws</li></ol>
+<ol><li><strong>SSL 2.0</strong> (1995) had serious design vulnerabilities</li></ol>
+<ol><li><strong>SSL 3.0</strong> (1996) was better but still flawed</li></ol>
+<ol><li><strong>TLS 1.0</strong> (1999) replaced SSL — and the name changed</li></ol>
+<ol><li><strong>TLS 1.2</strong> (2008) finally got encryption right</li></ol>
+<ol><li><strong>TLS 1.3</strong> (2018) stripped out all the accumulated bad choices</li></ol>
+
+<p>It took <strong>23 years</strong> (1995–2018) to get a secure version of the protocol that protects every online transaction. During those 23 years, billions of credit card numbers were stolen via attacks on older SSL/TLS versions.</p>
+
+<h3>Attacks on SSL/TLS Over the Years</h3>
+
+<p>| Year | Attack Name | What It Did |</p>
+<p>|---|---|---|</p>
+<p>| 2009 | <strong>Renegotiation Attack</strong> | Man-in-the-middle inject commands into encrypted sessions |</p>
+<p>| 2011 | <strong>BEAST</strong> | Decrypt parts of an encrypted connection |</p>
+<p>| 2012 | <strong>CRIME</strong> | Steal session cookies by compressing encrypted traffic |</p>
+<p>| 2013 | <strong>BREACH</strong> | Extract data from HTTPS responses using compression |</p>
+<p>| 2014 | <strong>Heartbleed</strong> | Read random memory from servers running OpenSSL |</p>
+<p>| 2014 | <strong>POODLE</strong> | Force browsers to fall back to broken SSL 3.0 |</p>
+<p>| 2015 | <strong>FREAK</strong> | Force weak "export-grade" encryption that's easily broken |</p>
+<p>| 2015 | <strong>Logjam</strong> | Break Diffie-Hellman key exchange |</p>
+<p>| 2018 | <strong>ROBOT</strong> | Revive a 19-year-old attack on RSA key exchange |</p>
+
+<p>Every row in this table represents millions of dollars in stolen data. And every attack was caused by design decisions made in 1995 when speed mattered more than security.</p>
+
+<hr>
+
+<h2>The Browser Wars: Speed Over Security</h2>
+
+<p>From 1995 to 2001, <strong>Netscape Navigator</strong> and <strong>Microsoft Internet Explorer</strong> fought a vicious war for dominance. This "Browser War" had catastrophic security consequences.</p>
+
+<p>Both companies added features at breakneck speed:</p>
+
+<ul><li><strong>JavaScript</strong> (1995) — Netscape added it in <strong>10 days</strong>. Yes, the language that runs virtually every website today was designed in 10 days. By one person. Brendan Eich later admitted to numerous design compromises.</li></ul>
+<ul><li><strong>Java Applets</strong> — Run code directly in the browser</li></ul>
+<ul><li><strong>ActiveX</strong> (Microsoft) — Give websites access to your entire Windows system</li></ul>
+<ul><li><strong>Cookies</strong> (1994) — Store user data in the browser without asking</li></ul>
+
+<p>Each of these features became a massive attack vector:</p>
+
+<p>| Feature | Intended Purpose | What Attackers Used It For |</p>
+<p>|---|---|---|</p>
+<p>| <strong>JavaScript</strong> | Interactive web pages | Cross-Site Scripting (XSS), keyloggers, redirect attacks |</p>
+<p>| <strong>Java Applets</strong> | Rich applications in browser | Drive-by downloads, sandbox escapes, malware delivery |</p>
+<p>| <strong>ActiveX</strong> | Windows integration | Complete system compromise, trojan installation |</p>
+<p>| <strong>Cookies</strong> | Remember user sessions | Session hijacking, tracking, cross-site request forgery |</p>
+
+<p>ActiveX was the worst offender. It essentially gave websites the ability to run arbitrary programs on your computer with full permissions. Microsoft shipped it as a feature. Attackers saw it as a gift.</p>
+
+<div class="callout tip"><p>💡 Lesson: In the race to add features, every new capability is a new attack surface. Security is inversely proportional to feature velocity.</p></div>
+
+<hr>
+
+<h2>The Dot-Com Boom: Move Fast and Break Everything</h2>
+
+<p>Between 1995 and 2000, the internet industry experienced the greatest financial bubble in history. Billions of dollars poured into web startups.</p>
+
+<p>The mantra was: <strong>"Get big fast."</strong> Security wasn't just deprioritized — it was actively avoided because it slowed down development.</p>
+
+<h3>The Security Anti-Patterns of the Dot-Com Era</h3>
+
+<p>| Anti-Pattern | Why Companies Did It | The Security Consequence |</p>
+<p>|---|---|---|</p>
+<p>| No encryption (HTTP only) | HTTPS was slow and expensive | All user data transmitted in plaintext |</p>
+<p>| Passwords stored in plaintext | Faster to implement | Every database breach exposed all passwords |</p>
+<p>| No input validation | Extra code = slower development | SQL injection, XSS, command injection everywhere |</p>
+<p>| Admin panels with no auth | "Only we know the URL" | Attackers discovered and exploited admin panels |</p>
+<p>| No rate limiting | Might block legitimate users | Brute force attacks succeeded easily |</p>
+<p>| Shared hosting | Cheapest option | One hacked site compromised all sites on the server |</p>
+<p>| No logging or monitoring | Storage was expensive | Breaches went undetected for months or years |</p>
+
+<p>Every modern security best practice exists because someone in the 1990s learned the hard way what happens when you skip it.</p>
+
+<hr>
+
+<h2>The Birth of Web Attacks: CGI and the First Hacks</h2>
+
+<p>The first dynamic websites used <strong>CGI (Common Gateway Interface)</strong> — programs (usually Perl scripts) that generated web pages on the fly based on user input.</p>
+
+<p>The problem: nobody sanitized user input. If a website asked for your name, you could type a command instead, and the server would execute it.</p>
+
+<h3>Command Injection: The Simplest Attack</h3>
+
+<p>Imagine a website with a form that lets you "ping" a server to check if it's online:</p>
+
+<p>``<code class="inline"></p>
+<p>Enter IP address: [___________] [Ping]</p>
+</code>`<code class="inline">
+
+<p>The CGI script did something like this:</p>
+
+</code>`<code class="inline">perl
+<p>my $ip = $user_input;</p>
+<p>system("ping $ip");</p>
+</code>`<code class="inline">
+
+<p>An attacker could type:</p>
+
+</code>`<code class="inline">
+<p>8.8.8.8; cat /etc/passwd</p>
+</code>`<code class="inline">
+
+<p>The server would execute: </code>ping 8.8.8.8<code class="inline"> AND </code>cat /etc/passwd<code class="inline"> — displaying the system's password file.</p>
+
+<p>This attack — <strong>command injection</strong> — was devastatingly simple and devastatingly effective. It worked because the developer trusted user input. They never imagined someone would type a system command in a form field.</p>
+
+<h3>The Complete Web Attack Taxonomy of the 1990s</h3>
+
+<p>| Attack | Year Discovered | How It Works | Still Active in 2026? |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Command Injection</strong> | ~1993 | Injecting OS commands through input fields | Yes |</p>
+<p>| <strong>Directory Traversal</strong> | ~1994 | Using </code>../../` to access files outside the web root | Yes |</p>
+<p>| <strong>Cross-Site Scripting (XSS)</strong> | ~1996 | Injecting JavaScript into web pages viewed by others | #1 web vulnerability |</p>
+<p>| <strong>SQL Injection</strong> | ~1998 | Injecting database commands through input fields | Top 3 vulnerability |</p>
+<p>| <strong>CSRF</strong> | ~1998 | Tricking a logged-in user into performing actions | Yes |</p>
+<p>| <strong>Session Hijacking</strong> | ~1994 | Stealing session cookies to impersonate users | Yes |</p>
+<p>| <strong>Path Traversal</strong> | ~1995 | Accessing restricted directories on the server | Yes |</p>
+<p>| <strong>HTTP Response Splitting</strong> | ~1999 | Injecting headers into HTTP responses | Yes |</p>
+
+<p>Every single one of these attacks from the 1990s is still actively exploited in 2026. That's 30+ years and counting.</p>
+
+<hr>
+
+<h2>The Web's Original Sin: Trust User Input</h2>
+
+<p>If there is one lesson that the 1990s internet explosion screams louder than anything else, it's this:</p>
+
+<blockquote><strong>Never trust user input. Never. Ever. Never.</strong></blockquote>
+
+<p>Every web attack — SQL injection, XSS, command injection, CSRF, path traversal — comes down to the same root cause: <strong>the application trusted data that came from the user</strong>.</p>
+
+<p>The 1990s programmers weren't malicious or stupid. They came from a world where software ran on local machines. The "user" was someone sitting at the keyboard in the same room. In that world, you could sort of trust input.</p>
+
+<p>The web changed everything. The "user" was now an anonymous stranger on the other side of the planet, potentially running automated tools that tried millions of malicious inputs per second.</p>
+
+<p>But programming textbooks didn't update. Computer science courses didn't teach input validation. Nobody told the developers building Amazon, eBay, and Yahoo that every form field was a potential gateway for an attacker.</p>
+
+<p>This gap — between how software was built and how software was attacked — defined the 1990s. It created an entire industry (application security), spawned the OWASP Top 10, and generated trillions of dollars in losses.</p>
+
+<p>And it's still not fully fixed in 2026.</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>The web was designed for sharing information, not for security</strong> — HTTP is plaintext, HTML is injectable</li></ol>
+<ol><li><strong>Speed kills security</strong> — the dot-com boom's "ship fast" culture created every vulnerability we fight today</li></ol>
+<ol><li><strong>It took 23 years to get TLS right</strong> (1995–2018) — getting security correct is hard and slow</li></ol>
+<ol><li><strong>Every browser feature is an attack surface</strong> — JavaScript, cookies, ActiveX all became weapons</li></ol>
+<ol><li><strong>Never trust user input</strong> — this single principle prevents 80% of web application attacks</li></ol>
+
+<hr>
+
+<h2>📊 The 1990s by the Numbers</h2>
+
+<p>| Metric | Value |</p>
+<p>|---|---|</p>
+<p>| Websites in 1993 | 130 |</p>
+<p>| Websites in 2000 | 17 million |</p>
+<p>| Internet users in 1995 | 16 million |</p>
+<p>| Internet users in 2000 | 361 million |</p>
+<p>| E-commerce sales in 1998 | $2.4 billion |</p>
+<p>| Dot-com peak market cap (March 2000) | $6.7 trillion |</p>
+<p>| Dot-com crash losses | $5 trillion |</p>
+<p>| JavaScript development time | 10 days |</p>
+<p>| Years to get TLS right | 23 |</p>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>Kevin Mitnick — The Most Wanted Hacker in America</em> → How a teenage computer obsessive became the FBI's most-wanted cybercriminal, evaded capture for three years, and revealed that the most powerful hack isn't technical — it's social engineering.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 4</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

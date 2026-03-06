@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 5</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part II — The Wild West (1990s)</div>
+  <div class="chapter-num">05</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>Kevin Mitnick — The Most Wanted Hacker in America</h1>
+
+<blockquote>"I wasn't interested in money. I was interested in the puzzle. Every system was a locked door, and I had to find out what was behind it."</blockquote>
+<blockquote>— Kevin Mitnick</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: February 15, 1995 — Raleigh, North Carolina, 2:00 AM</h2>
+
+<p>FBI agents surround a small apartment complex. Inside, a man named Kevin Mitnick sits in front of a computer, monitoring a cellular scanner. He's been on the run for <strong>two and a half years</strong> — the FBI's most wanted computer criminal.</p>
+
+<p>Mitnick doesn't know it, but a Japanese computer scientist named <strong>Tsutomu Shimomura</strong> — the man whose computer Mitnick hacked — has been tracking him for weeks. Shimomura used a technique called <strong>cellular direction finding</strong> to pinpoint Mitnick's location by triangulating the signals from his cell phone modem.</p>
+
+<p>The FBI kicks down the door. Mitnick is arrested.</p>
+
+<p>The media goes wild. The New York Times runs front-page stories. Hollywood makes a movie. But the truth about Kevin Mitnick is stranger than the headlines. He wasn't a criminal mastermind with sophisticated technical skills. He was something far more dangerous:</p>
+
+<strong>He was a social engineer.</strong>
+
+<p>Mitnick's greatest weapon wasn't his computer. It was his voice. His ability to call someone, pretend to be someone else, and convince them to hand over passwords, system access, and confidential information. He could hack humans better than he could hack machines.</p>
+
+<p>And that made him nearly unstoppable.</p>
+
+<hr>
+
+<h2>Early Life: The Hacker Is Born</h2>
+
+<p>Kevin David Mitnick was born in <strong>1963</strong> in Los Angeles. His parents divorced when he was three. He was raised by his mother, a waitress, who worked long hours. Left alone for much of his childhood, Mitnick became obsessed with two things: <strong>magic tricks</strong> and <strong>the telephone system</strong>.</p>
+
+<p>At age <strong>12</strong>, he used <strong>social engineering</strong> for the first time. He wanted to ride the Los Angeles bus system for free. So he:</p>
+
+<ol><li>Found a bus transfer punch in a dumpster behind the bus depot</li></ol>
+<ol><li>Watched bus drivers to learn the punch patterns</li></ol>
+<ol><li>Bought blank transfer slips at a stationery store</li></ol>
+<ol><li>Created his own bus transfers</li></ol>
+
+<p>He rode the bus for free for years. No computer was involved. It was pure social engineering — understanding a system, finding its weakness (<em>trust in the transfer system</em>), and exploiting it with confidence and knowledge.</p>
+
+<p>At <strong>16</strong>, Mitnick began phreaking — hacking the phone system, just like Captain Crunch and the phone phreaks before him. But Mitnick quickly moved beyond phones to computers.</p>
+
+<p>His first major hack was breaking into <strong>DEC (Digital Equipment Corporation)</strong>'s network. He didn't exploit a software vulnerability. He called DEC employees, pretended to be a fellow employee, and asked them for passwords. They gave them to him.</p>
+
+<hr>
+
+<h2>Social Engineering: Hacking the Human Operating System</h2>
+
+<p>Kevin Mitnick's most important contribution to cybersecurity isn't a tool or a technique. It's a <strong>concept</strong>: that humans are the weakest link in any security system.</p>
+
+<p>Mitnick developed social engineering into an art form. Here are his core techniques:</p>
+
+<h3>Technique 1: Pretexting</h3>
+
+<p>Create a believable fake scenario (a "pretext") before making the request.</p>
+
+<strong>Example</strong>: Mitnick would call a company's IT help desk:
+
+<em>"Hi, this is Dave from the accounting department. I'm on a deadline for the quarterly report and I've been locked out of my account. I know this is embarrassing, but could you reset my password? My manager, Sarah Chen, said to call you directly."</em>
+
+<p>By mentioning a specific department, a deadline, and a manager's name (found through the company directory), the help desk employee believed the story and reset the password.</p>
+
+<h3>Technique 2: Authority</h3>
+
+<p>Impersonate someone with authority to make the request seem legitimate.</p>
+
+<strong>Example</strong>: Mitnick called Pacific Bell's switching center, pretending to be a phone company technician:
+
+<em>"This is Mark Thompson from the central office. We're doing switch maintenance tonight and I need you to forward these numbers to this test line."</em>
+
+<p>The operator complied because "technicians from the central office" had authority.</p>
+
+<h3>Technique 3: Reciprocity</h3>
+
+<p>Help someone first, then ask for something in return.</p>
+
+<strong>Example</strong>: Mitnick would call a company's front desk and help them solve a small technical problem (like resetting their email). Then he'd say:
+
+<em>"Hey, while I'm at it, I need to test something on the main server. Could you read me the admin password from that sticky note on your monitor?"</em>
+
+<p>Having just been helped, the person felt obligated to help back.</p>
+
+<h3>Technique 4: Urgency</h3>
+
+<p>Create time pressure so people bypass security procedures.</p>
+
+<em>"The CEO is about to go into a meeting with investors and needs access to this file RIGHT NOW. Can you please just email it to this address? I know it's not standard procedure, but this is an emergency."</em>
+
+<h3>The Social Engineering Attack Matrix</h3>
+
+<p>| Technique | Exploits | Success Rate | Hard to Detect? |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Pretexting</strong> | Trust in plausible scenarios | Very high | Yes — no technical evidence |</p>
+<p>| <strong>Impersonation</strong> | Deference to authority | High | Yes — voice calls leave no logs |</p>
+<p>| <strong>Reciprocity</strong> | Social obligation | High | Yes — feels like normal interaction |</p>
+<p>| <strong>Urgency</strong> | Panic overrides procedures | Very high | Medium — patterns can be spotted |</p>
+<p>| <strong>Tailgating</strong> | Politeness (holding doors) | Very high | Medium — physical security cameras |</p>
+<p>| <strong>Dumpster Diving</strong> | Lazy document disposal | High | No — go through their trash |</p>
+<p>| <strong>Shoulder Surfing</strong> | Physical proximity | Medium | Low — but requires physical presence |</p>
+<p>| <strong>Baiting</strong> | Curiosity (USB drops) | High | Medium — can be caught by endpoint tools |</p>
+
+<div class="callout info"><p>📌 In 2026, social engineering remains the #1 initial attack vector. Over <strong>90% of successful breaches</strong> start with a human being tricked — not a software vulnerability being exploited.</p></div>
+
+<hr>
+
+<h2>The Trail of Hacks: What Mitnick Actually Did</h2>
+
+<p>Between 1988 and 1995, Mitnick broke into the networks of some of the world's most powerful technology companies:</p>
+
+<p>| Target | What He Stole | How He Got In |</p>
+<p>|---|---|---|</p>
+<p>| <strong>DEC (Digital Equipment Corp)</strong> | Source code for VMS operating system | Social engineering — called employees for passwords |</p>
+<p>| <strong>Pacific Bell</strong> | Wiretapping capabilities | Impersonated phone technicians |</p>
+<p>| <strong>Motorola</strong> | Mobile phone firmware source code | Social engineering + technical exploits |</p>
+<p>| <strong>Nokia</strong> | Cell phone software | Called Nokia engineers posing as a colleague |</p>
+<p>| <strong>Sun Microsystems</strong> | Solaris operating system source code | Combination of social engineering and network exploits |</p>
+<p>| <strong>Fujitsu</strong> | Internal tools and documentation | Phished credentials |</p>
+<p>| <strong>NEC</strong> | Source code | Social engineering |</p>
+<p>| <strong>Novell</strong> | NetWare source code | Rsh trust exploitation |</p>
+
+<p>Mitnick didn't sell what he stole. He didn't use it for financial gain. He collected source code the way other people collect stamps. He just wanted to see how things worked.</p>
+
+<p>But the law didn't care about motivation. Unauthorized access was unauthorized access.</p>
+
+<hr>
+
+<h2>The Manhunt: FBI vs. The Ghost</h2>
+
+<p>In 1992, Mitnick was placed on probation for his earlier hacking. When authorities discovered he was still breaking into systems, a warrant was issued for his arrest. Mitnick fled.</p>
+
+<p>For <strong>two and a half years</strong> (1992–1995), Mitnick lived as a fugitive. He used:</p>
+
+<ul><li><strong>Cloned cell phones</strong> — changed his phone identity weekly</li></ul>
+<ul><li><strong>Fake IDs</strong> — multiple driver's licenses under false names</li></ul>
+<ul><li><strong>Social engineering</strong> — manipulated police databases to track his own warrant</li></ul>
+<ul><li><strong>Counter-surveillance</strong> — monitored FBI communications about his case</li></ul>
+
+<p>The most incredible detail: Mitnick was listening to the FBI agents who were hunting him. He hacked into their communications and knew their search patterns. When they were getting close, he moved.</p>
+
+<p>The FBI finally caught a break when Mitnick hacked the wrong person.</p>
+
+<hr>
+
+<h2>Tsutomu Shimomura: The Hunter</h2>
+
+<p>On Christmas Day 1994, Mitnick broke into the home computer of <strong>Tsutomu Shimomura</strong>, a renowned computer security expert at the San Diego Supercomputer Center.</p>
+
+<p>Mitnick used a technique called <strong>IP spoofing</strong> combined with <strong>TCP sequence prediction</strong> — a technically sophisticated attack that hijacked a trusted connection between Shimomura's computers.</p>
+
+<h3>The IP Spoofing Attack (Simplified)</h3>
+
+<ol><li>Shimomura had two computers (A and B) that trusted each other</li></ol>
+<ol><li>Mitnick sent a flood of connection requests to Computer A (a <strong>SYN flood</strong> — the first documented use in the wild)</li></ol>
+<ol><li>While A was drowning in fake connections, Mitnick sent packets to Computer B <strong>pretending to be Computer A</strong></li></ol>
+<ol><li>Computer B thought it was talking to its trusted friend A</li></ol>
+<ol><li>Mitnick used this trust to execute commands on Computer B</li></ol>
+
+<p>This was one of the first real-world demonstrations of:</p>
+<ul><li><strong>IP Spoofing</strong> — faking the source address of network packets</li></ul>
+<ul><li><strong>SYN Flood</strong> — overwhelming a system with half-open connections</li></ul>
+<ul><li><strong>TCP Sequence Prediction</strong> — guessing the next number in a sequence to hijack a connection</li></ul>
+
+<p>Shimomura took it personally. He dropped everything and dedicated himself to tracking Mitnick. Using cellular signal analysis equipment, he traced Mitnick's cell phone modem to an apartment complex in Raleigh, North Carolina.</p>
+
+<p>On February 15, 1995, the FBI arrested Kevin Mitnick.</p>
+
+<hr>
+
+<h2>The Trial and the Free Kevin Movement</h2>
+
+<p>Mitnick was held in federal prison for <strong>four and a half years</strong> before trial — longer than most convicted murderers. The prosecutor argued that Mitnick was so dangerous that if given access to a phone, he could "whistle nuclear launch codes."</p>
+
+<p>This was absurd, and the tech community knew it. A <strong>"Free Kevin"</strong> movement erupted. Hackers protested, websites were launched, and the case became a symbol of how the legal system misunderstood computer crime.</p>
+
+<p>Mitnick eventually pleaded guilty to five felony counts. His total sentence:</p>
+<ul><li><strong>5 years in prison</strong> (including time served)</li></ul>
+<ul><li><strong>3 years supervised release</strong> — during which he was <strong>banned from using computers or the internet</strong></li></ul>
+
+<p>In 2000, Mitnick was released. In 2003, he was finally allowed to use a computer again.</p>
+
+<p>He became a <strong>cybersecurity consultant</strong>. The FBI's most wanted hacker became a consultant who helped the FBI and Fortune 500 companies <strong>defend against hackers like him</strong>. He founded a security consulting firm, wrote best-selling books, and became one of the most sought-after security speakers in the world.</p>
+
+<div class="callout warning"><p>⚠️ Kevin Mitnick passed away on <strong>July 16, 2023</strong>, at the age of 59, from pancreatic cancer. The cybersecurity community mourned the loss of one of its most complex and influential figures.</p></div>
+
+<hr>
+
+<h2>What Mitnick Taught the World</h2>
+
+<h3>1. Humans Are the Vulnerability</h3>
+
+<p>Before Mitnick, cybersecurity was purely technical — firewalls, encryption, access controls. Mitnick proved that you could bypass every technical control by simply <strong>calling someone and asking for the password</strong>.</p>
+
+<p>This realization created an entire field: <strong>security awareness training</strong>. Today, every major organization trains its employees to recognize social engineering attacks. Programs like KnowBe4, Proofpoint Security Awareness, and SANS security training exist because of what Mitnick demonstrated.</p>
+
+<h3>2. Social Engineering + Technical Skills = Devastating</h3>
+
+<p>Mitnick wasn't just a smooth talker. He combined social engineering with genuine technical ability. He could get a password through a phone call, then use it to exploit a network vulnerability that required deep Unix knowledge.</p>
+
+<p>This combination — human manipulation plus technical exploitation — is exactly how modern APT groups operate. The most dangerous attackers in 2026 (nation-state groups like APT28, Lazarus Group) use social engineering (phishing emails) to gain initial access, then pivot to technical exploitation.</p>
+
+<h3>3. Motivation Matters — But the Law Doesn't Care</h3>
+
+<p>Mitnick wasn't motivated by money. He was motivated by curiosity and the challenge. But the Computer Fraud and Abuse Act doesn't have a "curiosity" exception. Unauthorized access is unauthorized access, regardless of intent.</p>
+
+<p>This tension between <strong>curiosity and crime</strong> remains unresolved. Bug bounty programs (HackerOne, Bugcrowd) attempt to channel curiosity legally — giving hackers permission to look for vulnerabilities in exchange for rewards.</p>
+
+<hr>
+
+<h2>The Social Engineering Attacks of Today</h2>
+
+<p>Mitnick's techniques didn't die with the dial-up era. They evolved:</p>
+
+<p>| Mitnick's Era (1990s) | Modern Version (2026) |</p>
+<p>|---|---|</p>
+<p>| Phone calls to help desks | Phishing emails to millions |</p>
+<p>| Pretending to be a coworker | Deepfake video calls impersonating the CEO |</p>
+<p>| Dumpster diving for info | LinkedIn/Facebook OSINT gathering |</p>
+<p>| Fake ID badges for physical access | Spoofed email domains passing SPF/DKIM |</p>
+<p>| One target at a time | Automated campaigns targeting thousands |</p>
+<p>| Voice impersonation | AI voice cloning from a 3-second sample |</p>
+
+<p>The scale changed. The psychology didn't. Every social engineering attack still exploits the same human tendencies Mitnick understood in the 1990s: trust, authority, urgency, curiosity, and helpfulness.</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>Social engineering is the most powerful attack</strong> — it bypasses every technical defense</li></ol>
+<ol><li><strong>People are the weakest link</strong> — and no firewall can protect against a convincing phone call</li></ol>
+<ol><li><strong>The best hackers combine social and technical skills</strong> — this is how APTs operate today</li></ol>
+<ol><li><strong>Motivation doesn't matter legally</strong> — unauthorized access is a crime regardless of intent</li></ol>
+<ol><li><strong>Security awareness training exists because of Mitnick</strong> — every phishing simulation owes its existence to his work</li></ol>
+
+<hr>
+
+<h2>📊 Kevin Mitnick Timeline</h2>
+
+<p>| Year | Event |</p>
+<p>|---|---|</p>
+<p>| 1963 | Born in Los Angeles |</p>
+<p>| 1975 | First social engineering hack (bus transfers, age 12) |</p>
+<p>| 1979 | Breaks into DEC at age 16 |</p>
+<p>| 1988 | Convicted for hacking DEC, 12 months in prison |</p>
+<p>| 1992 | Arrest warrant issued; Mitnick becomes a fugitive |</p>
+<p>| 1994 | Hacks Tsutomu Shimomura's computer on Christmas Day |</p>
+<p>| 1995 | Arrested by FBI in Raleigh, North Carolina |</p>
+<p>| 1999 | Pleads guilty to 5 felony counts |</p>
+<p>| 2000 | Released from prison |</p>
+<p>| 2002 | Publishes "The Art of Deception" |</p>
+<p>| 2003 | Allowed to use computers again; starts consulting firm |</p>
+<p>| 2023 | Passes away at age 59 |</p>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>The Rise of Script Kiddies & Virus Culture</em> → The ILOVEYOU worm causes $10 billion in damage from a love letter email. The Melissa virus crashes email servers worldwide. A teenager infects the internet because — well — because he could. The golden age of digital vandalism begins.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 5</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

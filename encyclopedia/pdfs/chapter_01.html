@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 1</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part I — The Genesis (1960s–1970s)</div>
+  <div class="chapter-num">01</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>The Birth of Connected Machines</h1>
+
+<blockquote>"It all started with a crash — the first message ever sent across a network never even finished."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: October 29, 1969 — UCLA, Los Angeles</h2>
+
+<p>Picture this. It's a warm October evening in Los Angeles. Inside a cramped lab at UCLA, a young programmer named Charley Kline sits in front of a machine the size of a refrigerator. His professor, Leonard Kleinrock, watches over his shoulder.</p>
+
+<p>Their mission is simple: send the word "LOGIN" to a computer 350 miles away at Stanford Research Institute.</p>
+
+<p>Charley types <strong>L</strong>. It goes through.</p>
+
+<p>He types <strong>O</strong>. It goes through.</p>
+
+<p>He types <strong>G</strong> — and the system crashes.</p>
+
+<p>The first message ever sent over what would become the internet was <strong>"LO"</strong> — as in "Lo and behold." An accidental prophecy for what was coming.</p>
+
+<p>That night, with those two letters, the world changed forever. But nobody in that room — not Charley, not Professor Kleinrock — imagined that the network they just created would one day be the most attacked, hacked, defended, and fought-over piece of technology in human history.</p>
+
+<p>This is where our story begins.</p>
+
+<hr>
+
+<h2>The Problem Before the Internet: Isolation</h2>
+
+<p>To understand why the internet was built, you need to understand the world before it.</p>
+
+<p>In the 1960s, computers were <strong>islands</strong>. Each one sat alone in a room, connected to nothing but the power outlet. If you wanted to share data between two computers, you physically carried a tape or a stack of punch cards from one machine to another.</p>
+
+<p>The US military had a terrifying problem on its hands: <strong>nuclear war</strong>.</p>
+
+<p>During the Cold War, America's entire communication system — phones, telegraphs, military lines — ran through a few central hubs. If the Soviet Union dropped a nuclear bomb on one of those hubs, the entire country would go silent. Generals couldn't talk to each other. Launch orders couldn't be sent. Chaos.</p>
+
+<p>The Department of Defense asked a simple but world-changing question:</p>
+
+<blockquote><strong>"Can we build a communication network that survives a nuclear attack?"</strong></blockquote>
+
+<p>The answer was yes — but it required inventing something completely new.</p>
+
+<hr>
+
+<h2>ARPANET: The Grandfather of the Internet</h2>
+
+<p>In 1966, the <strong>Advanced Research Projects Agency (ARPA)</strong> — a branch of the US Department of Defense — funded a project to build this indestructible network.</p>
+
+<p>The key breakthrough came from a Welsh scientist named <strong>Paul Baran</strong> and an American computer scientist named <strong>Leonard Kleinrock</strong>. They independently invented the same revolutionary idea: <strong>packet switching</strong>.</p>
+
+<h3>How Packet Switching Changed Everything</h3>
+
+<p>Before packet switching, all communication used <strong>circuit switching</strong> — like a phone call. When you called someone, a dedicated wire connected you point-to-point. If that wire was cut, the call was dead.</p>
+
+<p>Packet switching was radically different:</p>
+
+<p>| Feature | Circuit Switching (Old) | Packet Switching (New) |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Connection</strong> | Dedicated wire for each call | Shared network, no dedicated line |</p>
+<p>| <strong>If a link breaks</strong> | Call drops, communication lost | Data takes a different route automatically |</p>
+<p>| <strong>Efficiency</strong> | Wastes bandwidth when you're silent | Only uses bandwidth when sending data |</p>
+<p>| <strong>Survives attack?</strong> | No — cut the wire, kill the call | Yes — data routes around damage |</p>
+
+<p>This is the single most important concept in cyber history: <strong>there is no central point of failure</strong>. Data finds its own way through the network, like water flowing downhill — if you block one path, it flows around.</p>
+
+<h3>The First Four Nodes</h3>
+
+<p>On October 29, 1969, ARPANET went live with four computers connected across California and Utah:</p>
+
+<ol><li><strong>UCLA</strong> (Los Angeles)</li></ol>
+<ol><li><strong>Stanford Research Institute</strong> (Menlo Park)</li></ol>
+<ol><li><strong>UC Santa Barbara</strong></li></ol>
+<ol><li><strong>University of Utah</strong></li></ol>
+
+<p>That's it. The entire internet was four machines.</p>
+
+<p>By 1971, ARPANET had grown to 15 nodes. By 1973, it connected to computers in England and Norway — the network was going international.</p>
+
+<hr>
+
+<h2>The First Email — And the First Spam</h2>
+
+<p>In 1971, a programmer named <strong>Ray Tomlinson</strong> did something that seems obvious today: he invented email.</p>
+
+<p>He needed a way to separate the user's name from the computer's name in an address. He looked at his keyboard, spotted the <strong>@</strong> symbol (which nobody used for anything), and typed the first email address in history:</p>
+
+<code class="inline">tomlinson@bbn-tenexa</code>
+
+<p>The first email was sent between two computers sitting literally <strong>right next to each other</strong> in the same room. When asked what the first message said, Tomlinson admitted: "Something like QWERTYUIOP. Totally forgettable."</p>
+
+<p>But email changed everything. Suddenly, humans could communicate across a network instantly. And it took only <strong>seven years</strong> for someone to abuse it.</p>
+
+<p>In <strong>1978</strong>, a marketing manager named <strong>Gary Thuerk</strong> sent the first unsolicited mass email — an advertisement for DEC computers — to 393 ARPANET users. People were furious. The backlash was immediate and intense.</p>
+
+<p>The first spam email was born. And with it, a lesson that would echo through cybersecurity history:</p>
+
+<blockquote><strong>Every tool built for good will eventually be used for harm.</strong></blockquote>
+
+<hr>
+
+<h2>Why Nobody Thought About Security</h2>
+
+<p>Here's what's crucial to understand about this era: <strong>security was not a concern</strong>.</p>
+
+<p>The people building ARPANET were researchers. Scientists. Academics. They trusted each other completely. The network was designed for <strong>collaboration</strong>, not <strong>protection</strong>.</p>
+
+<p>There were no passwords on the first ARPANET systems. There were no firewalls. There was no encryption. The first protocols — NCP (Network Control Protocol), and later TCP/IP — were designed to be <strong>open and transparent</strong>, because the entire point was to share information freely.</p>
+
+<p>This was not stupidity. It was a design philosophy:</p>
+
+<blockquote><strong>"We are building a network for trusted colleagues to share research. Why would anyone want to break in?"</strong></blockquote>
+
+<p>This assumption — that users can be trusted — would become the <strong>original sin of cybersecurity</strong>. Every breach, every hack, every virus, every ransomware attack that followed over the next 50 years can trace its roots back to this single, innocent decision.</p>
+
+<h3>The Trust Model vs. The Real World</h3>
+
+<p>| What Designers Assumed | What Actually Happened |</p>
+<p>|---|---|</p>
+<p>| All users are trusted researchers | Anonymous strangers joined the network |</p>
+<p>| No one would send malicious data | Viruses, worms, and trojans appeared |</p>
+<p>| The network is too small to attack | The network grew to billions of devices |</p>
+<p>| Physical access controls are enough | Remote attacks from anywhere became possible |</p>
+<p>| Protocols don't need encryption | Everything was intercepted and manipulated |</p>
+
+<p>Every row in this table became a multi-billion-dollar security industry. But in the 1960s and 1970s, none of this existed yet. The garden was still innocent.</p>
+
+<hr>
+
+<h2>The First "Hackers" — Not What You Think</h2>
+
+<p>The word <strong>"hacker"</strong> didn't originally mean criminal. It was a badge of honor.</p>
+
+<p>At MIT in the 1960s, a group of students in the <strong>Tech Model Railroad Club (TMRC)</strong> used the word "hack" to describe an elegant, clever solution to a technical problem. Making a train run on a track designed for a different signal? That was a "hack." Rewiring a phone system to play music? A "beautiful hack."</p>
+
+<p>These early hackers valued:</p>
+
+<ul><li><strong>Curiosity</strong> — exploring how things work</li></ul>
+<ul><li><strong>Cleverness</strong> — finding unexpected solutions</li></ul>
+<ul><li><strong>Sharing</strong> — showing your hacks to others</li></ul>
+<ul><li><strong>Access</strong> — information should be free</li></ul>
+
+<p>This <strong>hacker ethic</strong> was published by MIT's Steven Levy in 1984 and included these principles:</p>
+
+<ol><li>Access to computers should be unlimited and total</li></ol>
+<ol><li>All information should be free</li></ol>
+<ol><li>Mistrust authority — promote decentralization</li></ol>
+<ol><li>Hackers should be judged by their hacking, not by race, age, or position</li></ol>
+<ol><li>You can create art and beauty on a computer</li></ol>
+<ol><li>Computers can change your life for the better</li></ol>
+
+<p>Beautiful ideals. But principles designed for a trusted community don't scale to a world with billions of anonymous users and organized crime syndicates.</p>
+
+<p>The transformation from "hacker as hero" to "hacker as criminal" is the central tension of our entire story.</p>
+
+<hr>
+
+<h2>TCP/IP: The Language That Connected the World</h2>
+
+<p>By the mid-1970s, ARPANET was growing, but it had a problem: different networks used different protocols. They couldn't talk to each other. It was like having phones that only worked within one city.</p>
+
+<p>In 1974, two computer scientists — <strong>Vint Cerf</strong> and <strong>Bob Kahn</strong> — published a paper proposing a universal language for networks: <strong>TCP/IP</strong> (Transmission Control Protocol / Internet Protocol).</p>
+
+<h3>How TCP/IP Works (Simply)</h3>
+
+<p>Think of sending a letter through the postal system:</p>
+
+<ol><li><strong>You write a letter</strong> (your data)</li></ol>
+<ol><li><strong>You put it in an envelope</strong> with the recipient's address (IP adds the destination address)</li></ol>
+<ol><li><strong>The postal service breaks it into smaller parcels</strong> if it's too big (TCP splits data into packets)</li></ol>
+<ol><li><strong>Each parcel might travel different routes</strong> (packets take different paths through the network)</li></ol>
+<ol><li><strong>The recipient reassembles all parcels</strong> in the right order (TCP reassembles packets)</li></ol>
+<ol><li><strong>If a parcel gets lost, you resend it</strong> (TCP requests retransmission)</li></ol>
+
+<p>The genius of TCP/IP was that it <strong>didn't care what the underlying network was</strong>. Ethernet, radio, satellite, phone line — it worked on all of them. This made it possible to connect any network to any other network.</p>
+
+<p>In 1983, ARPANET officially switched from NCP to TCP/IP. This moment — <strong>January 1, 1983</strong> — is considered the <strong>birthday of the internet</strong>.</p>
+
+<h3>The Security Problem with TCP/IP</h3>
+
+<p>TCP/IP was designed for <strong>reliability</strong>, not <strong>security</strong>.</p>
+
+<ul><li><strong>IP addresses are visible</strong> — anyone on the network can see where packets are going</li></ul>
+<ul><li><strong>Data travels in plaintext</strong> — anyone between sender and receiver can read the content</li></ul>
+<ul><li><strong>No authentication</strong> — there's no built-in way to verify who sent a packet</li></ul>
+<ul><li><strong>Addresses can be faked</strong> — IP spoofing became trivially easy</li></ul>
+
+<p>These design decisions seemed harmless in 1974. By 2024, they were costing the world <strong>$8 trillion per year</strong> in cybercrime damages.</p>
+
+<hr>
+
+<h2>The Password — Humanity's First (Terrible) Security Tool</h2>
+
+<p>The very first computer password was created in <strong>1961</strong> at MIT, for the <strong>Compatible Time-Sharing System (CTSS)</strong>.</p>
+
+<p>The problem was simple: multiple researchers shared one computer. They each had private files. How do you prevent one person from reading another's files?</p>
+
+<p>The solution: require users to type a secret word before accessing their files.</p>
+
+<p>It sounded perfect. It lasted about one year.</p>
+
+<p>In <strong>1962</strong>, a researcher named <strong>Allan Scherr</strong> wanted more computer time than his 4-hour weekly allowance. So he figured out how to print the master password file. He shared the passwords with his friends, and they all logged in as other users to steal extra time.</p>
+
+<p>The first password was hacked within a year of its creation.</p>
+
+<p>And yet, in 2026, passwords remain the primary security mechanism for billions of accounts. The original bad idea became the permanent bad idea.</p>
+
+<h3>Why Passwords Are Terrible (A Timeline)</h3>
+
+<p>| Year | Problem | What Happened |</p>
+<p>|---|---|---|</p>
+<p>| 1962 | First password theft | Allan Scherr printed the password file at MIT |</p>
+<p>| 1988 | Dictionary attacks | Morris Worm guessed common passwords to spread |</p>
+<p>| 2004 | Phishing at scale | Fake emails tricked users into typing passwords on fake websites |</p>
+<p>| 2012 | LinkedIn breach | 6.5 million hashed passwords leaked and cracked |</p>
+<p>| 2013 | Yahoo breach | 3 billion passwords stolen |</p>
+<p>| 2016 | Credential stuffing | Attackers automated trying leaked passwords across all sites |</p>
+<p>| 2020 | SolarWinds | Password was literally "solarwinds123" |</p>
+<p>| 2024 | AI-powered cracking | GPUs can try 100 billion passwords per second |</p>
+<p>| 2025 | Passkeys emerge | Apple, Google, Microsoft finally move beyond passwords |</p>
+
+<p>Every decade, we learn passwords are broken. Every decade, we keep using them. This pattern of knowing the solution but not implementing it is a recurring theme in cybersecurity history.</p>
+
+<hr>
+
+<h2>The Seeds of Danger: What Was Growing</h2>
+
+<p>By the end of the 1970s, the ingredients for every future cyber disaster were already in place:</p>
+
+<ol><li><strong>A network designed for trust</strong> — no built-in security</li></ol>
+<ol><li><strong>Protocols that don't encrypt</strong> — anyone can eavesdrop</li></ol>
+<ol><li><strong>Passwords as the only defense</strong> — already proven breakable</li></ol>
+<ol><li><strong>A growing community of curious hackers</strong> — some would turn criminal</li></ol>
+<ol><li><strong>No laws against computer crime</strong> — it wasn't illegal yet</li></ol>
+
+<p>The 1960s and 1970s were the Garden of Eden. Innocence. Trust. Open collaboration. Beautiful ideals about information freedom.</p>
+
+<p>But the serpent was already in the garden. The same openness that made the network powerful also made it vulnerable. The same curiosity that drove hackers to build also drove them to break.</p>
+
+<p>In the next chapter, we'll meet the <strong>Phone Phreaks</strong> — a group of teenagers and misfits who discovered that the entire telephone system could be hacked with a toy whistle from a cereal box. Among them: two young men named Steve Wozniak and Steve Jobs, who would go on to found Apple Computer.</p>
+
+<p>The age of innocence was about to end.</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>The internet was built for trust</strong>, not security — this is the root cause of most cyber problems</li></ol>
+<ol><li><strong>Packet switching</strong> means there's no central point to defend (or attack) — a double-edged sword</li></ol>
+<ol><li><strong>Every useful technology gets weaponized</strong> — email became spam, networks became attack surfaces</li></ol>
+<ol><li><strong>The first password was hacked within a year</strong> — and we're still using passwords 60 years later</li></ol>
+<ol><li><strong>TCP/IP was designed for reliability, not security</strong> — encryption was added decades later as an afterthought</li></ol>
+
+<hr>
+
+<h2>📊 Chapter Timeline</h2>
+
+<p>| Year | Event | Significance |</p>
+<p>|---|---|---|</p>
+<p>| 1961 | First password created at MIT | The beginning of access control |</p>
+<p>| 1962 | First password hacked | The beginning of cybercrime (sort of) |</p>
+<p>| 1966 | ARPA funds network research | Government investment creates the internet |</p>
+<p>| 1969 | ARPANET goes live (4 nodes) | The internet is born |</p>
+<p>| 1971 | First email sent | Instant human communication over networks |</p>
+<p>| 1974 | TCP/IP proposed | The universal language of the internet |</p>
+<p>| 1978 | First spam email | Every tool gets abused |</p>
+<p>| 1983 | ARPANET switches to TCP/IP | The modern internet begins |</p>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>The First Hackers — Phone Phreaks</em> → How a toy whistle from a cereal box let teenagers make free phone calls worldwide, and how two of them went on to create the most valuable company in the world.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 1</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

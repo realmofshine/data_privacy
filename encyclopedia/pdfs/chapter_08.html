@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 8</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part III — The Awakening (2000s)</div>
+  <div class="chapter-num">08</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>The First Cyber Wars — When Nations Started Hacking Nations</h1>
+
+<blockquote>"In 2007, an entire country went offline. Not because of an earthquake or a hurricane — because of a cyber attack. The age of digital warfare had begun."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: April 27, 2007 — Tallinn, Estonia</h2>
+
+<p>Estonia is one of the most digitally advanced countries in the world. Estonians vote online, pay taxes online, sign legal documents with digital IDs, and access government services through a paperless e-government system. The country calls itself "e-Estonia."</p>
+
+<p>On April 27, the Estonian government relocates a Soviet-era bronze soldier statue from the center of Tallinn. Russia objects furiously. Riots break out among Estonian Russians.</p>
+
+<p>And then, at exactly midnight, the digital bombardment begins.</p>
+
+<p>A massive wave of traffic — millions of requests per second — slams into Estonian government websites, banks, media outlets, and telecommunications networks. This is a <strong>Distributed Denial of Service (DDoS)</strong> attack on a scale never seen before.</p>
+
+<p>For three weeks:</p>
+<ul><li><strong>Parliament's website</strong>: Offline</li></ul>
+<ul><li><strong>Government email</strong>: Offline</li></ul>
+<ul><li><strong>Banks</strong>: Online banking disabled for days</li></ul>
+<ul><li><strong>Media</strong>: Major news sites unreachable</li></ul>
+<ul><li><strong>Emergency services</strong>: Disrupted</li></ul>
+
+<p>Estonia, one of the most connected nations on Earth, is effectively <strong>disconnected from the internet</strong>.</p>
+
+<p>This is the first documented <strong>cyber attack against a nation-state</strong>. NATO sends cyber defense experts. International law scholars scramble to figure out: Is this an act of war? Who is responsible? What does international law say about digital attacks?</p>
+
+<p>The answer to all three questions: nobody knew.</p>
+
+<hr>
+
+<h2>The Evolution of State-Sponsored Hacking</h2>
+
+<p>Before Estonia, there were warning signs that governments were using hackers as weapons:</p>
+
+<h3>Moonlight Maze (1998–2000)</h3>
+
+<strong>What happened</strong>: For nearly two years, an unknown attacker systematically infiltrated U.S. military networks, Department of Energy computers, NASA systems, and university research networks.
+
+<strong>What was stolen</strong>: Classified military maps, troop configurations, hardware designs, encryption algorithms — thousands of documents totaling <strong>terabytes of data</strong>.
+
+<strong>How it worked</strong>:
+<ol><li>Attackers gained access through vulnerabilities in Sun Solaris and Unix systems</li></ol>
+<ol><li>Used compromised university computers as "hop points" to hide their origin</li></ol>
+<ol><li>Operated during Moscow business hours</li></ol>
+<ol><li>Used a specific toolset traced to Russian IP addresses</li></ol>
+
+<strong>Who was responsible</strong>: Strong indicators pointed to Russian intelligence (later linked to <strong>Turla/APT group</strong>), but formal attribution was never publicly confirmed.
+
+<strong>Impact</strong>: First documented large-scale state-sponsored cyber espionage operation.
+
+<h3>Titan Rain (2003–2006)</h3>
+
+<strong>What happened</strong>: A coordinated campaign compromised systems at Lockheed Martin, Sandia National Laboratories, NASA, and the U.S. Army.
+
+<strong>What was stolen</strong>: Massive amounts of military R&D data, particularly related to aerospace and defense technologies.
+
+<strong>How it worked</strong>:
+<ol><li>Targeted spear-phishing emails sent to defense contractors</li></ol>
+<ol><li>Zero-day exploits in widely-used software</li></ol>
+<ol><li>Data exfiltrated slowly over months to avoid detection</li></ol>
+<ol><li>Operation conducted with military discipline — on schedule, methodical</li></ol>
+
+<strong>Who was responsible</strong>: U.S. intelligence attributed the attacks to China's People's Liberation Army (PLA), specifically <strong>Unit 61398</strong> — a military unit dedicated to cyber operations. China denied involvement.
+
+<strong>Impact</strong>: The U.S. government realized that cyber espionage was not a future threat — it was happening NOW, at industrial scale.
+
+<hr>
+
+<h2>Estonia Under Attack: The Anatomy of a National DDoS</h2>
+
+<p>The Estonia attack was a playbook for future cyber conflicts. Here's exactly how it worked:</p>
+
+<h3>Phase 1: Hacktivism (Days 1-3)</h3>
+<ul><li>"Patriotic" Russian hackers shared simple DDoS instructions on forums</li></ul>
+<ul><li>Basic ping floods and HTTP requests from thousands of individual computers</li></ul>
+<ul><li>Easy to identify, relatively easy to block</li></ul>
+
+<h3>Phase 2: Botnets (Days 4-14)</h3>
+<ul><li>Sophisticated <strong>botnets</strong> — networks of thousands of infected computers — joined the attack</li></ul>
+<ul><li>Traffic came from 75+ countries (the infected computers were worldwide)</li></ul>
+<ul><li>Volume: up to <strong>4 million packets per second</strong></li></ul>
+<ul><li>Attack targets rotated to overwhelm different systems</li></ul>
+
+<h3>Phase 3: Coordinated Assault (Days 14-21)</h3>
+<ul><li>Attacks timed to hit financial systems during business hours for maximum disruption</li></ul>
+<ul><li>Combined DDoS with <strong>DNS poisoning</strong> and <strong>email spam floods</strong></li></ul>
+<ul><li>Targeted critical infrastructure specifically</li></ul>
+
+<h3>DDoS Attack Types Used</h3>
+
+<p>| Attack Type | How It Works | Volume |</p>
+<p>|---|---|---|</p>
+<p>| <strong>SYN Flood</strong> | Send millions of half-open connection requests | Overwhelms server's connection table |</p>
+<p>| <strong>UDP Flood</strong> | Blast random UDP packets at the target | Saturates network bandwidth |</p>
+<p>| <strong>HTTP Flood</strong> | Send millions of legitimate-looking web requests | Overwhelms the web server's processing capacity |</p>
+<p>| <strong>DNS Amplification</strong> | Send small queries to DNS servers with a spoofed source address; DNS servers send large replies to the victim | Amplifies traffic up to 70x |</p>
+<p>| <strong>Ping of Death</strong> | Send oversized ICMP packets that crash the target | Crashes vulnerable systems |</p>
+<p>| <strong>Slowloris</strong> | Open connections and send data very slowly | Ties up all server connections without bandwidth |</p>
+
+<h3>Attribution: Who Was Responsible?</h3>
+
+<p>This is where cyber warfare gets complicated. Estonia blamed Russia. But:</p>
+
+<ul><li>No Russian government computer was directly identified in the attacks</li></ul>
+<ul><li>The botnets were spread across 75+ countries</li></ul>
+<ul><li>Russia denied involvement</li></ul>
+<ul><li>Some attacks were traced to Russian IP addresses, but IP addresses can be spoofed</li></ul>
+<ul><li>A Russian-Estonian student, <strong>Dmitri Galushkevich</strong>, was the only person convicted — fined $1,640</li></ul>
+
+<p>The <strong>attribution problem</strong> — figuring out who is actually behind a cyber attack — remains one of the fundamental challenges of cybersecurity. In the physical world, if a missile hits your country, you know where it came from. In cyberspace, the attacker could be anywhere, using compromised computers anywhere else.</p>
+
+<hr>
+
+<h2>Georgia (2008): Cyber War + Kinetic War</h2>
+
+<p>In August 2008, Russia invaded Georgia in a conventional military operation. But before the tanks rolled, the cyber attacks began.</p>
+
+<strong>Timeline</strong>:
+
+<p>| Date | Cyber Event | Military Event |</p>
+<p>|---|---|---|</p>
+<p>| July 20 | DDoS attacks begin against Georgian government sites | — |</p>
+<p>| August 7 | Major DDoS wave takes down Georgian internet | — |</p>
+<p>| August 8 | Georgian government websites defaced | Russian military crosses border |</p>
+<p>| August 8-12 | Georgia's internet infrastructure paralyzed | Five-day war; Russian forces advance |</p>
+<p>| August 12 | Ceasefire | Ceasefire |</p>
+
+<p>This was the first time cyber attacks were used <strong>in coordination with a military invasion</strong>. The cyber attacks served specific military objectives:</p>
+
+<ol><li><strong>Disrupted communications</strong> — Georgian government couldn't coordinate defense</li></ol>
+<ol><li><strong>Controlled information</strong> — citizens couldn't access news about what was happening</li></ol>
+<ol><li><strong>Psychological warfare</strong> — defaced websites with propaganda</li></ol>
+<ol><li><strong>Delayed international response</strong> — foreign governments couldn't contact Georgian officials</li></ol>
+
+<p>The Georgia attack proved that cyber operations were not just espionage or vandalism — they were a <strong>force multiplier for conventional warfare</strong>.</p>
+
+<hr>
+
+<h2>China's APT Machine: Stealing America's Secrets</h2>
+
+<p>While Russia demonstrated cyber warfare, China was building the world's most prolific <strong>cyber espionage</strong> operation.</p>
+
+<h3>The Major Chinese APT Groups</h3>
+
+<p>| APT Group | Also Known As | Primary Targets | Notable Operations |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>APT1 / Unit 61398</strong> | Comment Crew | U.S. defense, aerospace, energy | Stole terabytes from 141 organizations |</p>
+<p>| <strong>APT3</strong> | Gothic Panda | Technology, communications | Used zero-days in Internet Explorer |</p>
+<p>| <strong>APT10</strong> | Stone Panda | Managed IT providers (MSPs) | Hacked cloud providers to reach their clients |</p>
+<p>| <strong>APT40</strong> | TEMP.Periscope | Maritime, defense, engineering | Targeted naval technologies |</p>
+<p>| <strong>APT41</strong> | Double Dragon | Healthcare, tech, gaming | Both espionage AND financial cybercrime |</p>
+
+<h3>Operation Aurora (2009): Google vs. China</h3>
+
+<p>In late 2009, Google discovered that Chinese hackers had breached its networks using a <strong>zero-day exploit</strong> in Internet Explorer.</p>
+
+<strong>What happened</strong>:
+<ol><li>Google employees received targeted spear-phishing emails</li></ol>
+<ol><li>Clicking a link exploited a zero-day in IE (CVE-2010-0249)</li></ol>
+<ol><li>Attackers gained access to Google's internal network</li></ol>
+<ol><li>They accessed Gmail accounts of <strong>Chinese human rights activists</strong></li></ol>
+<ol><li>They also stole Google's source code and intellectual property</li></ol>
+
+<strong>Who else was hit</strong>: Adobe, Juniper Networks, Rackspace, Yahoo, Symantec, and at least 30 other major companies.
+
+<strong>Google's response</strong>: Google did something extraordinary — it went public. In a blog post on January 12, 2010, Google announced:
+<ul><li>It had been attacked by Chinese hackers</li></ul>
+<ul><li>It would stop censoring search results in China</li></ul>
+<ul><li>It might exit the Chinese market entirely</li></ul>
+
+<p>This was the first time a major corporation publicly blamed a nation-state for a cyber attack. Google eventually redirected Google.cn to its Hong Kong servers and effectively left mainland China.</p>
+
+<div class="callout tip"><p>💡 Operation Aurora was the catalyst for Google's <strong>BeyondCorp</strong> initiative — the first major <strong>Zero Trust Architecture</strong> — which assumed that the internal network was already compromised and required every user and device to authenticate continuously.</p></div>
+
+<hr>
+
+<h2>The Complete Nation-State Cyber Threat Landscape</h2>
+
+<p>By the late 2000s, the major cyber powers had established their capabilities:</p>
+
+<p>| Nation | Primary Cyber Unit | Focus | Notable Operations |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>United States</strong> | NSA (TAO), Cyber Command | Offense + Intelligence | Stuxnet, PRISM, Equation Group |</p>
+<p>| <strong>Russia</strong> | GRU, FSB, SVR | Disruption + Espionage | Estonia, Georgia, NotPetya |</p>
+<p>| <strong>China</strong> | PLA Unit 61398, MSS | Industrial espionage | Aurora, OPM hack, Titan Rain |</p>
+<p>| <strong>Israel</strong> | Unit 8200 | Offense + Intelligence | Stuxnet (co-developed), Pegasus |</p>
+<p>| <strong>North Korea</strong> | Lazarus Group (RGB) | Financial theft + Disruption | Sony hack, WannaCry, crypto theft |</p>
+<p>| <strong>Iran</strong> | APT33/34/35 | Disruption + Espionage | Shamoon, attacks on Saudi Arabia |</p>
+<p>| <strong>UK</strong> | GCHQ | Intelligence + Offense | Joint ops with NSA |</p>
+
+<h3>How Nation-State Attacks Differ from Criminal Attacks</h3>
+
+<p>| Characteristic | Criminal Hackers | Nation-State Hackers |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Motivation</strong> | Money | Intelligence, strategic advantage, disruption |</p>
+<p>| <strong>Budget</strong> | Limited | Virtually unlimited (government-funded) |</p>
+<p>| <strong>Skill Level</strong> | Varies widely | Among the best in the world |</p>
+<p>| <strong>Patience</strong> | Want quick results | Will wait years for the right access |</p>
+<p>| <strong>Targets</strong> | Anyone with money | Specific strategic targets |</p>
+<p>| <strong>Zero-Days</strong> | Rarely (expensive) | Stockpile dozens of them |</p>
+<p>| <strong>Detection Risk Tolerance</strong> | Moderate (avoid jail) | Low (avoid diplomatic incident) |</p>
+<p>| <strong>Persistence</strong> | Give up if caught | Come back with new techniques |</p>
+<p>| <strong>Legal Consequences</strong> | Arrest and prosecution | Diplomatic tensions at most |</p>
+
+<hr>
+
+<h2>The Cyber Attack Taxonomy Grows</h2>
+
+<p>By the end of the 2000s, the following new attack categories had emerged:</p>
+
+<p>| Attack Category | Description | First Major Use |</p>
+<p>|---|---|---|</p>
+<p>| <strong>DDoS (Distributed)</strong> | Coordinated attack from thousands/millions of sources | Estonia 2007 |</p>
+<p>| <strong>Botnet Operations</strong> | Networks of infected computers controlled remotely | Estonia, Storm Worm |</p>
+<p>| <strong>Spear Phishing</strong> | Highly targeted phishing against specific individuals | Titan Rain, Aurora |</p>
+<p>| <strong>Zero-Day Exploits</strong> | Attacks using unknown, unpatched vulnerabilities | Aurora (IE zero-day) |</p>
+<p>| <strong>Advanced Persistent Threats (APTs)</strong> | Long-term, stealthy infiltration campaigns | Moonlight Maze, Titan Rain |</p>
+<p>| <strong>DNS Amplification</strong> | Using DNS servers to multiply attack traffic | Estonia 2007 |</p>
+<p>| <strong>Website Defacement</strong> | Replacing website content with attacker's message | Georgia 2008 |</p>
+<p>| <strong>Watering Hole</strong> | Compromise websites the target is known to visit | Early 2000s APT campaigns |</p>
+<p>| <strong>Supply Chain Compromise</strong> | Hack a vendor to reach the real target | Operation Aurora (through partners) |</p>
+<p>| <strong>Cyber-Kinetic Warfare</strong> | Coordinate cyber attacks with military operations | Georgia 2008 |</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>Cyber attacks became a weapon of statecraft</strong> — used alongside or instead of military force</li></ol>
+<ol><li><strong>Attribution is extremely difficult</strong> — knowing who attacked you is the hardest problem in cybersecurity</li></ol>
+<ol><li><strong>DDoS can take down entire countries</strong> — when everything is digital, disrupting the internet disrupts everything</li></ol>
+<ol><li><strong>Cyber attacks precede and accompany military action</strong> — Georgia 2008 proved cyber is a force multiplier</li></ol>
+<ol><li><strong>State-sponsored hackers are patient, well-funded, and nearly unstoppable</strong> — they represent the highest tier of threat</li></ol>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>SQL Injection — The Attack That Changed Everything</em> → A single line of code in a web form stole 170 million credit cards. The attacker was an FBI informant. And the vulnerability is still the #1 web application flaw in 2026.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 8</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

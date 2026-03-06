@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 10</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part III — The Awakening (2000s)</div>
+  <div class="chapter-num">10</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>The Underground Economy — Where Stolen Data Goes</h1>
+
+<blockquote>"Cybercrime is now more profitable than the global illegal drug trade. The dark web has HR departments, customer support, and money-back guarantees."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: 2004 — A Basement in New Jersey</h2>
+
+<p>Andrew Mantovani, a 23-year-old from New Jersey, runs a website called <strong>ShadowCrew</strong>. It looks professional — clean layout, user forums, a rating system. It could be mistaken for eBay.</p>
+
+<p>Except ShadowCrew doesn't sell gadgets or clothing. It sells <strong>stolen identities</strong>.</p>
+
+<p>The site has 4,000 registered members from across the globe. They trade:</p>
+<ul><li><strong>Credit card numbers</strong> ($5–$50 each, depending on credit limit)</li></ul>
+<ul><li><strong>Full identities</strong> (name, SSN, date of birth, mother's maiden name — $10–$25)</li></ul>
+<ul><li><strong>Bank account credentials</strong> ($50–$500 depending on balance)</li></ul>
+<ul><li><strong>Counterfeit IDs and documents</strong> ($50–$200)</li></ul>
+<ul><li><strong>Hacking tutorials and tools</strong> (free to premium members)</li></ul>
+
+<p>ShadowCrew has <strong>moderators</strong> who verify the quality of stolen data before it's listed. It has a <strong>feedback system</strong> where buyers rate sellers. It even has <strong>escrow services</strong> to prevent scams between criminals.</p>
+
+<p>It is, quite literally, <strong>the Amazon of stolen data</strong>.</p>
+
+<p>The Secret Service takes it down in <strong>Operation Firewall</strong> (October 2004), arresting 28 people across six countries. But ShadowCrew's model doesn't die — it proliferates. Within months, a dozen replacement forums appear. The underground economy has learned the most important lesson of e-commerce: <strong>marketplaces scale</strong>.</p>
+
+<hr>
+
+<h2>The Cybercrime Value Chain</h2>
+
+<p>Cybercrime has evolved from lone hackers into a <strong>professional industry</strong> with specialized roles, supply chains, and economics as sophisticated as any legitimate business.</p>
+
+<h3>The Players</h3>
+
+<p>| Role | What They Do | Annual Income |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Exploit Developer</strong> | Finds zero-day vulnerabilities, writes exploit code | $100K–$2M+ |</p>
+<p>| <strong>Malware Author</strong> | Creates trojans, ransomware, RATs | $50K–$500K |</p>
+<p>| <strong>Access Broker</strong> | Sells access to compromised networks | $20K–$200K per sale |</p>
+<p>| <strong>Botnet Operator</strong> | Runs networks of infected computers for DDoS/spam | $50K–$1M |</p>
+<p>| <strong>Phisher</strong> | Creates fake websites/emails to steal credentials | $10K–$100K |</p>
+<p>| <strong>Carder</strong> | Uses stolen credit cards to buy goods | $20K–$200K |</p>
+<p>| <strong>Money Mule</strong> | Launders money through bank accounts | $10K–$50K |</p>
+<p>| <strong>Cash-Out Specialist</strong> | Converts digital stolen goods into physical cash | Commission-based |</p>
+<p>| <strong>RaaS Affiliate</strong> | Deploys ransomware using Ransomware-as-a-Service platforms | $50K–$10M+ |</p>
+<p>| <strong>Data Broker</strong> | Aggregates and resells stolen databases | $50K–$500K |</p>
+
+<h3>The Supply Chain</h3>
+
+<p>``<code class="inline"></p>
+<p>Exploit Developer → sells zero-day for $500K</p>
+<p>  └─ Malware Author → packages it into a trojan ($50K)</p>
+<p>      └─ Spam/Phish Operator → distributes malware via email ($10K campaign)</p>
+<p>          └─ Botnet Operator → harvests credentials from infected machines</p>
+<p>              └─ Data Broker → aggregates stolen data into bulk packages</p>
+<p>                  └─ Carder → buys credit cards ($5 each)</p>
+<p>                      └─ Money Mule → launders funds</p>
+<p>                          └─ Cash-Out → clean money in crypto/bank accounts</p>
+</code>``
+
+<p>Each step adds value and takes a cut. The total revenue of this pipeline is estimated at <strong>$8 trillion per year</strong> by 2025 — larger than the GDP of every country except the US and China.</p>
+
+<hr>
+
+<h2>The Dark Web: Crime's New Address</h2>
+
+<h3>Surface Web vs. Deep Web vs. Dark Web</h3>
+
+<p>| Layer | What It Contains | Size | Example |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Surface Web</strong> | Everything indexed by Google | ~5% of all web content | google.com, wikipedia.org |</p>
+<p>| <strong>Deep Web</strong> | Content behind logins, paywalls, databases | ~95% of all web content | Your email inbox, bank account, medical records |</p>
+<p>| <strong>Dark Web</strong> | Intentionally hidden, requires special software (Tor) | Small fraction of deep web | .onion sites |</p>
+
+<p>The dark web uses the <strong>Tor network</strong> (The Onion Router), which routes your traffic through multiple encrypted relays, making it nearly impossible to trace. Originally developed by the <strong>U.S. Naval Research Laboratory</strong> for protecting intelligence communications.</p>
+
+<h3>Dark Web Marketplaces Timeline</h3>
+
+<p>| Year | Marketplace | What It Sold | How It Ended |</p>
+<p>|---|---|---|---|</p>
+<p>| 2004 | ShadowCrew | Stolen identities & cards | Raided by Secret Service |</p>
+<p>| 2011 | <strong>Silk Road</strong> | Drugs, hacking tools, fraud services | FBI takedown (2013), founder Ross Ulbricht got life in prison |</p>
+<p>| 2014 | <strong>AlphaBay</strong> | Everything — drugs, weapons, stolen data | Raided by FBI + Europol (2017) |</p>
+<p>| 2015 | <strong>Hansa Market</strong> | Drugs, malware, counterfeit goods | Dutch police ran it undercover for a month before takedown |</p>
+<p>| 2017 | <strong>Dream Market</strong> | Drugs, digital goods, fraud services | Voluntarily shut down (2019) |</p>
+<p>| 2019 | <strong>Empire Market</strong> | Full-service dark marketplace | Exit scammed — admins disappeared with users' Bitcoin |</p>
+<p>| 2022 | <strong>Hydra Market</strong> | Russia's largest — drugs, laundering | Seized by German police, $25M in Bitcoin confiscated |</p>
+<p>| 2023 | <strong>Genesis Market</strong> | Stolen browser fingerprints, credentials | FBI's Operation Cookie Monster (2023) |</p>
+
+<p>Every time law enforcement shuts one down, another appears. It's a game of whack-a-mole with billion-dollar stakes.</p>
+
+<hr>
+
+<h2>What's For Sale: The Price List of Stolen Data</h2>
+
+<p>| Item | Dark Web Price (2025) | Where It Comes From |</p>
+<p>|---|---|---|</p>
+<p>| Credit card number (with CVV) | $5–$35 | Skimmers, breaches, phishing |</p>
+<p>| Credit card with bank info (Fullz) | $15–$65 | Data breaches |</p>
+<p>| Bank login (balance > $5K) | $70–$500 | Phishing, banking trojans |</p>
+<p>| Social Security Number | $1–$5 | Data breaches |</p>
+<p>| Full identity package (SSN, DOB, address, mother's maiden name) | $15–$65 | Aggregated from multiple breaches |</p>
+<p>| Medical records | $250–$1,000 | Hospital breaches |</p>
+<p>| Passport scan | $10–$50 | Document theft, phishing |</p>
+<p>| Hacked email account (Gmail/Outlook) | $1–$5 | Credential stuffing |</p>
+<p>| Hacked social media account | $5–$25 | Phishing, password reuse |</p>
+<p>| Corporate VPN access | $500–$5,000 | Access brokers |</p>
+<p>| Zero-day exploit | $10K–$2.5M | Exploit developers |</p>
+<p>| Ransomware-as-a-Service kit | $40–$500/month | RaaS operators |</p>
+<p>| DDoS-for-hire | $10–$500/attack | Booter/stresser services |</p>
+<p>| Botnets (1,000 bots) | $200–$700 | Botnet operators |</p>
+
+<div class="callout info"><p>📌 Medical records are worth 10-40x more than credit cards because they contain enough information for <strong>identity fraud, insurance fraud, and prescription fraud</strong> — and unlike credit cards, you can't cancel your medical history.</p></div>
+
+<hr>
+
+<h2>Money Laundering 2.0: Following the Money</h2>
+
+<p>Stolen money must be <strong>laundered</strong> — converted from traceable digital transactions into clean, spendable cash. Cybercriminals use sophisticated laundering chains:</p>
+
+<h3>Traditional Laundering (2000s)</h3>
+<ol><li><strong>Money Mules</strong> — recruit real people (often through "work from home" scams) to receive funds in their bank accounts and wire them overseas</li></ol>
+<ol><li><strong>Prepaid Cards</strong> — load stolen funds onto gift cards, then resell or spend them</li></ol>
+<ol><li><strong>Shell Companies</strong> — create fake businesses to process fraudulent transactions</li></ol>
+
+<h3>Cryptocurrency Laundering (2010s–2020s)</h3>
+<ol><li><strong>Mixing Services (Tumblers)</strong> — combine your Bitcoin with others to break the trail (e.g., Tornado Cash)</li></ol>
+<ol><li><strong>Chain Hopping</strong> — convert Bitcoin → Monero → Bitcoin across multiple exchanges</li></ol>
+<ol><li><strong>Privacy Coins</strong> — use Monero or Zcash, which hide transaction details by default</li></ol>
+<ol><li><strong>Decentralized Exchanges (DEXs)</strong> — no KYC/identity verification required</li></ol>
+<ol><li><strong>NFT Wash Trading</strong> — buy your own NFT at inflated prices to create "legitimate" income</li></ol>
+
+<div class="callout warning"><p>⚠️ Despite the perception of anonymity, cryptocurrency can be traced. Companies like <strong>Chainalysis</strong> and <strong>Elliptic</strong> have helped law enforcement trace and seize billions in stolen crypto. The Colonial Pipeline ransom ($4.4M in Bitcoin) was largely recovered by the FBI by tracing the blockchain.</p></div>
+
+<hr>
+
+<h2>Cybercrime vs. Traditional Crime: The Numbers</h2>
+
+<p>| Metric | Drug Trade | Cybercrime |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Global revenue</strong> | $500 billion/year | $8 trillion/year (2025 est.) |</p>
+<p>| <strong>Risk of arrest</strong> | High (physical evidence, informants) | Low (anonymity, jurisdiction issues) |</p>
+<p>| <strong>Violence required</strong> | Yes | No |</p>
+<p>| <strong>Scalability</strong> | Limited by geography | Unlimited (attack anyone globally) |</p>
+<p>| <strong>Barriers to entry</strong> | High (cartels, supply chains) | Low (buy tools for $50) |</p>
+<p>| <strong>Cross-border prosecution</strong> | Difficult but possible | Extremely difficult |</p>
+<p>| <strong>Victim awareness</strong> | Immediate | Often delayed by months/years |</p>
+
+<p>Cybercrime offers <strong>higher profits, lower risk, and global reach</strong> compared to any traditional criminal enterprise. This economic reality is why cybercrime continues to grow exponentially.</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>Cybercrime is an industry with specialized roles</strong> — from exploit developers to money mules, each role adds value</li></ol>
+<ol><li><strong>Dark web marketplaces operate like legitimate e-commerce</strong> — with ratings, escrow, and customer support</li></ol>
+<ol><li><strong>Medical records are worth more than credit cards</strong> — because you can't cancel your medical history</li></ol>
+<ol><li><strong>Cryptocurrency enables laundering but isn't fully anonymous</strong> — blockchain analysis has recovered billions</li></ol>
+<ol><li><strong>Cybercrime is more profitable than the drug trade</strong> — $8 trillion with lower risk and global reach</li></ol>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>Building the First Corporate Defenses</em> → Companies realize they're under attack and start building security programs. SIEM, compliance frameworks, patch management, and the creation of the modern cybersecurity team.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 10</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

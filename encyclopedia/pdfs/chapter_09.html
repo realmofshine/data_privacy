@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 9</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part III — The Awakening (2000s)</div>
+  <div class="chapter-num">09</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>SQL Injection — The Attack That Changed Everything</h1>
+
+<blockquote>"Give me a login form and I'll give you the database. It's not a vulnerability — it's a design failure that's been repeated a billion times."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: 2005 — A TJX Store in Miami</h2>
+
+<p>Albert Gonzalez is sitting in the parking lot of a TJ Maxx store in Miami. He's not shopping. He's using a laptop with a directional antenna to connect to the store's <strong>wireless network</strong>.</p>
+
+<p>The store's Wi-Fi is protected with <strong>WEP encryption</strong> — a protocol that was known to be breakable since 2001. Gonzalez cracks it in under a minute.</p>
+
+<p>Once inside the network, he finds something remarkable: the store's point-of-sale systems are connected to TJX's corporate network. And TJX's corporate databases have <strong>no encryption on credit card data</strong>.</p>
+
+<p>Over the next two years, Gonzalez and his team will steal <strong>94 million credit card numbers</strong> from TJX Companies (the parent of TJ Maxx, Marshalls, and HomeGoods).</p>
+
+<p>But TJX is just the beginning. Gonzalez goes on to breach <strong>Heartland Payment Systems</strong> — stealing another <strong>130 million credit card numbers</strong>. Combined with other breaches, his total haul is approximately <strong>170 million credit cards</strong>.</p>
+
+<p>The most ironic part? During much of this time, <strong>Gonzalez was working as a paid informant for the U.S. Secret Service</strong>, helping them catch other hackers. He was hunting criminals by day and being one by night.</p>
+
+<p>And his primary weapon? A technique that has existed since 1998 and is STILL the most dangerous web vulnerability in 2026: <strong>SQL Injection</strong>.</p>
+
+<hr>
+
+<h2>What Is SQL Injection? (Explained Like You're Five)</h2>
+
+<p>Every website that has a login form, a search bar, or any kind of user input likely connects to a <strong>database</strong>. The database stores usernames, passwords, products, orders, credit cards — everything.</p>
+
+<p>The website talks to the database using a language called <strong>SQL</strong> (Structured Query Language). When you type your username and password into a login form, the website builds a SQL command like this:</p>
+
+<p>``<code class="inline">sql</p>
+<p>SELECT * FROM users WHERE username = 'john' AND password = 'mypassword'</p>
+</code>`<code class="inline">
+
+<p>This asks the database: "Find me a user named 'john' whose password is 'mypassword'."</p>
+
+<p>Now, what happens if instead of typing a normal username, you type this:</p>
+
+</code>`<code class="inline">
+<p>' OR '1'='1' --</p>
+</code>`<code class="inline">
+
+<p>The SQL command becomes:</p>
+
+</code>`<code class="inline">sql
+<p>SELECT * FROM users WHERE username = '' OR '1'='1' --' AND password = 'anything'</p>
+</code>`<code class="inline">
+
+<p>The </code>--<code class="inline"> is a SQL comment — it tells the database to ignore everything after it. And </code>'1'='1'<code class="inline"> is always true. So the query now says:</p>
+
+<strong>"Find me a user where the username is blank OR where 1 equals 1."</strong>
+
+<p>Since 1 always equals 1, this returns <strong>every user in the database</strong>. You just bypassed authentication. You're logged in as the first user — often the <strong>administrator</strong>.</p>
+
+<p>That's SQL injection. In its simplest form, it's typing database commands into a web form and having the server execute them.</p>
+
+<hr>
+
+<h2>The SQL Injection Attack Tree</h2>
+
+<p>SQL injection isn't just one attack — it's an entire family of techniques:</p>
+
+<h3>By Method</h3>
+
+<p>| Type | How It Works | What Attacker Sees |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Classic (In-Band)</strong> | Inject SQL and see results directly in the web page | Database data in the response |</p>
+<p>| <strong>Error-Based</strong> | Trigger database errors that reveal information | Error messages show table names, column names |</p>
+<p>| <strong>Union-Based</strong> | Use UNION to combine attacker's query with the original | Data from other tables appears in the response |</p>
+<p>| <strong>Blind (Boolean)</strong> | Ask true/false questions; page behaves differently for each | No direct output, but behavior changes reveal data |</p>
+<p>| <strong>Time-Based Blind</strong> | Inject a delay (e.g., SLEEP(5)) — if page is slow, the condition is true | Response time reveals data bit by bit |</p>
+<p>| <strong>Out-of-Band</strong> | Exfiltrate data via DNS or HTTP to attacker's server | Data arrives at attacker-controlled server |</p>
+<p>| <strong>Second-Order</strong> | Inject payload that's stored and executed later in a different query | Delayed execution, harder to trace |</p>
+
+<h3>By Target</h3>
+
+<p>| Target | What Attacker Can Do |</p>
+<p>|---|---|</p>
+<p>| <strong>Authentication bypass</strong> | Log in as any user without their password |</p>
+<p>| <strong>Data theft</strong> | Extract entire database contents |</p>
+<p>| <strong>Data modification</strong> | Change prices, balances, permissions |</p>
+<p>| <strong>Data deletion</strong> | Drop tables, delete records |</p>
+<p>| <strong>OS command execution</strong> | Execute operating system commands on the database server |</p>
+<p>| <strong>File system access</strong> | Read or write files on the server |</p>
+<p>| <strong>Lateral movement</strong> | Use the database server to attack other systems on the network |</p>
+
+<h3>The Complete SQL Injection Exploitation Chain</h3>
+
+</code>`<code class="inline">
+<p>Step 1: DETECT</p>
+<p>   └─ Find an input field that interacts with a database</p>
+<p>   └─ Inject a single quote (') and see if an error occurs</p>
+<p>   └─ If yes → vulnerable</p>
+
+<p>Step 2: IDENTIFY</p>
+<p>   └─ Determine the database type (MySQL, PostgreSQL, MSSQL, Oracle)</p>
+<p>   └─ Identify the number of columns in the query</p>
+<p>   └─ Find which columns display data on the page</p>
+
+<p>Step 3: EXTRACT</p>
+<p>   └─ List all databases on the server</p>
+<p>   └─ List all tables in each database</p>
+<p>   └─ List all columns in each table</p>
+<p>   └─ Extract actual data (usernames, passwords, credit cards)</p>
+
+<p>Step 4: ESCALATE</p>
+<p>   └─ Read files from the server filesystem</p>
+<p>   └─ Write files (web shells) for persistent access</p>
+<p>   └─ Execute OS commands</p>
+<p>   └─ Pivot to other systems</p>
+
+<p>Step 5: PERSIST</p>
+<p>   └─ Create new database admin accounts</p>
+<p>   └─ Install backdoors</p>
+<p>   └─ Modify database triggers to maintain access</p>
+</code>`<code class="inline">
+
+<hr>
+
+<h2>Albert Gonzalez: The FBI Informant Who Stole 170 Million Credit Cards</h2>
+
+<h3>His Journey: Hacker → Informant → Master Criminal</h3>
+
+<strong>2001</strong>: Gonzalez (handle: "soupnazi") is arrested in New Jersey for ATM fraud. Instead of prison, the Secret Service recruits him as an informant.
+
+<strong>2003</strong>: While working for the Secret Service, Gonzalez helps take down <strong>ShadowCrew</strong> — one of the largest carding forums on the internet. The operation leads to 28 arrests.
+
+<strong>2003-2008</strong>: Gonzalez is simultaneously:
+<ul><li>✅ Working with the Secret Service to catch hackers</li></ul>
+<ul><li>❌ Running his own hacking crew stealing millions of credit cards</li></ul>
+
+<strong>2005-2007</strong>: Gonzalez breaches TJX Companies:
+
+<p>| Step | What He Did |</p>
+<p>|---|---|</p>
+<p>| 1 | Cracked WEP Wi-Fi in TJ Maxx parking lot |</p>
+<p>| 2 | Found unencrypted connections to corporate network |</p>
+<p>| 3 | Installed packet sniffers on the network |</p>
+<p>| 4 | Captured credit card data as it traveled in plaintext |</p>
+<p>| 5 | Used SQL injection to access back-end databases |</p>
+<p>| 6 | Exfiltrated 94 million credit card records |</p>
+
+<strong>2007-2008</strong>: Gonzalez breaches Heartland Payment Systems:
+
+<p>| Step | What He Did |</p>
+<p>|---|---|</p>
+<p>| 1 | Used SQL injection on Heartland's corporate website |</p>
+<p>| 2 | Gained access to internal systems |</p>
+<p>| 3 | Installed custom malware on payment processing servers |</p>
+<p>| 4 | Intercepted credit card data in real-time (not from stored databases) |</p>
+<p>| 5 | Exfiltrated 130 million credit card records |</p>
+
+<strong>2008</strong>: Gonzalez is arrested. Found in his possession: $1.1 million in cash buried in his backyard.
+
+<strong>2010</strong>: Sentenced to <strong>20 years in federal prison</strong> — the longest sentence ever given for computer crime at that time.
+
+<hr>
+
+<h2>The Aftermath: How SQL Injection Changed the Industry</h2>
+
+<p>Gonzalez's spree directly led to several industry-changing events:</p>
+
+<h3>1. PCI-DSS Gets Real Teeth</h3>
+
+<p>The <strong>Payment Card Industry Data Security Standard (PCI-DSS)</strong> existed before Gonzalez, but compliance was lax. After TJX and Heartland, the card networks enforced strict penalties: fail a PCI audit, and you can't process credit cards.</p>
+
+<h3>2. Web Application Firewalls Become Mandatory</h3>
+
+<p>Organizations rushed to deploy <strong>WAFs</strong> — firewalls specifically designed to inspect HTTP traffic for SQL injection and other web attacks.</p>
+
+<h3>3. Prepared Statements Become Standard</h3>
+
+<p>The <strong>fix</strong> for SQL injection had been known since its discovery: <strong>parameterized queries</strong> (also called prepared statements). Instead of building SQL commands from user input, you define the structure of the query first and insert data separately:</p>
+
+<strong>Vulnerable</strong> (string concatenation):
+</code>`<code class="inline">python
+<p>query = "SELECT * FROM users WHERE name = '" + user_input + "'"</p>
+</code>`<code class="inline">
+
+<strong>Safe</strong> (parameterized):
+</code>`<code class="inline">python
+<p>query = "SELECT * FROM users WHERE name = ?"</p>
+<p>cursor.execute(query, (user_input,))</p>
+</code>``
+
+<p>In the safe version, no matter what the user types — even SQL commands — the database treats it as <strong>data</strong>, not as <strong>code</strong>. The boundary between instructions and data is maintained.</p>
+
+<p>This is fundamentally the same lesson as phone phreaking: <strong>separate your control channel from your data channel</strong>.</p>
+
+<h3>4. Automated Scanning Tools</h3>
+
+<p>Tools like <strong>SQLMap</strong> (2006) automated the entire SQL injection process — from detection to full database extraction. This was both good (defenders could test their own systems) and bad (attackers could click a button and drain databases).</p>
+
+<hr>
+
+<h2>The OWASP Top 10: Ranking the Enemies</h2>
+
+<p>In 2003, the <strong>Open Web Application Security Project (OWASP)</strong> published its first <strong>Top 10</strong> — a ranked list of the most critical web application security risks.</p>
+
+<h3>OWASP Top 10 Evolution</h3>
+
+<p>| Rank | 2003 | 2010 | 2017 | 2021 |</p>
+<p>|---|---|---|---|---|</p>
+<p>| 1 | Unvalidated Input | Injection | Injection | Broken Access Control |</p>
+<p>| 2 | Broken Access Control | XSS | Broken Authentication | Cryptographic Failures |</p>
+<p>| 3 | Broken Auth | Broken Auth | Sensitive Data Exposure | Injection |</p>
+<p>| 4 | XSS | Insecure Direct Obj Ref | XML External Entities | Insecure Design |</p>
+<p>| 5 | Buffer Overflow | CSRF | Broken Access Control | Security Misconfiguration |</p>
+<p>| 6 | Injection | Security Misconfig | Security Misconfiguration | Vulnerable Components |</p>
+<p>| 7 | Error Handling | Insecure Crypto Storage | XSS | Auth Failures |</p>
+<p>| 8 | Insecure Storage | URL Access Control | Insecure Deserialization | Software/Data Integrity |</p>
+<p>| 9 | Denial of Service | Transport Security | Using Components w/ Vulns | Logging Failures |</p>
+<p>| 10 | Config Management | Unvalidated Redirects | Insufficient Logging | SSRF |</p>
+
+<div class="callout info"><p>📌 <strong>Injection</strong> (which includes SQL injection) stayed at #1 from 2003 to 2017 — a span of <strong>14 years</strong>. It only dropped to #3 in 2021, not because it was fixed, but because broken access control became even more prevalent.</p></div>
+
+<hr>
+
+<h2>SQL Injection in 2026: Still Alive and Dangerous</h2>
+
+<p>Despite being known for 28 years and having a simple fix, SQL injection is still actively exploited:</p>
+
+<p>| Year | Victim | Records Stolen | Method |</p>
+<p>|---|---|---|---|</p>
+<p>| 2008 | Heartland Payment Systems | 130M credit cards | SQL injection |</p>
+<p>| 2011 | Sony PlayStation Network | 77M accounts | SQL injection |</p>
+<p>| 2014 | Drupal (SQLi vulnerability) | Millions of sites at risk | SQL injection in CMS |</p>
+<p>| 2015 | VTech (toy maker) | 6.4M children's profiles | SQL injection |</p>
+<p>| 2017 | Equifax | 147M records | Apache Struts vulnerability (related) |</p>
+<p>| 2020 | Freepik | 8.3M users | SQL injection |</p>
+<p>| 2023 | MOVEit | 2,600+ organizations | SQL injection in file transfer software |</p>
+
+<p>The reasons it persists:</p>
+
+<ol><li><strong>Legacy code</strong> — millions of applications built before parameterized queries were standard</li></ol>
+<ol><li><strong>ORM bypass</strong> — developers misuse ORMs and still create injection points</li></ol>
+<ol><li><strong>Stored procedures</strong> — dynamic SQL inside stored procedures is still vulnerable</li></ol>
+<ol><li><strong>NoSQL injection</strong> — the same concept applied to MongoDB, Redis, etc.</li></ol>
+<ol><li><strong>Training gaps</strong> — new developers aren't always taught secure coding practices</li></ol>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>SQL injection is the same concept as phone phreaking</strong> — mixing control signals with data</li></ol>
+<ol><li><strong>The fix has been known since day one</strong> — parameterized queries prevent 100% of SQL injection</li></ol>
+<ol><li><strong>Despite a simple fix, SQLi persists 28 years later</strong> — proving that knowing the solution is NOT the same as implementing it</li></ol>
+<ol><li><strong>SQL injection can do more than steal data</strong> — it can execute OS commands, read files, and pivot to other systems</li></ol>
+<ol><li><strong>Albert Gonzalez proved that insider threats are the most dangerous</strong> — he was catching hackers for the government while being one himself</li></ol>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>The Underground Economy</em> → Where stolen data goes after the breach. Dark web marketplaces, carding forums, cryptocurrency laundering, and how cybercrime became more profitable than the global drug trade.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 9</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

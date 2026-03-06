@@ -1,0 +1,384 @@
+
+--- PAGE 1 ---
+Agentic Knowledge Graphs:
+Visualizing AI Reasoning in Real
+Time with A2UI and Cytoscape.js
+Vishal Mysore Follow 6 min read·Jan 13, 2026
+186 1
+An Agentic Knowledge Graph represents a fundamental shift in how we
+visualize and interact with AI reasoning. Unlike traditional knowledge
+graphs — where entities and relationships are statically modeled and stored
+3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 1/18
+--- PAGE 2 ---
+in advance — an Agentic Knowledge Graph is dynamically constructed in
+real time by an autonomous AI agent. The graph emerges as the agent
+reasons, explores dependencies, and adapts its internal understanding in
+response to user queries and interactions.
+In this model, nodes and edges are not pre-defined in a database schema.
+Instead, they are generated on demand to reflect the agent’s evolving mental
+model: hypotheses, causal links, inferred relationships, uncertainties, and
+decision paths. The result is a living visualization that makes AI reasoning
+observable, explainable, and interactive, rather than opaque and post-hoc.
+Demo — https://vishalmysore.github.io/simplea2ui/
+Code —
+https://github.com/vishalmysore/simplea2ui/blob/main/src/app/knowledge-
+graph.component.ts
+From Static Knowledge Graphs to Agentic Reasoning Graphs
+Traditional knowledge graphs excel at representing known facts and stable
+relationships, but they fall short when dealing with:
+Emergent reasoning
+Multi-step inference
+Contextual decision-making
+Exploratory “why” and “how” questions
+Agentic Knowledge Graphs address these gaps by treating the graph as a
+byproduct of reasoning, not as a fixed source of truth. Each visualization is3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 2/18
+--- PAGE 3 ---
+transient, context-aware, and purpose-built for the user’s current
+exploration.
+Extending A2UI for Agentic Knowledge Graph Visualization
+In this work, I present a novel extension of the A2UI (Agent-to-UI)
+framework to support Agentic Knowledge Graph visualization using
+Cytoscape.js. A2UI was originally designed to bridge AI agents and
+interactive user interfaces; here, it is evolved to act as a real-time reasoning-
+to-visualization pipeline.
+Key characteristics of this approach include:
+Agent-driven graph generation
+The AI agent autonomously decides which concepts become nodes and
+how relationships are formed, based on its reasoning process.
+Real-time, user-influenced evolution
+As users interact — zooming, filtering, or asking follow-up questions —
+the agent updates and restructures the graph dynamically.
+Explainability by construction
+The visualization directly mirrors the agent’s internal logic, making
+dependencies, assumptions, and inference paths explicit.
+No static schema dependency
+There is no pre-modeled ontology or rigid graph structure; the graph is
+synthesized on the fly for each interaction context.3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 3/18
+--- PAGE 4 ---
+What Makes These “Agentic”?
+These knowledge graphs are fundamentally different from traditional static
+visualizations:
+1. Agent-Generated: AI agents dynamically create graphs in real-time based
+on user queries, not pre-built visualizations ( look at my a2ajava project
+and springa2ui to see how java returns a2ui responses )
+2. Dynamic Adaptation: Graphs update and evolve as conversations
+progress through dataModelUpdate messages
+3. Context-Aware: Agents choose layouts, styling, and data selection tailored
+to the specific request context
+4. Interactive Control: User interactions (clicks, zooms) trigger userAction
+events that agents respond to with updated visualizations
+This “agentic” qualifier distinguishes these living, AI-controlled
+visualizations from static database graphs or pre-built diagrams.3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 4/18
+--- PAGE 5 ---
+Architecture
+Custom Component Implementation
+A2UI custom components extend the DynamicComponent base class and
+integrate with Angular's component system:
+export class KnowledgeGraphComponent extends DynamicComponent<KnowledgeGraphNode
+  implements OnInit, OnDestroy {
+  // Component implementation
+}
+Key Components
+1. Component Registration (app.config.ts)
+provideA2UI({
+     catalog: {
+       ...DEFAULT_CATALOG,
+       KnowledgeGraph: () => import('./knowledge-graph.component')
+         .then(m => m.KnowledgeGraphComponent)
+     }
+   })
+Component Implementation (knowledge-graph.component.ts)
+Extends DynamicComponent<KnowledgeGraphNode>
+Integrates Cytoscape.js for graph visualization
+Handles A2UI data unpacking3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 5/18
+--- PAGE 6 ---
+Manages graph lifecycle
+Visualization Library
+Cytoscape.js: A graph theory library for visualization and analysis
+Supports multiple layout algorithms (grid, cose, circle, etc.)
+Interactive pan, zoom, and node selection
+Data Format
+A2UI Protocol Structure
+Knowledge graph data is transmitted using A2UI’s standard message format:
+[
+  {
+    "surfaceUpdate": {
+      "surfaceId": "kg-test",
+      "components": [{
+        "id": "kg1",
+        "component": {
+          "KnowledgeGraph": {
+            "title": "My Knowledge Graph",
+            "layout": "cose",
+            "data": { "path": "/graphData" }
+          }
+        }
+      }]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "kg-test",
+      "contents": [{
+        "key": "graphData",
+        "valueArray": [
+          {3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 6/18
+--- PAGE 7 ---
+            "key": "0",
+            "valueMap": [
+              {"key": "id", "valueString": "node1"},
+              {"key": "label", "valueString": "Node 1"}
+            ]
+          },
+          {
+            "key": "1",
+            "valueMap": [
+              {"key": "source", "valueString": "node1"},
+              {"key": "target", "valueString": "node2"},
+              {"key": "label", "valueString": "connects"}
+            ]
+          }
+        ]
+      }]
+    }
+  },
+  {
+    "beginRendering": {
+      "root": "kg1",
+      "surfaceId": "kg-test"
+    }
+  }
+]
+Message Sequence
+3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 7/18
+--- PAGE 8 ---
+1. surfaceUpdate: Declares the KnowledgeGraph component and its
+properties
+2. dataModelUpdate: Provides the graph data (nodes and edges)
+3. beginRendering: Triggers the rendering
+Data Model
+Graph Data Structure
+The component accepts an array of items where each item represents either
+a node or an edge:
+Node (has id or name):
+{
+  "id": "person1",
+  "label": "John Doe"
+}
+Edge (has source and target):
+{
+  "source": "person1",
+  "target": "city1",
+  "label": "lives in"
+}
+A2UI Data Wrapping3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 8/18
+--- PAGE 9 ---
+A2UI wraps primitive values in special structures:
+valueString: String values
+valueNumber: Numeric values
+valueBoolean: Boolean values
+valueArray: Arrays (represented as objects with numeric keys)
+valueMap: Maps/objects
+Critical Implementation Detail: A2UI’s valueArray unpacks to an object with
+numeric keys:
+// What you send:
+["item1", "item2"]
+// What the component receives:
+{"0": "item1", "1": "item2"}
+The component handles this by detecting numeric keys and converting to an
+array:
+const keys = Object.keys(data);
+if (keys.every(k => !isNaN(Number(k)))) {
+  items = Object.values(data);
+}3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 9/18
+--- PAGE 10 ---
+Component Properties
+Supported Layouts
+grid: Arranges nodes in a grid
+cose: Force-directed layout (good for general graphs)
+circle: Arranges nodes in a circle
+breadthfirst: Hierarchical layout
+And more (see Cytoscape.js layouts)
+Benefits of Agentic Knowledge Graphs
+1. Real-Time Agent Generation
+AI agents dynamically construct graphs based on user queries
+No pre-built visualizations needed
+Graphs are created on-the-fly from agent reasoning
+Tailored to specific user context and conversation state
+2. Living, Adaptive Visualizations
+3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 10/18
+--- PAGE 11 ---
+Graphs update as conversations progress
+Agents send dataModelUpdate messages to modify existing graphs
+Add/remove nodes and edges based on new information
+Evolve graph structure based on user interactions
+3. Context-Aware Presentation
+Agents select appropriate layouts (hierarchical, force-directed, circular)
+Styling and labeling customized to data type and user intent
+Graph complexity adjusted based on user expertise level
+Focus on relevant subgraphs for specific queries
+4. Interactive Agent Feedback Loop
+User clicks on nodes/edges trigger userAction events
+Agents respond by providing details, expanding subgraphs, or pivoting
+focus
+Pan/zoom interactions can trigger dynamic data loading
+Bidirectional communication between user and agent through graph
+5. Semantic Data Visualization
+Visualize ontologies, knowledge bases, and semantic networks
+Show relationships between entities clearly
+Interactive exploration of complex data structures
+2. AI Agent Integration3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 11/18
+--- PAGE 12 ---
+AI agents can dynamically generate graph visualizations
+No client-side code changes needed to display new graphs
+Agent sends JSON, client renders the graph
+3. Interactive Exploration
+Pan and zoom to explore large graphs
+Click nodes/edges for details
+Multiple layout algorithms for different use cases
+4. Flexible Data Model
+Supports any graph structure (directed, undirected, cyclic, acyclic)
+Handles nodes with arbitrary properties
+Edges can have labels and properties
+5. Developer Experience
+Clean separation of data and presentation
+Reusable component for all knowledge graph needs
+Standard A2UI protocol integration
+Use Cases
+Ontology Visualization
+Display OWL/RDF ontologies with classes, properties, and instances:3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 12/18
+--- PAGE 13 ---
+Person ──type──> Class
+John ──type──> Person
+John ── livesIn ── > NewYork
+NewYork ──type──> City
+Knowledge Base Exploration
+Navigate entity relationships from knowledge graphs:
+Product ──soldBy ── > Company
+Company ──locatedIn ── > Country
+Product ──hasCategory ── > Category
+System Architecture
+Visualize microservices, dependencies, and infrastructure:
+Frontend ── calls ──> API Gateway
+API Gateway ── routes ──> UserService
+UserService ──reads──> Database
+When agents communicate using knowledge graphs, they serve a dual
+purpose: acting as an intuitive interface for human oversight while
+providing a structured ground truth for machine logic. By moving away
+from opaque text and toward structured relationships, we solidify agent-to-
+agent reasoning and make AI-driven decisions transparent and navigable.
+Please try out the demo and let me know what other knowledge graph you
+would like your agent to build and share with other agents?3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 13/18
+--- PAGE 14 ---
+Written by Vishal Mysore
+1.6K followers·4 following
+Holder of multiple patents in AI and software engineering. Passionate about
+building scalable systems, optimizing performance, & driving AI-powered
+innovation.Follow
+Responses (1)
+Aurelije Zovko
+KRT
+Jan 15
+Unless I'm missing something, your demo doesn't work!
+Prompt: Create a graph visualization for the categories of dogs"
+Response:
+Your Task with id msg-1768517133245-87cq1qogl is submitted
+"no action found for the prompt Create a graph visualization for…more
+1 reply Reply
+What are your thoughts?
+ 13/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 14/18
+--- PAGE 15 ---
+More from Vishal Mysore
+What is BMAD-METHOD ™ ? A
+Simple Guide to the Future of AI-…
+The BMAD-METHOD ™  (Breakthrough
+Method of Agile AI-Driven Development)…
+Sep 8, 2025
+When to Use a Knowledge Graph
+(And When It’s Overkill)
+Knowledge graphs are having a moment.
+Every one seems to be adding them to their…
+Jan 5
+Vishal Mysore
+280 3
+Vishal Mysore
+170 63/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 15/18
+--- PAGE 16 ---
+See all from Vishal Mysore
+Recommended from Medium
+BMAD-Method : From Zero To Hero
+The BMAD-METHOD is a way of working with
+AI that makes projects more organized,…
+Sep 14, 2025
+GitHub Spec Kit vs BMAD-Method:
+A Comprehensive Comparison :…
+GitHub’s open-source Spec Kit is a toolkit for
+spec-driven development that provides a…
+Sep 15, 2025
+Vishal Mysore
+46 2
+Vishal Mysore
+131 53/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 16/18
+--- PAGE 17 ---
+In by
+Cog-RAG: Giving RAG a Brain That
+Thinks Before It Retrieves
+Retrieval-Augmented Generation (RAG) is
+now a standard way to help LLMs stay…
+Feb 17In by
+Google Is Quietly Dismantling
+Everything OpenAI Built
+The most dangerous failure in Silicon Valley
+isn’t bankruptcy. It’s becoming the engine…
+Feb 17
+In by
+Anthropic Just Fixed the Biggest
+Hidden Cost in AI Agents…
+With just one change, you can cut Claude API
+costs to 10 cents on the dollar and stop…
+Feb 19
+I Deployed My Own OpenClaw AI
+Agent in 4 Minutes — It Now Runs…
+There’s a moment every developer knows.
+The one where you see a tool and think “oka…
+Feb 12
+In by
+Why Thousands Are Buying Mac
+Minis to Escape Issues with Big…
+Something strange happened in early 2026.
+Apple stores started running low on Mac…
+In by
+Andrej Karpathy Just Built an Entire
+GPT in 243 Lines of Python
+No PyTorch. No TensorFlow. Just pure Python
+and basic math.
+Towards AI Florian June
+241 1
+Level Up Coding Teja Kusireddy
+4.2K 138
+AI Software Engineer Joe Njenga
+755 16
+Phil | Rentier Digital Automation
+999 25
+CodeX MayhemCode
+ Towards Deep Learning Sumit Pandey3/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 17/18
+--- PAGE 18 ---
+See more recomme ndationsFeb 15 Feb 15 3.9K 65 2.8K 383/4/26, 8:52 AM Agentic Knowledge Graphs: Visualizing AI Reasoning in Real Time with A2UI and Cytoscape.js | by Vishal Mysore | Jan, 2026 | Medium
+https://medium.com/@visrow/agentic-knowledge-graphs-visualizing-ai-reasoning-in-real-time-with-a2ui-and-cytoscape-js-aff2266b3ff6 18/18

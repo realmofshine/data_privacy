@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part I — The Genesis (1960s–1970s)</div>
+  <div class="chapter-num">02</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>The First Hackers — Phone Phreaks</h1>
+
+<blockquote>"A blind teenager with perfect pitch discovered that a toy whistle from a cereal box could unlock the entire telephone system. And two of his followers went on to create Apple."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: 1971 — A Dorm Room at UC Berkeley</h2>
+
+<p>A young engineering student named Steve Wozniak is reading an article in Esquire magazine. The article, titled "Secrets of the Little Blue Box," describes a subculture of people who have figured out how to make free phone calls anywhere in the world.</p>
+
+<p>They're called <strong>Phone Phreaks</strong>.</p>
+
+<p>Wozniak reads the article with growing excitement. He picks up the phone and calls his friend Steve Jobs. "You've got to read this," he says. That night, the two future founders of Apple Computer — the company that would one day be worth $3 trillion — begin their journey into hacking.</p>
+
+<p>They didn't call it hacking. They called it <strong>phreaking</strong>. And it was the first time in history that ordinary people discovered they could manipulate a massive technology system with nothing but cleverness and cheap electronics.</p>
+
+<hr>
+
+<h2>What Was Phone Phreaking?</h2>
+
+<p>To understand phreaking, you need to understand how the telephone network worked in the 1960s and 1970s.</p>
+
+<p>The phone system was controlled by <strong>AT&T</strong> — the largest monopoly in American history. AT&T's network used audio tones to route calls. When you dialed a number, your phone sent specific sound frequencies down the line, and the switching equipment used those frequencies to connect you to the right destination.</p>
+
+<p>The critical discovery was this: <strong>the control signals and the voice signals traveled on the same wires</strong>.</p>
+
+<p>This meant that if you could generate the right tones, you could trick the phone network into doing whatever you wanted:</p>
+
+<ul><li>Make free long-distance calls</li></ul>
+<ul><li>Redirect calls to different numbers</li></ul>
+<ul><li>Access internal AT&T systems</li></ul>
+<ul><li>Listen to other people's conversations</li></ul>
+<ul><li>Create conference calls with dozens of people</li></ul>
+
+<p>The entire telephone system — billions of dollars of infrastructure serving hundreds of millions of people — could be manipulated by anyone who could whistle the right notes.</p>
+
+<hr>
+
+<h2>Captain Crunch: The Man Who Hacked the Phone System with a Toy Whistle</h2>
+
+<p>The most famous phone phreak was <strong>John Draper</strong>, known by his legendary handle: <strong>Captain Crunch</strong>.</p>
+
+<p>In 1969, a friend told Draper something astonishing: the toy whistle that came free inside boxes of <strong>Cap'n Crunch cereal</strong> produced a tone of exactly <strong>2600 hertz</strong> — the exact frequency that AT&T's long-distance switching system used as a control signal.</p>
+
+<p>Here's how it worked:</p>
+
+<ol><li>Dial any long-distance number (a toll-free number was cheapest)</li></ol>
+<ol><li>Once connected, <strong>blow the Cap'n Crunch whistle</strong> into the phone</li></ol>
+<ol><li>The 2600 Hz tone told AT&T's system: <em>"This call is over, the line is free"</em></li></ol>
+<ol><li>But the phone line was still physically connected</li></ol>
+<ol><li>You now had a "dead" trunk line that the system thought was available</li></ol>
+<ol><li>Dial any number in the world — for free</li></ol>
+
+<p>With a toy whistle from a cereal box, Draper could call anywhere on the planet without paying a cent.</p>
+
+<h3>The Blue Box</h3>
+
+<p>Draper quickly moved beyond the whistle. He and other phreaks built electronic devices called <strong>Blue Boxes</strong> that could generate any tone the phone system used:</p>
+
+<p>| Device | Color | What It Did |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Blue Box</strong> | Blue | Generated multi-frequency tones to control call routing |</p>
+<p>| <strong>Red Box</strong> | Red | Simulated the sound of coins dropping into a payphone |</p>
+<p>| <strong>Black Box</strong> | Black | Made incoming calls appear as if no one answered (free for the caller) |</p>
+<p>| <strong>Silver Box</strong> | Silver | Generated all DTMF touch-tone frequencies |</p>
+<p>| <strong>Beige Box</strong> | Beige | A lineman's handset — tap into any phone line |</p>
+
+<p>These weren't sophisticated computers. They were simple electronics — a few oscillators, resistors, and a speaker. A teenager could build one for under $50.</p>
+
+<hr>
+
+<h2>Steve Jobs and Steve Wozniak: Hackers Before They Were Billionaires</h2>
+
+<p>After reading the Esquire article, Wozniak built his first Blue Box that same weekend. He later said:</p>
+
+<blockquote>"I built the first digital Blue Box in the world. It was the best one ever made. I could literally call anywhere in the world using it."</blockquote>
+
+<p>Jobs immediately saw the business potential. He and Wozniak started selling Blue Boxes to UC Berkeley students for <strong>$150 each</strong> (parts cost about $40). They made approximately <strong>$6,000</strong> — not life-changing money, but it taught them something crucial.</p>
+
+<p>Jobs later reflected:</p>
+
+<blockquote>"If it hadn't been for the Blue Boxes, there would have been no Apple. We learned that we could build things and control huge systems. It was the very first time in our lives we felt we could do something that mattered."</blockquote>
+
+<p>The hackers became entrepreneurs. The same curiosity that drove them to manipulate the phone system drove them to build the personal computer.</p>
+
+<h3>The Famous Prank Call</h3>
+
+<p>Wozniak's most legendary phreak was calling the <strong>Vatican</strong> and pretending to be <strong>Henry Kissinger</strong> (the US Secretary of State) asking to speak with the Pope.</p>
+
+<p>He actually got through to a Bishop who said the Pope was sleeping. Wozniak said he'd call back. He never did.</p>
+
+<p>"The phone system was like this giant, beautiful machine," Wozniak later recalled. "And we had the keys."</p>
+
+<hr>
+
+<h2>Joe Engressia (Joybubbles): The Blind Phreaker with Perfect Pitch</h2>
+
+<p>Perhaps the most remarkable phone phreak was <strong>Joe Engressia</strong>, who later changed his name to <strong>Joybubbles</strong>.</p>
+
+<p>Engressia was born blind. At age <strong>seven</strong>, he discovered something extraordinary: he could whistle a perfect 2600 Hz tone. His brain, compensating for his blindness with enhanced hearing, could produce the exact frequency needed to manipulate AT&T's switches.</p>
+
+<p>By age eight, he was making free phone calls by whistling into the receiver.</p>
+
+<p>By age thirteen, he had mapped out large portions of AT&T's internal routing system — just by dialing numbers and listening to the tones that came back.</p>
+
+<p>Engressia didn't have a Blue Box. He didn't have any electronics at all. He had a pair of ears and a whistle that was more precise than any machine.</p>
+
+<p>He became the spiritual leader of the phreaking community. He hosted a phone-based "party line" where phreaks from across the country could gather and share discoveries. This was, in many ways, the <strong>first online community</strong> — years before the internet went public.</p>
+
+<div class="callout warning"><p>⚠️ Engressia was eventually arrested by the FBI. He was charged with fraud and agreed to stop phreaking. He later legally changed his name to Joybubbles and declared himself "five years old forever" — choosing to live the rest of his life in a childlike state. He died in 2007.</p></div>
+
+<hr>
+
+<h2>What the Phone Phreaks Taught Us About Cybersecurity</h2>
+
+<p>The phreaking era wasn't just a fun story about teenagers making free phone calls. It established patterns that would repeat throughout cybersecurity history:</p>
+
+<h3>Pattern 1: In-Band Signaling Is Dangerous</h3>
+
+<p>AT&T's fatal flaw was using the <strong>same channel</strong> for control signals and voice data. The control tones (like 2600 Hz) traveled alongside your voice. Anyone who could inject the right tones could control the system.</p>
+
+<p>This is called <strong>in-band signaling</strong>, and it's one of the most dangerous design patterns in technology:</p>
+
+<p>| System | In-Band Problem | Attack |</p>
+<p>|---|---|---|</p>
+<p>| Phone system | Control tones on voice line | Blue Box phreaking |</p>
+<p>| Early web apps | User input mixed with SQL commands | SQL Injection |</p>
+<p>| HTML emails | Code embedded in content | Cross-Site Scripting (XSS) |</p>
+<p>| Log files | User input written to logs | Log4Shell (2021) |</p>
+
+<p>The solution is <strong>out-of-band signaling</strong> — separating control signals from user data. AT&T eventually rebuilt its entire network with a separate signaling system called <strong>SS7</strong> (Signaling System 7) in the 1980s, which moved control signals to a completely separate network.</p>
+
+<p>But the pattern continues. SQL injection — putting database commands inside user input — is the exact same vulnerability, just in a different technology. Log4Shell in 2021 was the exact same concept. We keep making the same mistake, in different forms, across different decades.</p>
+
+<h3>Pattern 2: Security Through Obscurity Fails</h3>
+
+<p>AT&T didn't encrypt the control tones. They didn't authenticate who was sending them. Their entire security model was: "Nobody knows about the 2600 Hz frequency."</p>
+
+<p>This is called <strong>security through obscurity</strong> — keeping things safe by keeping them secret. It never works long-term.</p>
+
+<p>The phreaks proved it: once one person figures out the secret, everyone knows. A blind eight-year-old with good hearing was enough to breach billion-dollar infrastructure.</p>
+
+<h3>Pattern 3: Hackers Come From the Edges</h3>
+
+<p>The phone phreaks weren't AT&T employees or government agents. They were:</p>
+
+<ul><li>A blind child (Joybubbles)</li></ul>
+<ul><li>College students (Wozniak, Jobs)</li></ul>
+<ul><li>A homeless Vietnam veteran (Captain Crunch)</li></ul>
+<ul><li>Bored teenagers</li></ul>
+
+<p>The most dangerous threats don't come from where you expect. This pattern repeats again and again:</p>
+
+<ul><li>The Morris Worm (1988): created by a graduate student</li></ul>
+<ul><li>ILOVEYOU virus (2000): created by a college student in the Philippines</li></ul>
+<ul><li>Twitter hack (2020): engineered by a 17-year-old from Florida</li></ul>
+<ul><li>WannaCry (2017): stopped by a 22-year-old working from his bedroom</li></ul>
+
+<h3>Pattern 4: The Line Between Curiosity and Crime Is Thin</h3>
+
+<p>Most phone phreaks didn't think they were criminals. They saw themselves as explorers — curious people mapping an uncharted technological territory.</p>
+
+<p>Captain Crunch said: "I wasn't stealing money. I was exploring the system. I wanted to understand how the biggest machine in the world worked."</p>
+
+<p>This tension — between curiosity and criminality — defines the hacker world to this day. Bug bounty programs exist because companies realized it's better to pay curious hackers than to prosecute them.</p>
+
+<hr>
+
+<h2>The Law Catches Up: The First Computer Crime Laws</h2>
+
+<p>For most of the phreaking era, what the phreaks were doing wasn't technically illegal. There were no laws against manipulating telephone signals.</p>
+
+<p>AT&T lobbied aggressively for legislation, and gradually, laws were passed:</p>
+
+<p>| Year | Law | What It Did |</p>
+<p>|---|---|---|</p>
+<p>| 1984 | <strong>Computer Fraud and Abuse Act (CFAA)</strong> | First US federal law criminalizing unauthorized computer access |</p>
+<p>| 1986 | <strong>Electronic Communications Privacy Act</strong> | Made intercepting electronic communication illegal |</p>
+<p>| 1990 | <strong>UK Computer Misuse Act</strong> | First UK law against unauthorized computer access |</p>
+
+<p>The CFAA would become one of the most controversial laws in technology. Critics say it's so broadly written that almost any computer activity could technically be a crime. It was originally designed to stop phone phreaks and early hackers, but it's been used to prosecute security researchers, journalists, and even people who violated corporate Terms of Service.</p>
+
+<hr>
+
+<h2>The End of an Era</h2>
+
+<p>By the late 1980s, phone phreaking was dying. AT&T had replaced its analog switching system with digital switches that used SS7 signaling. The 2600 Hz tone no longer worked. Blue Boxes became paperweights.</p>
+
+<p>But the phreaking community didn't disappear — it evolved. The same people who had explored the phone system turned their attention to a new, more exciting network: <strong>the internet</strong>.</p>
+
+<p>In 1984, a phone phreak named <strong>Eric Corley</strong> (aka "Emmanuel Goldstein") founded a magazine called <strong>2600: The Hacker Quarterly</strong> — named after the famous frequency. The magazine became the bible of the hacking community and continued publishing for over 40 years.</p>
+
+<p>The phone phreaks were the first generation of hackers. They proved that large technological systems could be manipulated by individuals. They showed that the gap between the people who build systems and the people who break them is often just a matter of curiosity.</p>
+
+<p>And they demonstrated something that would echo through every chapter of this encyclopedia:</p>
+
+<blockquote><strong>The biggest systems in the world are usually broken by the smallest, most unexpected vulnerabilities.</strong></blockquote>
+
+<p>A toy whistle. A blind kid. A cereal box. That's all it took.</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>In-band signaling</strong> (mixing control signals with data) is one of the most dangerous design patterns in all of technology</li></ol>
+<ol><li><strong>Security through obscurity</strong> always fails — secrets don't stay secret</li></ol>
+<ol><li><strong>The biggest threats come from unexpected places</strong> — teenagers, students, hobbyists</li></ol>
+<ol><li><strong>The line between exploration and crime is thin</strong> — today's bug bounties acknowledge this</li></ol>
+<ol><li><strong>When one door closes, hackers find another</strong> — phreaks moved from phones to computers</li></ol>
+
+<hr>
+
+<h2>📊 The Phone Phreaking Hall of Fame</h2>
+
+<p>| Name | Handle | Known For |</p>
+<p>|---|---|---|</p>
+<p>| John Draper | Captain Crunch | Discovered the cereal whistle trick |</p>
+<p>| Joe Engressia | Joybubbles | Blind teen with perfect pitch who could whistle 2600 Hz |</p>
+<p>| Steve Wozniak | Berkeley Blue | Built the first digital Blue Box; co-founded Apple |</p>
+<p>| Steve Jobs | — | Sold Blue Boxes at UC Berkeley; co-founded Apple |</p>
+<p>| Mark Abene | Phiber Optik | NYC phreak who explored Bell Atlantic systems |</p>
+<p>| Kevin Poulsen | Dark Dante | Rigged radio contests by controlling phone lines |</p>
+<p>| Eric Corley | Emmanuel Goldstein | Founded 2600: The Hacker Quarterly |</p>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>The Morris Worm — When a Student Accidentally Broke the Internet</em> → In 1988, a graduate student released a program that was supposed to harmlessly measure the internet's size. Instead, it crashed 10% of all connected computers and became the first cybersecurity crisis.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 2</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

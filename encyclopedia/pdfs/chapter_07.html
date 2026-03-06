@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 7</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part II — The Wild West (1990s)</div>
+  <div class="chapter-num">07</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>How Firewalls, Antivirus & Intrusion Detection Were Born</h1>
+
+<blockquote>"For every lock, someone builds a better lockpick. For every lockpick, someone builds a better lock. This is the story of the lock makers."</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: January 26, 2003 — Inside a Security Operations Center</h2>
+
+<p>It's 5:35 AM on a Saturday. The SQL Slammer worm has been loose for five minutes. At a large bank's Security Operations Center (SOC), an alarm blares. Within moments, every screen on the wall turns red.</p>
+
+<p>The senior analyst stares at the intrusion detection system. It's showing <strong>10,000 alerts per second</strong>. The firewall is blocking inbound traffic as fast as it can, but the worm is generating so much noise that the network's monitoring systems are drowning.</p>
+
+<p>"We're seeing traffic from our own SQL servers," she says. "They're already infected."</p>
+
+<p>The firewalls are working. The antivirus is updated. The intrusion detection system caught the attack. But the patch for the vulnerability was released <strong>six months ago</strong>, and nobody applied it.</p>
+
+<p>All three layers of defense — firewalls, antivirus, intrusion detection — did their jobs. And it still wasn't enough.</p>
+
+<p>This is the fundamental truth of cybersecurity defense: <strong>no single tool is sufficient</strong>. Defense requires layers, like an onion. And even then, the onion has holes.</p>
+
+<hr>
+
+<h2>The Firewall: Building the First Door on the Internet</h2>
+
+<h3>The Problem</h3>
+
+<p>In the early internet, every computer was directly accessible to every other computer. There was no boundary between your network and the rest of the world. It was like having a house with no walls — anyone could walk in.</p>
+
+<h3>The Solution</h3>
+
+<p>In 1988, <strong>DEC (Digital Equipment Corporation)</strong> engineers developed the first commercial firewall. The concept was inspired by a physical concept: in buildings, a "firewall" is a wall designed to prevent fire from spreading between sections. A network firewall does the same thing — it separates your trusted internal network from the untrusted internet.</p>
+
+<h3>Firewall Evolution</h3>
+
+<p>| Generation | When | How It Works | Limitations |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Packet Filter</strong> | 1988 | Examines each packet's source, destination, and port. Allows or blocks based on rules. | Can't understand the content of traffic. Easy to evade with crafted packets. |</p>
+<p>| <strong>Stateful Inspection</strong> | 1994 | Tracks the state of network connections. Knows if a packet is part of an established conversation. | Better than packet filtering, but still can't inspect content. |</p>
+<p>| <strong>Application Layer (Proxy)</strong> | 1996 | Actually reads and understands the application data (HTTP, FTP, etc). Makes decisions based on content. | Slower because it must process content. Can't handle encrypted traffic. |</p>
+<p>| <strong>Next-Gen Firewall (NGFW)</strong> | 2007 | Combines all previous + application awareness, user identity, deep packet inspection, intrusion prevention. | Complex to configure. Encrypted traffic is still a challenge. |</p>
+<p>| <strong>Cloud Firewall (FWaaS)</strong> | 2018 | Firewall as a cloud service. Protects distributed workforces. | Depends on cloud provider availability. |</p>
+
+<h3>Why Firewalls Aren't Enough</h3>
+
+<p>A firewall is like a guard at a gate. It can check your ID and your destination, but it can't read the contents of your briefcase. If the attack comes in through an allowed channel (like port 80/HTTP, which is almost always open), the firewall lets it through.</p>
+
+<p>Modern attacks exploit this: <strong>web application attacks travel over HTTP</strong> (port 80) or HTTPS (port 443), which firewalls must allow because that's how the web works.</p>
+
+<p>This is why <strong>Web Application Firewalls (WAFs)</strong> were invented — firewalls specifically for web traffic that can inspect HTTP requests for SQL injection, XSS, and other web attacks.</p>
+
+<hr>
+
+<h2>Antivirus: The Immune System for Computers</h2>
+
+<h3>The First Antivirus Programs</h3>
+
+<p>The antivirus industry was born in 1987, when the <strong>Brain virus</strong> — the first PC virus — started spreading via floppy disks. Several entrepreneurs independently created the first antivirus tools:</p>
+
+<p>| Year | Product | Creator | Approach |</p>
+<p>|---|---|---|---|</p>
+<p>| 1987 | VirusScan | John McAfee | Signature-based scanning |</p>
+<p>| 1988 | Norton AntiVirus | Symantec | Signature-based scanning |</p>
+<p>| 1989 | Kaspersky | Eugene Kaspersky | Heuristic analysis |</p>
+<p>| 1991 | AVG | GRISOFT | Signature + behavioral |</p>
+<p>| 1997 | ClamAV | Open source | Free, signature-based |</p>
+
+<h3>How Signature-Based Detection Works</h3>
+
+<p>The first antivirus programs worked like a "most wanted" list:</p>
+
+<ol><li>A new virus appears in the wild</li></ol>
+<ol><li>A security researcher captures a sample</li></ol>
+<ol><li>They analyze the virus and extract a unique pattern — a <strong>signature</strong> (a specific sequence of bytes)</li></ol>
+<ol><li>The signature is added to a database</li></ol>
+<ol><li>Your antivirus scans every file on your computer, comparing it to the database</li></ol>
+<ol><li>If a file matches a known signature → blocked/quarantined</li></ol>
+
+<strong>The problem</strong>: This only catches known viruses. If the virus is new (a "zero-day"), there's no signature, and the antivirus is blind.
+
+<h3>The Cat-and-Mouse Game</h3>
+
+<p>Virus writers immediately began developing techniques to evade signature detection:</p>
+
+<p>| Evasion Technique | How It Works | When |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Encryption</strong> | Virus encrypts its body with a different key each time | Early 1990s |</p>
+<p>| <strong>Polymorphism</strong> | Virus changes its code structure while keeping functionality | 1992 (1260 virus) |</p>
+<p>| <strong>Metamorphism</strong> | Virus completely rewrites itself each generation | Late 1990s |</p>
+<p>| <strong>Packing</strong> | Compresses/obfuscates the virus so signatures don't match | 2000s |</p>
+<p>| <strong>Fileless</strong> | Lives only in memory — nothing on disk to scan | 2010s |</p>
+<p>| <strong>Living off the land</strong> | Uses legitimate tools (PowerShell, WMI) — no malicious files at all | 2015+ |</p>
+
+<h3>The Evolution of Defenses (Antivirus → EDR → XDR)</h3>
+
+<p>| Generation | Technology | What It Does |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Gen 1</strong> | Signature AV | Matches known virus signatures |</p>
+<p>| <strong>Gen 2</strong> | Heuristic AV | Analyzes code structure for suspicious patterns |</p>
+<p>| <strong>Gen 3</strong> | Behavioral AV | Monitors what programs DO, not what they look like |</p>
+<p>| <strong>Gen 4</strong> | <strong>EDR</strong> (Endpoint Detection & Response) | Continuously monitors every endpoint, records all activity, enables investigation |</p>
+<p>| <strong>Gen 5</strong> | <strong>XDR</strong> (Extended Detection & Response) | Correlates data across endpoints, network, cloud, email, identity |</p>
+<p>| <strong>Gen 6</strong> | <strong>AI-Powered Detection</strong> | Machine learning models trained on billions of samples |</p>
+
+<div class="callout tip"><p>💡 The key insight: we moved from <strong>prevention</strong> (block the bad thing) to <strong>detection and response</strong> (assume something bad will get through, and focus on finding it and responding quickly).</p></div>
+
+<hr>
+
+<h2>Intrusion Detection Systems: Burglar Alarms for Networks</h2>
+
+<h3>IDS: Knowing You've Been Broken Into</h3>
+
+<p>In 1986, a system administrator at Lawrence Berkeley National Laboratory noticed a <strong>75-cent accounting discrepancy</strong>. This tiny error led him to discover that a German hacker was infiltrating U.S. military computers and selling secrets to the KGB.</p>
+
+<p>That system administrator was <strong>Clifford Stoll</strong>, and his investigation — documented in his book <em>"The Cuckoo's Egg"</em> — demonstrated the need for systems that could automatically detect intruders.</p>
+
+<h3>IDS vs. IPS</h3>
+
+<p>| System | Stands For | What It Does | Analogy |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>IDS</strong> | Intrusion Detection System | Monitors traffic, alerts when suspicious activity is detected | Burglar alarm — tells you someone is breaking in |</p>
+<p>| <strong>IPS</strong> | Intrusion Prevention System | Monitors traffic AND automatically blocks suspicious activity | Burglar alarm + automatic door locks |</p>
+
+<h3>Types of Detection</h3>
+
+<p>| Detection Method | How It Works | Pros | Cons |</p>
+<p>|---|---|---|---|</p>
+<p>| <strong>Signature-Based</strong> | Matches traffic against known attack patterns | Very accurate for known attacks, low false positives | Misses new (zero-day) attacks |</p>
+<p>| <strong>Anomaly-Based</strong> | Learns "normal" behavior, alerts on deviations | Can detect unknown attacks | High false positive rate |</p>
+<p>| <strong>Stateful Protocol Analysis</strong> | Monitors protocol sessions for violations | Good at detecting protocol abuse | Complex to configure properly |</p>
+<p>| <strong>Behavioral Analysis</strong> | Watches for suspicious sequences of actions | Catches sophisticated attacks | Requires baseline period, can be noisy |</p>
+
+<h3>The Alert Fatigue Problem</h3>
+
+<p>By the early 2000s, organizations were deploying firewalls, antivirus, and IDS/IPS. The problem?</p>
+
+<strong>Too many alerts.</strong>
+
+<p>A typical enterprise IDS generates <strong>thousands of alerts per day</strong>. Most are false positives. Security analysts spent their days clicking through meaningless alerts, missing the real attacks buried in the noise.</p>
+
+<p>| Metric | Typical Value |</p>
+<p>|---|---|</p>
+<p>| Alerts per day (large enterprise) | 10,000 – 100,000+ |</p>
+<p>| False positive rate | 90%+ |</p>
+<p>| Alerts investigated | < 10% |</p>
+<p>| Mean time to detect a breach | 197 days (in 2023) |</p>
+
+<p>This problem — <strong>too much data, not enough analysis</strong> — led to the invention of SIEM systems and, eventually, AI-powered security operations.</p>
+
+<hr>
+
+<h2>Defense in Depth: The Onion Model</h2>
+
+<p>By the late 1990s, security professionals realized that no single tool could provide adequate protection. The solution was <strong>Defense in Depth</strong> — layering multiple security controls:</p>
+
+<p>``<code class="inline"></p>
+<p>Layer 1: Physical Security (locks, guards, cameras)</p>
+<p>  └─ Layer 2: Network Security (firewalls, network segmentation)</p>
+<p>      └─ Layer 3: Host Security (antivirus, EDR, hardening)</p>
+<p>          └─ Layer 4: Application Security (WAF, input validation, auth)</p>
+<p>              └─ Layer 5: Data Security (encryption, access controls, DLP)</p>
+<p>                  └─ Layer 6: User Security (training, MFA, least privilege)</p>
+<p>                      └─ Layer 7: Monitoring (SIEM, IDS, logging)</p>
+</code>``
+
+<p>Each layer catches attacks that pass through the previous one. An attacker must bypass ALL seven layers to succeed. A defender only needs ONE layer to work.</p>
+
+<h3>The Complete Defense Tool Taxonomy (1990s–2000s)</h3>
+
+<p>| Category | Tools | What They Protect |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Perimeter</strong> | Firewall, VPN, DMZ | Network boundary |</p>
+<p>| <strong>Network</strong> | IDS/IPS, network segmentation | Internal traffic |</p>
+<p>| <strong>Endpoint</strong> | Antivirus, host firewall, HIDS | Individual computers |</p>
+<p>| <strong>Application</strong> | WAF, input validation, SAST/DAST | Web applications |</p>
+<p>| <strong>Identity</strong> | MFA, SSO, directory services | User authentication |</p>
+<p>| <strong>Data</strong> | Encryption, DLP, backup | Information itself |</p>
+<p>| <strong>Monitoring</strong> | SIEM, log management | Visibility across all layers |</p>
+<p>| <strong>Process</strong> | Incident response, patching, training | Organizational practices |</p>
+
+<hr>
+
+<h2>The Arms Race Principle</h2>
+
+<p>The history of cybersecurity defense follows a clear pattern:</p>
+
+<ol><li><strong>New attack emerges</strong> (virus, worm, exploit)</li></ol>
+<ol><li><strong>Defense is created</strong> (antivirus, firewall, IDS)</li></ol>
+<ol><li><strong>Attackers adapt</strong> (polymorphism, encryption, evasion)</li></ol>
+<ol><li><strong>Defense is upgraded</strong> (heuristics, behavioral analysis)</li></ol>
+<ol><li><strong>Attackers adapt again</strong> (fileless, living-off-the-land)</li></ol>
+<ol><li><strong>Cycle repeats forever</strong></li></ol>
+
+<p>This is the <strong>arms race</strong>, and it has several important properties:</p>
+
+<ul><li><strong>Defenders are always one step behind</strong> — by definition, you can only defend against attacks you've seen</li></ul>
+<ul><li><strong>Attackers need one success; defenders need zero failures</strong> — the asymmetry is permanent</li></ul>
+<ul><li><strong>Complexity is the enemy of security</strong> — every new tool adds complexity, which creates new vulnerabilities</li></ul>
+<ul><li><strong>The cost of defense grows faster than the cost of attack</strong> — an attacker's tool costs $0; defending against it costs millions</li></ul>
+
+<blockquote>The only way to win an arms race is to <strong>change the game entirely</strong>. This is what concepts like Zero Trust Architecture, security-by-design, and AI-powered defense attempt to do — not just build a better lock, but rethink what locking means.</blockquote>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>Firewalls evolved from simple packet filters to AI-powered platforms</strong> — but still can't stop attacks through allowed ports</li></ol>
+<ol><li><strong>Antivirus based on signatures was doomed from the start</strong> — polymorphic and fileless malware made it irrelevant alone</li></ol>
+<ol><li><strong>IDS/IPS created the alert fatigue problem</strong> — having too many alerts is almost as bad as having none</li></ol>
+<ol><li><strong>Defense in Depth is essential</strong> — no single layer is sufficient; you need the full onion</li></ol>
+<ol><li><strong>The arms race never ends</strong> — every defense creates a new attack vector, and every attack creates a new defense</li></ol>
+
+<hr>
+
+<h2>📊 The Defense Industry by the Numbers</h2>
+
+<p>| Metric | Value |</p>
+<p>|---|---|</p>
+<p>| Global cybersecurity market (2000) | $3.5 billion |</p>
+<p>| Global cybersecurity market (2025) | $280 billion |</p>
+<p>| Growth factor | 80x in 25 years |</p>
+<p>| Number of cybersecurity vendors | 3,500+ |</p>
+<p>| Number of security tools in average enterprise | 76 |</p>
+<p>| Unfilled cybersecurity jobs (2025) | 3.5 million |</p>
+<p>| Average breach cost (2025) | $4.88 million |</p>
+
+<hr>
+
+<blockquote><strong>End of Part II: The Wild West</strong></blockquote>
+
+<blockquote><strong>Next: Part III — The Awakening (2000s)</strong> → The internet stops being a toy and becomes critical infrastructure. Nation-states start hacking each other. Organized crime discovers cybercrime is more profitable than drugs. SQL injection becomes the most dangerous vulnerability in the world. And a security auditor named Albert Gonzalez steals 170 million credit cards while working as an FBI informant.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 7</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

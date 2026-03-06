@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cybersecurity Encyclopedia - Chapter 3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e1a;
+    color: #e0e4ef;
+    line-height: 1.8;
+    padding: 50px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── CHAPTER HEADER ─── */
+  .chapter-header {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  }
+  .chapter-header .part-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #6366f1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-num {
+    font-size: 72px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .chapter-header .chapter-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .chapter-header .chapter-subtitle {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ─── HEADINGS ─── */
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 50px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+  }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin: 40px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #6366f1;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin: 30px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #818cf8;
+    margin: 22px 0 10px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 18px 0 8px;
+  }
+
+  /* ─── TEXT ─── */
+  p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+  strong { color: #f1f5f9; }
+  em { color: #c7d2fe; }
+
+  /* ─── STORY BOX ─── */
+  .story-box {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .story-box::before {
+    content: '🎬';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    font-size: 20px;
+    background: #0a0e1a;
+    padding: 0 8px;
+  }
+  .story-box h4 {
+    color: #22d3ee;
+    margin-top: 4px;
+  }
+
+  /* ─── TABLES ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th {
+    background: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+    color: #cbd5e1;
+  }
+  tr:nth-child(even) { background: rgba(99, 102, 241, 0.03); }
+
+  /* ─── CODE ─── */
+  pre.code-block {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  pre.code-block code {
+    color: #a5b4fc;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  code.inline {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── LISTS ─── */
+  ul, ol {
+    margin: 14px 0 14px 28px;
+    color: #cbd5e1;
+    font-size: 14.5px;
+  }
+  li {
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  li::marker { color: #6366f1; }
+
+  /* ─── BLOCKQUOTE ─── */
+  blockquote {
+    border-left: 4px solid #6366f1;
+    padding: 16px 24px;
+    margin: 20px 0;
+    background: rgba(99, 102, 241, 0.06);
+    border-radius: 0 12px 12px 0;
+    color: #c7d2fe;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border: 1px solid;
+  }
+  .callout.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .callout.warning {
+    background: rgba(245, 158, 11, 0.06);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .callout.success {
+    background: rgba(34, 197, 94, 0.06);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .callout.tip {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  .callout.info {
+    background: rgba(34, 211, 238, 0.06);
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  .callout p { margin: 0; }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-item {
+    padding-left: 30px;
+    border-left: 2px solid rgba(99, 102, 241, 0.3);
+    margin: 16px 0;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  /* ─── KEY TAKEAWAYS ─── */
+  .takeaways {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 30px 0;
+  }
+  .takeaways h3 { color: #22c55e; margin-top: 0; }
+
+  /* ─── FOOTER ─── */
+  .chapter-footer {
+    margin-top: 60px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    color: #64748b;
+    font-size: 12px;
+  }
+  .chapter-footer .next {
+    margin-top: 12px;
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; color: #1e293b; padding: 30px; }
+    .chapter-header { background: #f8fafc; border-color: #6366f1; }
+    .chapter-header .chapter-num { -webkit-text-fill-color: #4338ca; }
+    .chapter-header .chapter-title { color: #1e293b; }
+    .chapter-header .part-label { color: #6366f1; }
+    .chapter-header .chapter-subtitle { color: #64748b; }
+    h1 { color: #1e293b; border-bottom-color: #6366f1; }
+    h2 { color: #4338ca; border-left-color: #6366f1; }
+    h3 { color: #4f46e5; }
+    h4 { color: #6366f1; }
+    p, li, td { color: #334155; }
+    strong { color: #1e293b; }
+    th { background: #e0e7ff; color: #312e81; }
+    td { border-top-color: #e2e8f0; }
+    table { border-color: #e2e8f0; background: #f8fafc; }
+    pre.code-block { background: #f8fafc; border-color: #e2e8f0; }
+    pre.code-block code { color: #4338ca; }
+    code.inline { background: #e0e7ff; color: #4338ca; }
+    blockquote { background: #f0f0ff; color: #4338ca; }
+    .story-box { background: #f0f4ff; border-color: #c7d2fe; }
+    .takeaways { background: #f0fdf4; border-color: #86efac; }
+    .callout.danger { background: #fef2f2; }
+    .callout.warning { background: #fffbeb; }
+    .callout.success { background: #f0fdf4; }
+    .callout.tip { background: #eef2ff; }
+    .chapter-footer { border-top-color: #e2e8f0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chapter-header">
+  <div class="part-label">Part I — The Genesis (1960s–1970s)</div>
+  <div class="chapter-num">03</div>
+  <div class="chapter-title" id="chapter-title"></div>
+  <div class="chapter-subtitle" id="chapter-subtitle"></div>
+</div>
+
+<h1>The Morris Worm — When a Student Accidentally Broke the Internet</h1>
+
+<blockquote>"I didn't mean to cause damage. I just wanted to see how big the internet was. The program was supposed to be invisible."</blockquote>
+<blockquote>— Robert Tappan Morris, November 1988</blockquote>
+
+<hr>
+
+<h2>🎬 The Scene: November 2, 1988 — MIT Computer Lab, 6:00 PM</h2>
+
+<p>Robert Tappan Morris is 23 years old. He's a first-year graduate student at Cornell University, but tonight he's sitting at a computer terminal at MIT — deliberately using a machine far from his own campus to hide his tracks.</p>
+
+<p>Morris has written a program. It's 99 lines of C code designed to do something simple: copy itself from one computer to another across the internet, then report back. His goal is innocent enough — he wants to <strong>count how many computers are connected to the internet</strong>.</p>
+
+<p>At 6:00 PM, he releases the program into the wild.</p>
+
+<p>Within <strong>90 minutes</strong>, machines across the country begin to slow down. Within <strong>four hours</strong>, major university networks are choking. By morning, roughly <strong>6,000 computers</strong> — an estimated <strong>10% of the entire internet</strong> — have been infected and rendered useless.</p>
+
+<p>Morris watches in horror as his creation spirals out of control. He calls a friend at Harvard and asks him to post an anonymous message with instructions on how to stop the worm. But by then, so much network traffic is clogged by the worm that the message can't get through.</p>
+
+<p>The internet's first <strong>Distributed Denial of Service</strong> has inadvertently been created — by the very worm that caused it.</p>
+
+<p>The Morris Worm wasn't intended to be destructive. It contained no payload — no data was deleted, no files were stolen. Its only purpose was to spread. But a single programming bug turned an experiment into a catastrophe, and <strong>cybersecurity was born as a discipline</strong>.</p>
+
+<hr>
+
+<h2>How the Morris Worm Worked</h2>
+
+<p>The worm used three separate attack methods to spread. Understanding these methods is critical because they represent three fundamental categories of cyberattack that are still used today, 38 years later.</p>
+
+<h3>Attack Method 1: Exploiting Known Vulnerabilities (Buffer Overflow)</h3>
+
+<p>The worm exploited a bug in the Unix <strong>fingerd</strong> program — a service that let users see who was logged into a remote computer.</p>
+
+<p>The bug was a <strong>buffer overflow</strong>. Here's how it works in simple terms:</p>
+
+<p>Imagine a mailbox designed to hold 10 letters. What happens if someone tries to shove 500 letters in? The letters overflow, spill out, and land on the desk behind the mailbox.</p>
+
+<p>In computer terms:</p>
+<ol><li><code class="inline">fingerd</code> had a buffer (memory space) that could hold 512 characters</li></ol>
+<ol><li>Morris sent it a specially crafted input of <strong>536 characters</strong></li></ol>
+<ol><li>The extra 24 characters overflowed the buffer and <strong>overwrote the program's return address</strong></li></ol>
+<ol><li>The overwritten address pointed to Morris's malicious code</li></ol>
+<ol><li>The computer started executing the worm's code instead of <code class="inline">fingerd</code></li></ol>
+
+<p>This was one of the first real-world <strong>buffer overflow exploits</strong>. It would become the single most common attack technique for the next two decades and is still considered one of the top vulnerabilities today.</p>
+
+<h3>Attack Method 2: Guessing Passwords (Dictionary Attack)</h3>
+
+<p>The worm carried a list of <strong>432 common passwords</strong> and tried each one against user accounts on the target machine.</p>
+
+<p>Morris's password list included:</p>
+<ul><li>The username itself (e.g., user "admin" with password "admin")</li></ul>
+<ul><li>The username reversed (e.g., "nimda")</li></ul>
+<ul><li>Common words like "password", "guest", "secret", "aaa"</li></ul>
+<ul><li>Words from the system's own dictionary file (<code class="inline">/usr/dict/words</code>)</li></ul>
+
+<p>This technique — trying a list of common passwords — is called a <strong>dictionary attack</strong>. It worked disturbingly well. Morris later estimated that his worm successfully guessed passwords on about <strong>50% of the machines it targeted</strong>.</p>
+
+<p>In 1988, people used passwords like:</p>
+
+<p>| Password | Why People Used It |</p>
+<p>|---|---|</p>
+<p>| <code class="inline">password</code> | Seemed obvious but surely nobody would guess it |</p>
+<p>| <code class="inline">123456</code> | Easy to remember |</p>
+<p>| <code class="inline">[username]</code> | Already typed it, why not use it again |</p>
+<p>| <code class="inline">secret</code> | Felt clever |</p>
+<p>| (blank) | Why bother? |</p>
+
+<div class="callout info"><p>📌 Fun fact: The password "123456" has been the #1 most commonly used password every single year from 1988 to 2024 — a span of 36 years. Some things in cybersecurity never change.</p></div>
+
+<h3>Attack Method 3: Trusted Relationships (rsh/rexec)</h3>
+
+<p>The most elegant attack was exploiting <strong>trusted host relationships</strong>. In 1988, Unix systems had a feature where machines could be configured to trust each other. If Machine A trusted Machine B, then anyone logged into Machine B could log into Machine A <strong>without a password</strong>.</p>
+
+<p>This was designed for convenience — researchers needed to move between machines freely. But it meant the worm only needed to compromise one machine in a trusted group to gain access to all of them.</p>
+
+<p>This concept — <strong>exploiting trust relationships to move laterally</strong> — is now called <strong>lateral movement</strong>, and it's the defining technique of modern advanced persistent threats (APTs). When attackers breach one system and use it to reach others, they're doing exactly what the Morris Worm did in 1988.</p>
+
+<hr>
+
+<h2>The Critical Bug: Why It Spiraled Out of Control</h2>
+
+<p>Here's the tragic irony: <strong>Morris designed the worm to avoid causing damage</strong>.</p>
+
+<p>He included a check: before infecting a machine, the worm would ask, "Is there already a copy of me running here?" If yes, it would <strong>not</strong> re-infect — it would move on.</p>
+
+<p>But Morris realized that system administrators might exploit this check. They could create a fake "already running" signal that would make the worm skip their machine entirely, acting like a vaccine.</p>
+
+<p>To prevent this, Morris added a fatal modification:</p>
+
+<blockquote><strong>Even if the worm found a copy of itself already running, it would re-infect anyway 1 out of every 7 times.</strong></blockquote>
+
+<p>This was the bug that destroyed the internet. Here's the math:</p>
+
+<ul><li>Machine gets infected → worm checks for existing copy</li></ul>
+<ul><li>1/7 chance (14.3%) it re-infects anyway</li></ul>
+<ul><li>Machine now has 2 copies running</li></ul>
+<ul><li>Each copy checks new machines, comes back, and gets another 1/7 chance</li></ul>
+<ul><li>Soon: 3, 5, 10, 50, 100 copies running on the same machine</li></ul>
+
+<p>Every copy of the worm consumed CPU and memory. Within hours, infected machines had hundreds of copies running simultaneously. The computers ground to a halt — not because the worm was deleting data, but because it was <strong>consuming all available resources</strong>.</p>
+
+<p>This is the first documented case of what we now call a <strong>fork bomb</strong> or <strong>resource exhaustion attack</strong> — overwhelming a system not by breaking it, but by consuming everything it needs to function.</p>
+
+<h3>The Re-infection Formula</h3>
+
+<p>| Copies Running | CPU Usage | Machine Status |</p>
+<p>|---|---|---|</p>
+<p>| 1 | ~2% | Normal |</p>
+<p>| 5 | ~10% | Slightly slow |</p>
+<p>| 20 | ~40% | Noticeably degraded |</p>
+<p>| 50 | ~90% | Almost unusable |</p>
+<p>| 100+ | 100% | Completely frozen |</p>
+
+<p>Morris later said: "The 1-in-7 decision was the worst mistake I ever made. If I had set it to 1-in-1000, or even 1-in-100, nobody would have noticed the worm at all. It would have just quietly counted computers."</p>
+
+<hr>
+
+<h2>The Aftermath: Cybersecurity Is Born</h2>
+
+<h3>The Response</h3>
+
+<p>The Morris Worm was announced to the world by the <strong>New York Times</strong> on November 3, 1988. It was front-page news — the first time a computer security incident made headlines.</p>
+
+<p>The response was chaotic. There was no organization responsible for internet security. There were no incident response teams. There was no playbook. System administrators across the country scrambled to understand what was happening and how to stop it.</p>
+
+<p>Within 72 hours, researchers at UC Berkeley and MIT had decompiled the worm's code and found ways to kill it. They shared their findings over the very network the worm had clogged — an extraordinary challenge when the messenger system itself was under attack.</p>
+
+<h3>CERT: The First Cybersecurity Response Team</h3>
+
+<p>In direct response to the Morris Worm, the US government created the <strong>Computer Emergency Response Team (CERT)</strong> at Carnegie Mellon University on November 13, 1988 — just 11 days after the worm was released.</p>
+
+<p>CERT's mission was simple:</p>
+<ol><li>Coordinate responses to computer security incidents</li></ol>
+<ol><li>Share information about vulnerabilities</li></ol>
+<ol><li>Help organizations secure their systems</li></ol>
+
+<p>CERT was the prototype for every cybersecurity incident response team that followed. Today, virtually every country, every large corporation, and every government agency has its own CERT or CSIRT (Computer Security Incident Response Team).</p>
+
+<p>Before the Morris Worm, computer security was an academic curiosity. After it, computer security was a professional discipline.</p>
+
+<h3>The Legal Precedent</h3>
+
+<p>Robert Morris was the <strong>first person convicted</strong> under the <strong>Computer Fraud and Abuse Act (CFAA)</strong> of 1986.</p>
+
+<p>His sentence:</p>
+<ul><li><strong>3 years probation</strong></li></ul>
+<ul><li><strong>400 hours of community service</strong></li></ul>
+<ul><li><strong>$10,050 fine</strong></li></ul>
+<ul><li>No prison time</li></ul>
+
+<p>Many people thought the sentence was too lenient. Others thought it was too harsh — Morris hadn't intended to cause damage, and no data was lost.</p>
+
+<p>Morris's trial established critical legal precedents:</p>
+<ol><li><strong>Intent doesn't matter</strong> — you can be convicted even if you didn't mean to cause damage</li></ol>
+<ol><li><strong>Unauthorized access is a crime</strong> — even if you don't steal or destroy anything</li></ol>
+<ol><li><strong>Computer crime is real crime</strong> — it will be prosecuted under federal law</li></ol>
+
+<div class="callout warning"><p>⚠️ Ironically, Morris went on to become a professor at MIT (the very institution he used to launch the worm), co-founded Y Combinator (the world's most famous startup incubator), and became worth hundreds of millions of dollars.</p></div>
+
+<hr>
+
+<h2>The Morris Worm's Legacy: Attack Techniques Still Used in 2026</h2>
+
+<p>Every technique the Morris Worm used in 1988 is still actively used by attackers today. The tools are more sophisticated, but the fundamental concepts are identical:</p>
+
+<p>| Morris Worm (1988) | Modern Equivalent (2026) |</p>
+<p>|---|---|</p>
+<p>| Buffer overflow in fingerd | Buffer overflows in C/C++ applications, IoT firmware |</p>
+<p>| Dictionary attack (432 passwords) | Credential stuffing with billions of leaked passwords |</p>
+<p>| Exploiting trusted relationships | Active Directory lateral movement, Pass-the-Hash |</p>
+<p>| Self-replicating across networks | WannaCry, NotPetya, modern worms |</p>
+<p>| Resource exhaustion (fork bomb) | DDoS attacks, cryptominers consuming CPU |</p>
+<p>| No destructive payload | "Living off the land" — using existing tools, leaving no trace |</p>
+
+<p>The Morris Worm was the prototype for every cyberattack that followed. It combined multiple attack vectors, exploited trust, automated its spread, and demonstrated that a single individual could disrupt global infrastructure.</p>
+
+<hr>
+
+<h2>The Complete Attack Taxonomy (So Far)</h2>
+
+<p>By the end of the 1980s, the following attack types had been discovered:</p>
+
+<p>| Attack Type | First Seen | How It Works |</p>
+<p>|---|---|---|</p>
+<p>| <strong>Password Guessing</strong> | 1962 (MIT) | Try common passwords until one works |</p>
+<p>| <strong>Social Engineering</strong> | 1960s (Phreaks) | Trick humans into revealing information |</p>
+<p>| <strong>In-Band Signal Manipulation</strong> | 1969 (Phreaking) | Inject control signals into data channels |</p>
+<p>| <strong>Buffer Overflow</strong> | 1988 (Morris Worm) | Overwrite program memory with malicious code |</p>
+<p>| <strong>Dictionary Attack</strong> | 1988 (Morris Worm) | Automate password guessing with word lists |</p>
+<p>| <strong>Trust Exploitation</strong> | 1988 (Morris Worm) | Use trusted relationships to access new systems |</p>
+<p>| <strong>Self-Replicating Code (Worm)</strong> | 1988 (Morris Worm) | Programs that copy themselves across networks |</p>
+<p>| <strong>Resource Exhaustion</strong> | 1988 (Morris Worm) | Consume all CPU/memory until system becomes unusable |</p>
+<p>| <strong>Denial of Service</strong> | 1988 (Morris Worm, accidental) | Overwhelm systems so legitimate users can't access them |</p>
+
+<p>And the 1990s hadn't even started yet. The internet was about to go from 60,000 computers to <strong>hundreds of millions</strong>. Every new user was a potential target. Every new application was a potential vulnerability.</p>
+
+<p>The arms race between attackers and defenders had officially begun.</p>
+
+<hr>
+
+<h2>🔑 Key Takeaways</h2>
+
+<ol><li><strong>The Morris Worm combined multiple attack methods</strong> — this multi-vector approach became the standard for sophisticated attacks</li></ol>
+<ol><li><strong>A single programming bug transformed a harmless experiment into a disaster</strong> — software quality IS security</li></ol>
+<ol><li><strong>Intent doesn't protect you from consequences</strong> — even "research" can cause catastrophic damage</li></ol>
+<ol><li><strong>CERT was created in response</strong> — every major security incident creates new defense organizations</li></ol>
+<ol><li><strong>Buffer overflows, dictionary attacks, and lateral movement</strong> from 1988 are STILL the top attack vectors in 2026</li></ol>
+
+<hr>
+
+<h2>📊 Morris Worm by the Numbers</h2>
+
+<p>| Metric | Value |</p>
+<p>|---|---|</p>
+<p>| Date Released | November 2, 1988, 6:00 PM |</p>
+<p>| Lines of Code | 99 lines (main body) |</p>
+<p>| Computers Infected | ~6,000 |</p>
+<p>| Percentage of Internet Affected | ~10% |</p>
+<p>| Estimated Damage | $100,000 – $10,000,000 |</p>
+<p>| Time to Spread | 90 minutes to critical mass |</p>
+<p>| Attack Vectors Used | 3 (buffer overflow, dictionary, trusted hosts) |</p>
+<p>| Fix Time | ~72 hours |</p>
+<p>| Legal Consequence | First CFAA conviction |</p>
+<p>| Created In Response | CERT at Carnegie Mellon |</p>
+
+<hr>
+
+<blockquote><strong>Next Chapter</strong>: <em>The World Goes Online — The 1990s Internet Explosion</em> → The World Wide Web is invented, millions of people go online, companies rush to sell things on the internet, and absolutely nobody thinks about security. The golden age of viruses, worms, and script kiddies begins.</blockquote>
+
+
+<div class="chapter-footer">
+  <div>🛡️ The Cybersecurity Encyclopedia — Chapter 3</div>
+  <div>© 2026 | From the First Hack to the Last Firewall</div>
+</div>
+
+<script>
+  // Extract title from first h1
+  const h1 = document.querySelector('h1');
+  if (h1) {
+    document.getElementById('chapter-title').textContent = h1.textContent;
+    h1.style.display = 'none';
+  }
+  // Extract subtitle from first blockquote
+  const bq = document.querySelector('blockquote');
+  if (bq) {
+    document.getElementById('chapter-subtitle').textContent = bq.textContent;
+    bq.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
