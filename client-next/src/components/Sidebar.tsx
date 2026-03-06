@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { getModeSections } from "@/lib/modes";
 import type { ModeConfig } from "@/lib/modes";
 
@@ -10,29 +11,51 @@ interface Props {
 
 export default function Sidebar({ activeMode, onSelectMode }: Props) {
     const sections = getModeSections();
+    const [open, setOpen] = useState(false);
+
+    const handleSelect = (modeId: string) => {
+        onSelectMode(modeId);
+        setOpen(false); // close sidebar on mobile after selection
+    };
 
     return (
-        <aside className="sidebar">
-            <div className="sidebar-logo">
-                <span className="shield">🛡️</span>
-                <span className="title">Data Privacy<br />Intelligence</span>
-            </div>
+        <>
+            {/* Mobile hamburger button */}
+            <button
+                className="mobile-menu-btn"
+                onClick={() => setOpen(!open)}
+                aria-label="Toggle menu"
+            >
+                {open ? "✕" : "☰"}
+            </button>
 
-            {sections.map(({ section, modes }) => (
-                <div key={section}>
-                    <div className="sidebar-section">{section}</div>
-                    {modes.map((mode: ModeConfig) => (
-                        <div
-                            key={mode.id}
-                            className={`sidebar-item ${activeMode === mode.id ? "active" : ""}`}
-                            onClick={() => onSelectMode(mode.id)}
-                        >
-                            <span className="icon">{mode.icon}</span>
-                            <span>{mode.label}</span>
-                        </div>
-                    ))}
+            {/* Overlay for mobile */}
+            {open && (
+                <div className="sidebar-overlay" onClick={() => setOpen(false)} />
+            )}
+
+            <aside className={`sidebar ${open ? "open" : ""}`}>
+                <div className="sidebar-logo">
+                    <span className="shield">🛡️</span>
+                    <span className="title">Data Privacy<br />Intelligence</span>
                 </div>
-            ))}
-        </aside>
+
+                {sections.map(({ section, modes }) => (
+                    <div key={section}>
+                        <div className="sidebar-section">{section}</div>
+                        {modes.map((mode: ModeConfig) => (
+                            <div
+                                key={mode.id}
+                                className={`sidebar-item ${activeMode === mode.id ? "active" : ""}`}
+                                onClick={() => handleSelect(mode.id)}
+                            >
+                                <span className="icon">{mode.icon}</span>
+                                <span>{mode.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </aside>
+        </>
     );
 }

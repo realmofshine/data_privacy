@@ -718,3 +718,340 @@ body {
 .kg-detail-link:hover {
   text-decoration: underline;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   Mobile Menu Button & Sidebar Overlay
+   ═══════════════════════════════════════════════════════════════════ */
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1100;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Tablet (≤ 1024px)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+
+  .mode-header {
+    padding: 14px 16px;
+  }
+
+  .mode-header h2 {
+    font-size: 16px;
+  }
+
+  .chat-area {
+    padding: 16px;
+  }
+
+  .input-area {
+    padding: 12px 16px;
+  }
+
+  .a2ui-card {
+    max-width: 100%;
+  }
+
+  .message {
+    max-width: 92%;
+  }
+
+  .message.assistant {
+    max-width: 95%;
+  }
+
+  .kg-canvas {
+    height: 350px;
+  }
+
+  .kg-detail-panel {
+    width: 240px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Mobile (≤ 768px)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Show hamburger */
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  /* Show overlay when sidebar open */
+  .sidebar-overlay {
+    display: block;
+  }
+
+  /* Sidebar becomes a slide-out overlay */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    min-width: 260px;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: none;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Main area takes full width */
+  .main-area {
+    width: 100%;
+  }
+
+  /* Header — add left padding for hamburger button */
+  .mode-header {
+    padding: 14px 16px 14px 60px;
+  }
+
+  .mode-header h2 {
+    font-size: 15px;
+  }
+
+  .mode-header .mode-desc {
+    font-size: 11px;
+  }
+
+  /* Agent badges scroll horizontally */
+  .agent-badges {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 4px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .agent-badge {
+    flex-shrink: 0;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  /* Chat area */
+  .chat-area {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .message {
+    max-width: 95%;
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .message.assistant {
+    max-width: 100%;
+  }
+
+  .message.assistant .message-content {
+    font-size: 12px;
+  }
+
+  .empty-state .icon {
+    font-size: 36px;
+  }
+
+  .empty-state h3 {
+    font-size: 15px;
+  }
+
+  .empty-state p {
+    font-size: 12px;
+    max-width: 300px;
+  }
+
+  /* Input area — stack on very small screens */
+  .input-area {
+    padding: 10px 12px;
+  }
+
+  .input-form {
+    gap: 8px;
+  }
+
+  .input-field {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .send-button {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+
+  /* Sample chips */
+  .sample-queries {
+    gap: 6px;
+  }
+
+  .sample-chip {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  /* A2UI cards — full width */
+  .a2ui-card {
+    max-width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .a2ui-heading {
+    font-size: 14px;
+  }
+
+  .a2ui-heading.h2 {
+    font-size: 16px;
+  }
+
+  .a2ui-text {
+    font-size: 12px;
+  }
+
+  .a2ui-button {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  .a2ui-row {
+    gap: 8px;
+  }
+
+  .a2ui-table th,
+  .a2ui-table td {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  /* Knowledge Graph — shorter on mobile */
+  .kg-wrapper {
+    border-radius: 10px;
+  }
+
+  .kg-canvas {
+    height: 300px;
+  }
+
+  .kg-legend {
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+  .kg-detail-panel {
+    width: 100%;
+    height: 50%;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    border-radius: 14px 14px 0 0;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Step indicator */
+  .step-indicator {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Small Mobile (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .mode-header h2 {
+    font-size: 14px;
+  }
+
+  .agent-badges {
+    margin-top: 6px;
+  }
+
+  .agent-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 8px;
+  }
+
+  /* Stack input and button */
+  .input-form {
+    flex-direction: column;
+  }
+
+  .send-button {
+    width: 100%;
+  }
+
+  .kg-canvas {
+    height: 250px;
+  }
+
+  .kg-legend-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .message {
+    max-width: 100%;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
